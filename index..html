@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,200 +6,1009 @@
     <title>ACAN - Formation des Leaders Numériques</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="http://127.0.0.1:8000/css/style.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            height: calc(100% - 32px);
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel {
+            position: relative;
+            height: 70vh;
+            min-height: 400px;
+            overflow: hidden;
+        }
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .carousel-item.active {
+            opacity: 1;
+        }
+        .carousel-caption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            width: 90%;
+            max-width: 800px;
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .carousel-control.prev {
+            left: 10px;
+        }
+        .carousel-control.next {
+            right: 10px;
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .carousel-indicator.active {
+            background: white;
+        }
+        
+        /* New refined styles */
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-card {
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+        .timeline-dot {
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+        .footer-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .footer-link:hover {
+            color: white;
+        }
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Responsive text sizes */
+        @media (max-width: 640px) {
+            .text-responsive {
+                font-size: 1.5rem !important;
+            }
+            .carousel-caption h2 {
+                font-size: 1.8rem !important;
+            }
+            .carousel-caption p {
+                font-size: 1rem !important;
+            }
+        }
+    </style>
 </head>
 <body class="font-sans antialiased text-gray-800">
-<!-- Navigation -->
-<nav class="bg-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
-            <div class="flex items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=ACAN" alt="ACAN Logo">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="logo.png" alt="ACAN Logo">
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Accueil</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Formations</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Magazine</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                         <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">A Propos</a>
+                    </div>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a href="http://127.0.0.1:8000"
-                       class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                        Accueil
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium mr-4">Se connecter</button>
+                    <button class="bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 px-4 py-2 rounded-md text-sm font-medium">S'inscrire</button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="mobile-menu sm:hidden bg-white" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-2">
+                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Accueil</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Formations</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Campus</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Magazine</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+                <div class="pt-4 pb-3 border-t border-gray-200 px-4">
+                    <div class="space-y-2">
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Se connecter</button>
+                        <button class="w-full bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 px-4 py-2 rounded-md text-sm font-medium">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel Section -->
+    <div class="carousel">
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                <div class="carousel-caption">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Formez-vous aux métiers du numérique</h2>
+                    <p class="text-lg md:text-xl mb-6">Des formations diplômantes adaptées aux besoins des entreprises</p>
+                    <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-md text-base md:text-lg font-medium transition duration-300 transform hover:scale-105">Découvrir nos formations</a>
+                </div>
+            </div>
+                                    
+            <!-- Slide 2 -->
+            <div class="carousel-item" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                <div class="carousel-caption">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Expertise en Data Science</h2>
+                    <p class="text-lg md:text-xl mb-6">Devenez un expert en analyse de données et intelligence artificielle</p>
+                    <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-md text-base md:text-lg font-medium transition duration-300 transform hover:scale-105">En savoir plus</a>
+                </div>
+            </div>
+                                    
+            <!-- Slide 3 -->
+            <div class="carousel-item" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                <div class="carousel-caption">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Cybersécurité Offensive</h2>
+                    <p class="text-lg md:text-xl mb-6">Apprenez à protéger les systèmes contre les cyberattaques</p>
+                    <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-md text-base md:text-lg font-medium transition duration-300 transform hover:scale-105">Voir le programme</a>
+                </div>
+            </div>
+        </div>
+                        
+        <!-- Controls -->
+        <button class="carousel-control prev" onclick="prevSlide()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-control next" onclick="nextSlide()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+                        
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <div class="carousel-indicator active" onclick="goToSlide(0)"></div>
+            <div class="carousel-indicator" onclick="goToSlide(1)"></div>
+            <div class="carousel-indicator" onclick="goToSlide(2)"></div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-12 md:py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">L'approche ACAN</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Notre méthodologie pédagogique unique</h2>
+                <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600">Une combinaison parfaite de théorie et de pratique pour une formation optimale</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="feature-card bg-white p-6 md:p-8 text-center rounded-xl shadow-sm hover:shadow-lg">
+                    <div class="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4 md:mb-6">
+                        <i class="fas fa-laptop-code text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2 md:mb-3">Pédagogie innovante</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Méthodes d'apprentissage actives basées sur la recherche et les projets concrets.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white p-6 md:p-8 text-center rounded-xl shadow-sm hover:shadow-lg">
+                    <div class="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4 md:mb-6">
+                        <i class="fas fa-chalkboard-teacher text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2 md:mb-3">Corps professoral</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Experts reconnus et professionnels en activité partageant leur expérience terrain.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white p-6 md:p-8 text-center rounded-xl shadow-sm hover:shadow-lg">
+                    <div class="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4 md:mb-6">
+                        <i class="fas fa-certificate text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2 md:mb-3">Diplômes ACAN</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Certifications reconnues par l'État et les entreprises pour valoriser vos compétences.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white p-6 md:p-8 text-center rounded-xl shadow-sm hover:shadow-lg">
+                    <div class="flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-4 md:mb-6">
+                        <i class="fas fa-briefcase text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2 md:mb-3">Réseau Alumni</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Communauté active de diplômés et partenaires entreprises pour votre réseau professionnel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popular Courses -->
+    <div class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">Programmes ACAN</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos formations phares</h2>
+                <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600">Des programmes conçus pour répondre aux besoins du marché</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Course 1 -->
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 ease-in-out hover:shadow-xl">
+                    <div class="h-40 sm:h-48 bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-code text-white text-5xl sm:text-6xl"></i>
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between mb-2 sm:mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Nouveau</span>
+                            <span class="text-gray-500 text-xs sm:text-sm"><i class="far fa-clock mr-1"></i>12 semaines</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Expertise Laravel</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">
+                            Formation diplômante en développement web avancé avec Laravel, incluant des projets réels.
+                        </p>
+                        <div class="flex items-center mb-3 sm:mb-4">
+                            <div class="flex-shrink-0">
+                                <img class="h-8 w-8 sm:h-10 sm:w-10 rounded-full" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Instructrice">
+                            </div>
+                            <div class="ml-2 sm:ml-3">
+                                <p class="text-xs sm:text-sm font-medium text-gray-900">Sarah Dupont</p>
+                                <div class="flex items-center text-xs sm:text-sm text-gray-500">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="ml-1">4.7 (128)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xl sm:text-2xl font-bold text-gray-900">€1,200</span>
+                                <span class="text-xs sm:text-sm text-gray-500 line-through ml-2">€1,500</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition duration-300">En savoir plus</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 ease-in-out hover:shadow-xl">
+                    <div class="h-40 sm:h-48 bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-database text-white text-5xl sm:text-6xl"></i>
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between mb-2 sm:mb-3">
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Populaire</span>
+                            <span class="text-gray-500 text-xs sm:text-sm"><i class="far fa-clock mr-1"></i>10 semaines</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Data Science Pro</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">
+                            Programme certifiant en analyse de données et intelligence artificielle avec Python et R.
+                        </p>
+                        <div class="flex items-center mb-3 sm:mb-4">
+                            <div class="flex-shrink-0">
+                                <img class="h-8 w-8 sm:h-10 sm:w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Instructeur">
+                            </div>
+                            <div class="ml-2 sm:ml-3">
+                                <p class="text-xs sm:text-sm font-medium text-gray-900">Jean Martin</p>
+                                <div class="flex items-center text-xs sm:text-sm text-gray-500">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="ml-1">5.0 (97)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xl sm:text-2xl font-bold text-gray-900">€1,500</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition duration-300">En savoir plus</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 ease-in-out hover:shadow-xl">
+                    <div class="h-40 sm:h-48 bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-5xl sm:text-6xl"></i>
+                    </div>
+                    <div class="p-4 sm:p-6">
+                        <div class="flex items-center justify-between mb-2 sm:mb-3">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Intensif</span>
+                            <span class="text-gray-500 text-xs sm:text-sm"><i class="far fa-clock mr-1"></i>8 semaines</span>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3">Cybersécurité Expert</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">
+                            Diplôme en sécurité offensive et défensive des systèmes avec certifications reconnues.
+                        </p>
+                        <div class="flex items-center mb-3 sm:mb-4">
+                            <div class="flex-shrink-0">
+                                <img class="h-8 w-8 sm:h-10 sm:w-10 rounded-full" src="https://randomuser.me/api/portraits/men/54.jpg" alt="Instructeur">
+                            </div>
+                            <div class="ml-2 sm:ml-3">
+                                <p class="text-xs sm:text-sm font-medium text-gray-900">Pierre Legrand</p>
+                                <div class="flex items-center text-xs sm:text-sm text-gray-500">
+                                    <div class="flex text-yellow-400">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="ml-1">4.2 (156)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xl sm:text-2xl font-bold text-gray-900">€1,800</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm font-medium transition duration-300">En savoir plus</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 md:mt-16 text-center">
+                <a href="#" class="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                    Voir toutes les formations
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- E-Learning Platform Demo -->
+    <div class="py-12 md:py-16 bg-gradient-to-b from-white to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+                <div class="lg:col-span-6 mb-8 md:mb-12 lg:mb-0">
+                    <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">LMS ACAN</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Notre plateforme pédagogique intégrée</h2>
+                    <p class="text-base md:text-lg text-gray-600 mb-6">
+                        L'écosystème numérique ACAN pour un apprentissage hybride optimal, accessible partout et à tout moment.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 md:mb-8">
+                        <div class="flex items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm">
+                            <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full text-blue-600 mr-3">
+                                <i class="fas fa-play-circle text-lg sm:text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm sm:text-base font-medium text-gray-900">Vidéos HD</h4>
+                                <p class="text-xs sm:text-sm text-gray-500">Cours en haute qualité</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm">
+                            <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full text-blue-600 mr-3">
+                                <i class="fas fa-tasks text-lg sm:text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm sm:text-base font-medium text-gray-900">Exercices pratiques</h4>
+                                <p class="text-xs sm:text-sm text-gray-500">Mises en situation réelles</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm">
+                            <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full text-blue-600 mr-3">
+                                <i class="fas fa-project-diagram text-lg sm:text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm sm:text-base font-medium text-gray-900">Projets réels</h4>
+                                <p class="text-xs sm:text-sm text-gray-500">Cas d'entreprises</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-white p-3 sm:p-4 rounded-lg shadow-sm">
+                            <div class="flex-shrink-0 bg-blue-100 p-2 rounded-full text-blue-600 mr-3">
+                                <i class="fas fa-award text-lg sm:text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm sm:text-base font-medium text-gray-900">Certification</h4>
+                                <p class="text-xs sm:text-sm text-gray-500">Reconnue par l'État</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-md text-sm sm:text-base font-medium transition duration-300">
+                        Essayer la démo
+                        <i class="fas fa-external-link-alt ml-2"></i>
+                    </button>
+                </div>
+                <div class="lg:col-span-6">
+                    <div class="rounded-xl shadow-xl overflow-hidden">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">Témoignages</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ce que disent nos étudiants</h2>
+                <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600">Découvrez les expériences de nos anciens élèves</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md">
+                    <div class="flex items-center mb-4 md:mb-6">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 md:h-12 md:w-12 rounded-full" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Testimonial">
+                        </div>
+                        <div class="ml-3 md:ml-4">
+                            <h4 class="text-base md:text-lg font-semibold text-gray-900">Marie Dubois</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-600 italic mb-4 md:mb-6">
+                        "La formation Laravel m'a permis de décrocher un poste de développeuse back-end en seulement 3 mois après l'obtention de mon certificat. Les projets pratiques sont très bien conçus."
+                    </p>
+                    <div class="flex items-center text-xs md:text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Expertise Laravel - 2022</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md">
+                    <div class="flex items-center mb-4 md:mb-6">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 md:h-12 md:w-12 rounded-full" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Testimonial">
+                        </div>
+                        <div class="ml-3 md:ml-4">
+                            <h4 class="text-base md:text-lg font-semibold text-gray-900">Thomas Leroy</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star-half-alt text-sm md:text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-600 italic mb-4 md:mb-6">
+                        "J'ai suivi la formation Data Science en parallèle de mon travail. La flexibilité de la plateforme et la qualité des enseignants ont fait toute la différence dans mon apprentissage."
+                    </p>
+                    <div class="flex items-center text-xs md:text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Data Science Pro - 2021</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-6 md:p-8 rounded-xl shadow-sm hover:shadow-md">
+                    <div class="flex items-center mb-4 md:mb-6">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 md:h-12 md:w-12 rounded-full" src="https://randomuser.me/api/portraits/women/63.jpg" alt="Testimonial">
+                        </div>
+                        <div class="ml-3 md:ml-4">
+                            <h4 class="text-base md:text-lg font-semibold text-gray-900">Sophie Lambert</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="fas fa-star text-sm md:text-base"></i>
+                                <i class="far fa-star text-sm md:text-base"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-600 italic mb-4 md:mb-6">
+                        "Après 10 ans dans l'administration, j'ai pu me reconvertir grâce à la formation Cybersécurité. L'accompagnement professionnel m'a aidé à trouver mon premier emploi dans le domaine."
+                    </p>
+                    <div class="flex items-center text-xs md:text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Cybersécurité Expert - 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modes de Formation -->
+    <div class="py-12 md:py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">Nos modes de formation</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Choisissez la formule qui vous correspond</h2>
+                <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600">Adaptez votre apprentissage à votre rythme et vos contraintes</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Mode 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+                    <div class="h-40 sm:h-48 bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-user-graduate text-white text-5xl sm:text-6xl"></i>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-3 md:mb-4">Présentiel</h3>
+                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6">
+                            Apprentissage en immersion dans nos campus équipés avec des formateurs experts.
+                        </p>
+                        <div class="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Cours en direct avec les formateurs</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Travail collaboratif en groupe</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Accès aux installations</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-4 md:py-3 rounded-md text-sm md:text-base font-medium transition duration-300">
+                            Choisir ce mode
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+                    <div class="h-40 sm:h-48 bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-laptop text-white text-5xl sm:text-6xl"></i>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-3 md:mb-4">100% en ligne</h3>
+                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6">
+                            Formez-vous à distance avec notre plateforme interactive et nos classes virtuelles.
+                        </p>
+                        <div class="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Horaires flexibles</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Vidéos et supports 24/7</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Classes virtuelles</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-4 md:py-3 rounded-md text-sm md:text-base font-medium transition duration-300">
+                            Choisir ce mode
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-lg">
+                    <div class="h-40 sm:h-48 bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center">
+                        <i class="fas fa-blender-phone text-white text-5xl sm:text-6xl"></i>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-3 md:mb-4">Hybride</h3>
+                        <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6">
+                            Combinez le meilleur des deux mondes avec des cours en présentiel et à distance.
+                        </p>
+                        <div class="space-y-2 md:space-y-3 mb-4 md:mb-6">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Flexibilité optimale</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Alternance selon vos besoins</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-100 p-1 rounded-full text-blue-600 mr-3">
+                                    <i class="fas fa-check text-xs"></i>
+                                </div>
+                                <span class="text-xs md:text-sm text-gray-700">Accès complet aux ressources</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-4 md:py-3 rounded-md text-sm md:text-base font-medium transition duration-300">
+                            Choisir ce mode
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline / Innovation History -->
+    <div class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">Notre histoire</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Innovation et excellence depuis 2010</h2>
+                <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600">Un parcours marqué par l'innovation pédagogique et technologique</p>
+            </div>
+
+            <div class="relative max-w-2xl mx-auto">
+                <!-- Timeline item 1 -->
+                <div class="relative timeline-item pl-12 md:pl-16 pb-8 md:pb-12">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>1</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">2010 - Fondation</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Création d'ACAN avec une première formation en développement web à Paris. Lancement de notre approche pédagogique unique.
+                    </p>
+                </div>
+
+                <!-- Timeline item 2 -->
+                <div class="relative timeline-item pl-12 md:pl-16 pb-8 md:pb-12">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>2</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">2014 - Expansion</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Ouverture du campus de Lyon et lancement des formations en data science. Premiers partenariats avec des entreprises technologiques.
+                    </p>
+                </div>
+
+                <!-- Timeline item 3 -->
+                <div class="relative timeline-item pl-12 md:pl-16 pb-8 md:pb-12">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>3</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">2017 - Plateforme E-Learning</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Déploiement de notre plateforme d'apprentissage en ligne avec des cours hybrides. Adoption massive par les professionnels en activité.
+                    </p>
+                </div>
+
+                <!-- Timeline item 4 -->
+                <div class="relative timeline-item pl-12 md:pl-16 pb-8 md:pb-12">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>4</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">2020 - Reconnaissance</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Certification de nos formations par l'État et partenariats avec des entreprises du CAC40. Lancement du réseau alumni ACAN.
+                    </p>
+                </div>
+
+                <!-- Timeline item 5 -->
+                <div class="relative timeline-item pl-12 md:pl-16">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>5</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-2">2023 - Nouveaux Horizons</h3>
+                    <p class="text-sm md:text-base text-gray-600">
+                        Lancement de formations en intelligence artificielle et cybersécurité offensive. Expansion internationale avec un premier campus à Bruxelles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800">
+        <div class="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-4 md:mb-6">
+                <span class="block">Prêt à transformer votre carrière?</span>
+                <span class="block text-blue-200 mt-2">Inscrivez-vous dès aujourd'hui.</span>
+            </h2>
+            <p class="max-w-2xl mx-auto text-base md:text-lg text-blue-100 mb-6 md:mb-8">
+                Rejoignez notre communauté de plus de 5 000 diplômés qui ont boosté leur carrière grâce à nos formations.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
+                <a href="#" class="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-3 border border-transparent text-sm md:text-base font-medium rounded-md shadow-sm text-blue-600 bg-white hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    Commencer maintenant
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-3 border border-transparent text-sm md:text-base font-medium rounded-md shadow-sm text-white bg-blue-500 bg-opacity-60 hover:bg-opacity-70 transition duration-300">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                    Nous contacter
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Formations</h3>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Développement Web</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Data Science</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Cybersécurité</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Management Digital</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Toutes les formations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Entreprise</h3>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#" class="footer-link text-xs md:text-sm">À propos</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Carrières</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Blog</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Presse</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Partenariats</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Support</h3>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Centre d'aide</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">FAQ</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Conditions</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Confidentialité</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Accessibilité</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Contact</h3>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400 text-xs md:text-sm"></i>
+                            <span class="text-xs md:text-sm">15 Rue de la République<br>75010 Paris, France</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400 text-xs md:text-sm"></i>
+                            <a href="mailto:contact@acan-formation.com" class="footer-link text-xs md:text-sm">contact@acan-formation.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400 text-xs md:text-sm"></i>
+                            <a href="tel:+33123456789" class="footer-link text-xs md:text-sm">01 23 45 67 89</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-800 md:flex md:items-center md:justify-between">
+                <div class="flex justify-center space-x-6 md:order-2">
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="http://127.0.0.1:8000/e"
-                       class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                        Formations
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Formations</a>
-                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Campus</a>
-                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Magazine</a>
-                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
-            </div>
-            <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium mr-4">Se connecter</button>
-                <button class="bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 px-4 py-2 rounded-md text-sm font-medium">S'inscrire</button>
-            </div>
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="mobile-menu sm:hidden bg-white" id="mobile-menu">
-        <div class="pt-2 pb-3 space-y-1 px-2">
-            <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Accueil</a>
-            <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Formations</a>
-            <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Campus</a>
-            <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Magazine</a>
-            <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
-            <div class="pt-4 pb-3 border-t border-gray-200 px-4">
-                <div class="space-y-2">
-                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Se connecter</button>
-                    <button class="w-full bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 px-4 py-2 rounded-md text-sm font-medium">S'inscrire</button>
+                <div class="mt-4 md:mt-0 md:order-1 text-center md:text-left">
+                    <p class="text-xs md:text-sm text-gray-400">
+                        &copy; 2023 ACAN Formation. Tous droits réservés.
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1 md:mt-2">
+                        ACAN est un établissement privé d'enseignement supérieur technique déclaré auprès du rectorat de Paris.
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
-</nav>
+    </footer>
 
-<!-- Carousel Section -->
-<div class="carousel">
-    <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
-            <div class="carousel-caption">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Formez-vous aux métiers du numérique</h2>
-                <p class="text-lg md:text-xl mb-6">Des formations diplômantes adaptées aux besoins des entreprises</p>
-                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-md text-base md:text-lg font-medium transition duration-300 transform hover:scale-105">Découvrir nos formations</a>
-            </div>
-        </div>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('open');
+            const isExpanded = mobileMenu.classList.contains('open');
+            this.setAttribute('aria-expanded', isExpanded);
+        });
 
-        <!-- Slide 2 -->
-        <div class="carousel-item" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
-            <div class="carousel-caption">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Expertise en Data Science</h2>
-                <p class="text-lg md:text-xl mb-6">Devenez un expert en analyse de données et intelligence artificielle</p>
-                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-md text-base md:text-lg font-medium transition duration-300 transform hover:scale-105">En savoir plus</a>
-            </div>
-        </div>
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                mobileMenu.classList.remove('open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            }
+        });
 
-        <!-- Slide 3 -->
-        <div class="carousel-item" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
-            <div class="carousel-caption">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Cybersécurité Offensive</h2>
-                <p class="text-lg md:text-xl mb-6">Apprenez à protéger les systèmes contre les cyberattaques</p>
-                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-md text-base md:text-lg font-medium transition duration-300 transform hover:scale-105">Voir le programme</a>
-            </div>
-        </div>
-    </div>
+        // Course card hover effect
+        const courseCards = document.querySelectorAll('.course-card');
+        courseCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
 
-    <!-- Controls -->
-    <button class="carousel-control prev" onclick="prevSlide()">
-        <i class="fas fa-chevron-left"></i>
-    </button>
-    <button class="carousel-control next" onclick="nextSlide()">
-        <i class="fas fa-chevron-right"></i>
-    </button>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-    <!-- Indicators -->
-    <div class="carousel-indicators">
-        <div class="carousel-indicator active" onclick="goToSlide(0)"></div>
-        <div class="carousel-indicator" onclick="goToSlide(1)"></div>
-        <div class="carousel-indicator" onclick="goToSlide(2)"></div>
-    </div>
-</div>
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicator');
 
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+                                    
+            // Show the selected slide
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+                                    
+            currentSlide = index;
+        }
 
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
 
-<p>lorem saj</p>
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
 
-<!-- Footer -->
-<footer class="bg-gray-900 text-gray-300">
-    <div class="max-w-7xl mx-auto py-8 md:py-12 px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div>
-                <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Formations</h3>
-                <ul class="space-y-2 md:space-y-3">
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Développement Web</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Data Science</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Cybersécurité</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Management Digital</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Toutes les formations</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Entreprise</h3>
-                <ul class="space-y-2 md:space-y-3">
-                    <li><a href="#" class="footer-link text-xs md:text-sm">À propos</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Carrières</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Blog</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Presse</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Partenariats</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Support</h3>
-                <ul class="space-y-2 md:space-y-3">
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Centre d'aide</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">FAQ</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Conditions</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Confidentialité</a></li>
-                    <li><a href="#" class="footer-link text-xs md:text-sm">Accessibilité</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Contact</h3>
-                <ul class="space-y-2 md:space-y-3">
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400 text-xs md:text-sm"></i>
-                        <span class="text-xs md:text-sm">15 Rue de la République<br>75010 Paris, France</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-envelope mr-3 text-blue-400 text-xs md:text-sm"></i>
-                        <a href="mailto:contact@acan-formation.com" class="footer-link text-xs md:text-sm">contact@acan-formation.com</a>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-phone-alt mr-3 text-blue-400 text-xs md:text-sm"></i>
-                        <a href="tel:+33123456789" class="footer-link text-xs md:text-sm">01 23 45 67 89</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-800 md:flex md:items-center md:justify-between">
-            <div class="flex justify-center space-x-6 md:order-2">
-                <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
-                    <i class="fab fa-youtube"></i>
-                </a>
-            </div>
-            <div class="mt-4 md:mt-0 md:order-1 text-center md:text-left">
-                <p class="text-xs md:text-sm text-gray-400">
-                    &copy; 2023 ACAN Formation. Tous droits réservés.
-                </p>
-                <p class="text-xs text-gray-500 mt-1 md:mt-2">
-                    ACAN est un établissement privé d'enseignement supérieur technique déclaré auprès du rectorat de Paris.
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
+        function goToSlide(index) {
+            showSlide(index);
+        }
 
+        // Auto-advance slides every 5 seconds
+        let slideInterval = setInterval(nextSlide, 5000);
 
-<script src="http://127.0.0.1:8000/js/script.js"></script>
+        // Pause auto-advance when hovering over carousel
+        const carousel = document.querySelector('.carousel');
+        carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        carousel.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
 
+        // Initialize the carousel
+        showSlide(0);
+    </script>
 </body>
 </html>
