@@ -1,0 +1,85 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: sans-serif; }
+.topbar {
+  background:#000; color:#fff;
+  display:flex; justify-content:space-between;
+  padding:8px 20px;
+  font-size:14px;
+}
+.topbar .whatsapp { margin: 0 15px; }
+.btnconnexion {
+  background:#e7c590; border:none;
+  padding:6px 12px; cursor:pointer;
+}
+.navbar {
+  display:flex; align-items:center;
+  justify-content:space-between;
+  background:#fff;
+  padding:12px 20px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+.logo img { width:40px; vertical-align:middle; }
+.logo span { font-weight:bold; margin-left:10px; vertical-align:middle; }
+.main-nav { display:flex; gap:15px; }
+.main-nav a, .dropbtn { text-decoration:none; color:#333; cursor:pointer; position:relative; }
+.dropdown-content {
+  display:none; position:absolute; top:24px; left:0;
+  background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.15);
+}
+.dropdown:hover .dropdown-content { display:block; }
+.dropdown-content a {
+  display:block; padding:8px 12px; white-space:nowrap;
+  color:#333; text-decoration:none;
+}
+.hamburger { display:none; background:none; font-size:24px; border:none; }
+
+/* carousel */
+.carousel {
+  position:relative; height:350px; overflow:hidden;
+}
+.slides { display:flex; transition:transform .5s ease; height:100%; }
+.slide {
+  min-width:100%; background:#222;
+  color:#fff; display:flex;
+  flex-direction:column; justify-content:center;
+  align-items:center; text-align:center; padding:20px;
+}
+.dots {
+  position:absolute; bottom:12px; left:50%;
+  transform:translateX(-50%);
+  display:flex; gap:8px;
+}
+.dot {
+  width:10px; height:10px;
+  background:#ddd; border-radius:50%;
+  cursor:pointer;
+}
+.dot.active { background:#e7c590; }
+
+/* formations */
+.formations { padding:40px 20px; background:#f9f9f9; }
+.formations h3 { text-align:center; margin-bottom:20px; }
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:20px;
+}
+.card {
+  background:#fff; padding:16px;
+  border:1px solid #ddd; border-radius:6px;
+  text-align:center;
+}
+.card a {
+  display:inline-block; margin-top:12px;
+  text-decoration:none; color:#e7c590;
+}
+
+/* chat */
+.chat {
+  position:fixed; bottom:20px; right:20px;
+  background:#fff; padding:12px 16px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+  border-radius:10px;
+  max-width:200px;
+  font-size:14px;
+}

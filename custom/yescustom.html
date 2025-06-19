@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre de formation au Togo professionnelle et continue à distance - International Skills Academy</title>
+    <meta name="description"
+        content="Des formations professionnelles au Togo dans tous les domaines par le leader et international de la formation au Togo – CPF. Qualifié OPQF, Certifié IS...">
+    <link rel="icon" type="image/png" href="https://www.isaworld.net/assets/img/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.mobile-menu.open {
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in;
+}
+
+.hero-slide {
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+}
+
+.country-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.country-modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.search-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-overlay.open {
+  display: flex;
+}
+
+.go-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 99;
+}
+
+.go-top.visible {
+  opacity: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.category-commerce {
+  background-color: #e74d57;
+}
+
+.category-grh {
+  background-color: #1cb5a3;
+}
+
+.category-gestion {
+  background-color: #9764df;
+}
+
+.category-informatique {
+  background-color: #4869ed;
+}
+
+.category-logistique {
+  background-color: #cc7340;
+}
+
+.category-qualite {
+  background-color: #fea116;
+}
+
+.category-sante {
+  background-color: #1cd5e0;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  min-width: 100%;
+  position: relative;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control.prev {
+  left: 15px;
+}
+
+.carousel-control.next {
+  right: 15px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.carousel-indicator.active {
+  background-color: white;
+}
+
+@media (max-width: 640px) {
+  .hero-slide {
+    height: 60vh;
+  }
+  .carousel-control {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+  }
+  .country-modal-content {
+    width: 95%;
+    margin: 10% auto;
+  }
+}
+</style>
+
+</head>
+
+<body class="font-sans text-gray-800"> 
+    <!-- Top Header -->
+    <div class="bg-blue-600 text-white py-2 hidden md:block">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex flex-wrap gap-4 md:gap-6">
+                    <div class="flex items-center space-x-2"> <i class="fas fa-phone-alt"></i> <span>Par
+                            Téléphone</span> <a href="tel:+212668580485" class="font-semibold hover:underline">+212 668
+                            580 485</a> </div>
+                    <div class="flex items-center space-x-2"> <i class="fab fa-whatsapp"></i> <span>Contact Par</span>
+                        <a href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22" target="_blank"
+                            class="font-semibold hover:underline">WhatsApp</a> </div>
+                    <div class="flex items-center space-x-2"> <i class="fas fa-envelope"></i> <span>Contact Par</span>
+                        <a href="mailto:contact@isaworld.net" class="font-semibold hover:underline">Email</a> </div>
+                </div>
+                <div> <a href="https://www.isaworld.net/membres.php" target="_blank"
+                        class="bg-white text-blue-600 px-4 py-1 md:py-2 rounded-md font-medium hover:bg-gray-100 transition">
+                        <i class="fas fa-sign-in-alt mr-1"></i> Connexion </a> </div>
+            </div>
+        </div>
+    </div> <!-- Main Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4"> <!-- Logo --> <a href="https://www.isaworld.net/tg"
+                    class="flex items-center"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVpoTnSL9wjX9Ieebkcoaf9eglWzq7J4rjvA&s" alt="ISA"
+                        class="h-10 md:h-12"> </a> <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-4 lg:space-x-8"> <a href="">Accueil</a>
+                    <div class="dropdown relative"> <button
+                            class="flex items-center text-gray-700 hover:text-blue-600 font-medium"> Nos Formations <i
+                                class="fas fa-chevron-down ml-1 text-xs"></i> </button>
+                        <div class="dropdown-menu absolute hidden mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10"> <a
+                                href=""
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Commerce et Marketing</a> <a
+                                href=""
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">GRH et Emploi</a> <a
+                                href=""
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Gestion et Comptabilité</a> <a
+                                href=""
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Informatique</a> <a
+                                href=""
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Logistique</a> <a
+                                href=""
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Qualité et Management</a> <a
+                                href=""
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Santé</a> </div>
+                    </div>
+                     <a href=""
+                        class="text-gray-700 hover:text-blue-600 font-medium">Webinaires</a>
+                     <a href=""
+                        class="text-gray-700 hover:text-blue-600 font-medium">A propos</a> <a
+                        href=""
+                        class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <div class="flex items-center space-x-4"> <button onclick="openCountryModal()"
+                            class="flex items-center"> <img
+                                src="https://www.isaworld.net/imgs/pays/big/050419_040336_tg.webp" alt="Togo"
+                                class="w-6 h-4 rounded shadow"> </button> <button onclick="openSearch()"
+                            class="text-gray-700 hover:text-blue-600"> <i class="fas fa-search"></i> </button> </div>
+                </nav> <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-4"> <button onclick="openSearch()"
+                        class="text-gray-700"> <i class="fas fa-search"></i> </button> <button
+                        onclick="openCountryModal()" class="flex items-center"> <img
+                            src="https://www.isaworld.net/imgs/pays/big/050419_040336_tg.webp" alt="Togo"
+                            class="w-6 h-4 rounded shadow"> </button> <button onclick="toggleMobileMenu()"
+                        class="text-gray-700"> <i class="fas fa-bars text-xl"></i> </button> </div>
+            </div> <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-white">
+                <div class="px-2 pt-2 pb-4 space-y-1"> <a href=""
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Accueil</a>
+                    <div> <button onclick="toggleSubMenu('formationsSubMenu')"
+                            class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">
+                            Nos Formations <i class="fas fa-chevron-down text-xs"></i> </button>
+                        <div id="formationsSubMenu" class="hidden pl-4"> <a
+                                href=""
+                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Commerce
+                                et Marketing</a> <a href=""
+                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">GRH
+                                et Emploi</a> <a href=""
+                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Gestion
+                                et Comptabilité</a> <a href=""
+                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Informatique</a>
+                            <a href=""
+                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Logistique</a>
+                            <a href=""
+                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Qualité
+                                et Management</a> <a href=""
+                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Santé</a>
+                        </div>
+                    </div> <a href=""
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Webinaires</a>
+                    <a href=""
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">A
+                        propos</a> <a href=""
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+     <!-- Carousel Section -->
+    <div class="carousel relative">
+        <div class="carousel-inner" id="carouselInner"> <!-- Slide 1 -->
+            <div class="carousel-item">
+                <div class="hero-slide"
+                    style="background-image: url(https://www.isaworld.net/imgs/sliders/big/085203_ecommerce-slider.webp);">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center">
+                        <div class="container mx-auto px-4 text-white text-center"> <span
+                                class="inline-block px-3 py-1 bg-blue-600 rounded-full mb-4">E-commerce</span>
+                            <h1 class="text-3xl md:text-5xl font-bold mb-4">Formation en création et gestion d'un site
+                                E-commerce au Togo</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Dans cette formation à distance au
+                                Togo, nous vous présentons les principales étapes pour créer et gérer une boutique en
+                                ligne et commencer votre commerce électronique au Togo.</p> <a
+                                href=""
+                                class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition">
+                                <i class="fas fa-arrow-right mr-2"></i> Voir détail </a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="hero-slide"
+                    style="background-image: url(https://www.isaworld.net/imgs/sliders/big/085203_ecommerce-slider.webp);">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center">
+                        <div class="container mx-auto px-4 text-white text-center"> <span
+                                class="inline-block px-3 py-1 bg-blue-600 rounded-full mb-4">Marketing Digital</span>
+                            <h1 class="text-3xl md:text-5xl font-bold mb-4">Formation en Marketing Digital au Togo</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Maîtrisez les techniques du marketing
+                                digital pour booster votre entreprise ou votre carrière professionnelle.</p> <a href="#"
+                                class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition">
+                                <i class="fas fa-arrow-right mr-2"></i> Voir détail </a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Slide 3 -->
+            <div class="carousel-item">
+                <div class="hero-slide"
+                    style="background-image: url(https://www.isaworld.net/imgs/sliders/big/085203_ecommerce-slider.webp);">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center">
+                        <div class="container mx-auto px-4 text-white text-center"> <span
+                                class="inline-block px-3 py-1 bg-blue-600 rounded-full mb-4">Gestion</span>
+                            <h1 class="text-3xl md:text-5xl font-bold mb-4">Formation en Gestion d'Entreprise</h1>
+                            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Apprenez les fondamentaux de la gestion
+                                d'entreprise pour optimiser vos performances.</p> <a href="#"
+                                class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition">
+                                <i class="fas fa-arrow-right mr-2"></i> Voir détail </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Carousel Controls --> <button class="carousel-control prev" onclick="prevSlide()"> <i
+                class="fas fa-chevron-left"></i> </button> <button class="carousel-control next" onclick="nextSlide()">
+            <i class="fas fa-chevron-right"></i> </button> <!-- Carousel Indicators -->
+        <div class="carousel-indicators" id="carouselIndicators">
+            <div class="carousel-indicator active" onclick="goToSlide(0)"></div>
+            <div class="carousel-indicator" onclick="goToSlide(1)"></div>
+            <div class="carousel-indicator" onclick="goToSlide(2)"></div>
+        </div>
+    </div> 
+
+    <!-- Popular Courses -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center mb-12">
+                <div> <span class="text-blue-600 font-medium">Découvrez les formations</span>
+                    <h2 class="text-2xl md:text-3xl font-bold">Nos formations populaires</h2>
+                </div> <a href=""
+                    class="bg-white text-blue-600 border border-blue-600 px-4 py-2 rounded-md font-medium hover:bg-blue-50 transition">
+                    <i class="fas fa-eye mr-1"></i> Nos formations </a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"> <!-- Course 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"> <a
+                        href="">
+                        <img src="https://www.isaworld.net/imgs/formations/big/033538_2-FMI123.webp"
+                            alt="Les fondamentaux du digital et des réseaux sociaux" class="w-full h-48 object-cover">
+                    </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2"> <a
+                                href=""
+                                class="hover:text-blue-600">Les fondamentaux du digital et des réseaux sociaux</a> </h3>
+                        <p class="text-gray-600 mb-4">La communication est l'art qui consiste à transmettre un message à
+                            une cible de façon efficace et...</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center text-yellow-400"> <i class="fas fa-star"></i> <i
+                                    class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                    class="fas fa-star-half-alt"></i> </div>
+                        </div>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <div class="flex items-center text-gray-500"> <i class="far fa-clock mr-2"></i> <span>1 mois
+                                    (16H)</span> </div>
+                            <div class="text-blue-600 font-semibold"> 56,000 <span class="text-gray-500">Fcfa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Course 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"> <a
+                        href=""> <img
+                            src="https://www.isaworld.net/imgs/formations/big/033440_2-FMI116.webp"
+                            alt="Shopify de A à Z" class="w-full h-48 object-cover"> </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2"> <a
+                                href=""
+                                class="hover:text-blue-600">Shopify de A à Z</a> </h3>
+                        <p class="text-gray-600 mb-4">Chaque année, la vente en ligne attire de plus en plus de nombreux
+                            individus. Pour vous aider à vous lancer...</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center text-yellow-400"> <i class="fas fa-star"></i> <i
+                                    class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                    class="fas fa-star-half-alt"></i> </div>
+                        </div>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <div class="flex items-center text-gray-500"> <i class="far fa-clock mr-2"></i> <span>1 mois
+                                    (16H)</span> </div>
+                            <div class="text-blue-600 font-semibold"> 56,000 <span class="text-gray-500">Fcfa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Course 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"> <a
+                        href=""> <img
+                            src="https://www.isaworld.net/imgs/formations/big/033545_2-FMI124.webp"
+                            alt="La sécurité Web et des TIC" class="w-full h-48 object-cover"> </a>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2"> <a
+                                href=""
+                                class="hover:text-blue-600">La sécurité Web et des TIC</a> </h3>
+                        <p class="text-gray-600 mb-4">En vérifiant les logs de connexion à votre site web, vous pourrez
+                            constater que les tentatives de piratages...</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center text-yellow-400"> <i class="fas fa-star"></i> <i
+                                    class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                    class="fas fa-star-half-alt"></i> </div>
+                        </div>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <div class="flex items-center text-gray-500"> <i class="far fa-clock mr-2"></i> <span>1 mois
+                                    (16H)</span> </div>
+                            <div class="text-blue-600 font-semibold"> 56,000 <span class="text-gray-500">Fcfa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- Course Categories -->
+    <section class="py-16 bg-gradient-to-r from-blue-500 to-blue-700 text-white relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12"> <span
+                    class="inline-block px-3 py-1 bg-white text-blue-600 rounded-full mb-2">Nos catégories</span>
+                <h2 class="text-2xl md:text-3xl font-bold">Les catégories de nos formations</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"> <!-- Category 1 --> <a
+                    href="https://www.isaworld.net/tg/1-commerce-et-marketing"
+                    class="category-commerce text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="text-4xl mb-4"> <i class="fas fa-rocket"></i> </div>
+                    <h3 class="text-xl font-semibold">Commerce et Marketing</h3>
+                </a> <!-- Category 2 --> <a href="https://www.isaworld.net/tg/7-grh-et-emploi"
+                    class="category-grh text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="text-4xl mb-4"> <i class="fas fa-users"></i> </div>
+                    <h3 class="text-xl font-semibold">GRH et Emploi</h3>
+                </a> <!-- Category 3 --> <a href="https://www.isaworld.net/tg/6-gestion-et-comptabilite"
+                    class="category-gestion text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="text-4xl mb-4"> <i class="fas fa-calculator"></i> </div>
+                    <h3 class="text-xl font-semibold">Gestion et Comptabilité</h3>
+                </a> <!-- Category 4 --> <a href="https://www.isaworld.net/tg/3-informatique"
+                    class="category-informatique text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="text-4xl mb-4"> <i class="fas fa-at"></i> </div>
+                    <h3 class="text-xl font-semibold">Informatique</h3>
+                </a> <!-- Category 5 --> <a href="https://www.isaworld.net/tg/10-logistique"
+                    class="category-logistique text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="text-4xl mb-4"> <i class="fas fa-truck"></i> </div>
+                    <h3 class="text-xl font-semibold">Logistique</h3>
+                </a> <!-- Category 6 --> <a href="https://www.isaworld.net/tg/2-qualite-et-management"
+                    class="category-qualite text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="text-4xl mb-4"> <i class="fas fa-shapes"></i> </div>
+                    <h3 class="text-xl font-semibold">Qualité et Management</h3>
+                </a> <!-- Category 7 --> <a href="https://www.isaworld.net/tg/8-sante"
+                    class="category-sante text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
+                    <div class="text-4xl mb-4"> <i class="fas fa-first-aid"></i> </div>
+                    <h3 class="text-xl font-semibold">Santé</h3>
+                </a> </div>
+        </div>
+    </section> <!-- Stats -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center"> <!-- Stat 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-in">
+                    <div class="text-blue-600 text-4xl mb-4"> <i class="fas fa-users"></i> </div>
+                    <h3 class="text-4xl font-bold mb-2 odometer" data-count="43">0</h3>
+                    <p class="text-gray-600">Formateurs experts</p>
+                </div> <!-- Stat 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-in" style="animation-delay: 0.2s">
+                    <div class="text-blue-600 text-4xl mb-4"> <i class="fas fa-book-reader"></i> </div>
+                    <h3 class="text-4xl font-bold mb-2 odometer" data-count="312">0</h3>
+                    <p class="text-gray-600">Total Courses</p>
+                </div> <!-- Stat 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-in" style="animation-delay: 0.4s">
+                    <div class="text-blue-600 text-4xl mb-4"> <i class="fas fa-user-graduate"></i> </div>
+                    <h3 class="text-4xl font-bold mb-2 odometer" data-count="1245">0</h3>
+                    <p class="text-gray-600">Etudiants heureux</p>
+                </div> <!-- Stat 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-in" style="animation-delay: 0.6s">
+                    <div class="text-blue-600 text-4xl mb-4"> <i class="fas fa-laptop"></i> </div>
+                    <h3 class="text-4xl font-bold mb-2 odometer" data-count="152">0</h3>
+                    <p class="text-gray-600">Webinaires</p>
+                </div>
+            </div>
+        </div>
+    </section> <!-- About Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center -mx-4">
+                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                    <div class="relative"> <img src="https://www.isaworld.net/assets/img/about/1.webp" alt="About ISA"
+                            class="w-full rounded-lg shadow-lg"> <img
+                            src="https://www.isaworld.net/assets/img/about/2.webp" alt="About ISA"
+                            class="absolute -bottom-8 -right-8 w-1/2 rounded-lg shadow-lg border-4 border-white hidden md:block">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 px-4"> <span
+                        class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full mb-4">International Skills
+                        Academy au Togo</span>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Apprenez de nouvelles compétences pour poursuivre
+                        votre carrière</h2>
+                    <h3 class="text-lg md:text-xl text-gray-600 mb-6">Nous pouvons offrir des formations dans plusieurs
+                        domaines de compétences pour les étudiants nationaux et internationaux.</h3>
+                    <p class="text-gray-600 mb-6">La formation professionnelle à distance au Togo est devenue
+                        indispensable tant pour les personnes en quête de travail que pour le personnel en poste. Notre
+                        organisme de formation est une structure ayant pour mission de dispenser ses formations à
+                        distance et d'apporter aux apprenants de nouvelles compétences et connaissances au Togo.</p>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="text-blue-600 text-xl mr-3 mt-1"> <i class="fas fa-globe"></i> </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Nous vous proposons bien plus que des savoirs</h4>
+                                <p class="text-gray-600">Engagé à vos côtés, nos experts partagent une connaissance
+                                    profonde de vos enjeux, de vos métiers et de vos besoins. Formation clé en main ou
+                                    sur mesure à distance, projets internationaux ou conseils opérationnels, nous sommes
+                                    là pour créer et déployer avec vous la solution la plus compétitive.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- Partners -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold">Nos Partenaires</h2>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md"> <img
+                        src="https://www.isaworld.net/imgs/partenaires/big/010534_3.png" alt="McGill"
+                        class="h-16 object-contain"> </div>
+                <div class="bg-white p-6 rounded-lg shadow-md"> <img
+                        src="https://www.isaworld.net/imgs/partenaires/big/051957_qmp.png" alt="QMP Management"
+                        class="h-16 object-contain"> </div>
+            </div>
+        </div>
+    </section> <!-- Contact Form -->
+    <section class="py-16 bg-blue-600 text-white"
+        style="background-image: url('https://www.isaworld.net/assets/img/map.png'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap -mx-4 items-center">
+                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">En apprenant ensemble, nous réalisons de grandes
+                        ambitions.</h2>
+                    <p class="text-blue-100">Contactez-nous pour plus d'informations sur nos formations et programmes.
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2 px-4">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800">
+                        <h3 class="text-xl font-bold mb-6">Formulaire de contact rapide</h3>
+                        <form>
+                            <div class="mb-4"> <input type="text" placeholder="Votre Nom"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="flex flex-wrap -mx-2 mb-4">
+                                <div class="w-full md:w-1/2 px-2 mb-4 md:mb-0"> <input type="email"
+                                        placeholder="Votre Adresse Email*"
+                                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="w-full md:w-1/2 px-2"> <input type="text" placeholder="Votre téléphone*"
+                                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </div>
+                            <div class="mb-4"> <textarea placeholder="Votre message (Optionnel)" rows="4"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div> <button type="submit"
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition">
+                                <i class="fas fa-paper-plane mr-2"></i> Envoyer </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap -mx-4 mb-8"> <!-- Contact Info -->
+                <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Nous contacter</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"> <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span>Av. Palestine Lot. Ratma N6, Daoudiate. 40000 Marrakech - Maroc</span> </li>
+                        <li class="flex items-center"> <i class="fas fa-phone-alt mr-3 text-blue-400"></i> <a
+                                href="tel:+212668580485" class="hover:underline">+212 668 580 485</a> </li>
+                        <li class="flex items-center"> <i class="fas fa-phone-alt mr-3 text-blue-400"></i> <a
+                                href="tel:+212808558581" class="hover:underline">+212 808 558 581</a> </li>
+                        <li class="flex items-center"> <i class="fas fa-envelope mr-3 text-blue-400"></i> <a
+                                href="mailto:contact@isaworld.net" class="hover:underline">contact@isaworld.net</a>
+                        </li>
+                    </ul>
+                    <div class="mt-6">
+                        <h4 class="text-lg font-medium mb-3">Suivez-nous</h4>
+                        <div class="flex space-x-4"> <a href="https://www.facebook.com/isaworld.net" target="_blank"
+                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition">
+                                <i class="fab fa-facebook-f"></i> </a> <a href="https://www.instagram.com/isaworldnet/"
+                                target="_blank"
+                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition">
+                                <i class="fab fa-instagram"></i> </a> <a
+                                href="https://www.linkedin.com/company/isaworld" target="_blank"
+                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition">
+                                <i class="fab fa-linkedin-in"></i> </a> <a
+                                href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22"
+                                target="_blank"
+                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-500 transition">
+                                <i class="fab fa-whatsapp"></i> </a> </div>
+                    </div>
+                </div> <!-- Quick Links -->
+                <div class="w-full md:w-1/4 px-4 mb-8 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Menu</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.isaworld.net/tg/index.html"
+                                class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="https://www.isaworld.net/tg/formations"
+                                class="text-gray-400 hover:text-white transition">Nos Formations</a></li>
+                        <li><a href="https://www.isaworld.net/tg/webinaires.html"
+                                class="text-gray-400 hover:text-white transition">Webinaires</a></li>
+                        <li><a href="https://www.isaworld.net/tg/presentation.html"
+                                class="text-gray-400 hover:text-white transition">A propos</a></li>
+                        <li><a href="https://www.isaworld.net/tg/contact.html"
+                                class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div> <!-- Useful Links -->
+                <div class="w-full md:w-1/4 px-4 mb-8 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Liens utiles</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.isaworld.net/tg/cg.html"
+                                class="text-gray-400 hover:text-white transition">Conditions Générales</a></li>
+                        <li><a href="https://www.isaworld.net/membres.php"
+                                class="text-gray-400 hover:text-white transition">Espace membres</a></li>
+                        <li><a href="https://www.isaworld.net/tg/mots"
+                                class="text-gray-400 hover:text-white transition">Mots clès</a></li>
+                    </ul>
+                </div> <!-- Newsletter -->
+                <div class="w-full md:w-1/4 px-4">
+                    <h3 class="text-xl font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Pour recevoir les dernières nouvelles..</p>
+                    <form class="flex"> <input type="email" placeholder="Entrez votre email"
+                            class="px-4 py-2 rounded-l-md focus:outline-none text-gray-800 w-full"> <button
+                            type="submit"
+                            class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md">S'abonner</button> </form>
+                </div>
+            </div> <!-- Footer Bottom -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0"> <a href="https://www.isaworld.net/tg" class="inline-block"> <img
+                                src="https://www.isaworld.net/assets/img/logo_white.svg" alt="ISA" class="h-12"> </a>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <p class="text-gray-400 mb-2"> <i class="far fa-copyright"></i> 2022 <a href="#"
+                                class="hover:text-white">International Skills Academy</a> | Tous les droits sont
+                            réservés. </p> <img src="https://www.isaworld.net/assets/img/payement.webp"
+                            alt="Payment methods" class="h-8 mx-auto md:mx-0">
+                    </div>
+                </div> <!-- Countries -->
+                <div class="mt-8 text-sm text-gray-400">
+                    <div class="mb-4"> <span class="font-semibold">Afrique:</span>
+                        <div class="flex flex-wrap gap-2 mt-2"> <a href="https://www.isaworld.net/dz"
+                                class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050235_101020_dz.webp" alt="Algérie"
+                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Algérie </a> <span>|</span> <a
+                                href="https://www.isaworld.net/bf" class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050605_103744_bf.webp"
+                                    alt="Burkina Faso" class="w-5 h-3 mr-1 rounded shadow-sm"> Burkina Faso </a>
+                            <span>|</span> <a href="https://www.isaworld.net/bj"
+                                class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050652_040542_bj.webp" alt="Bénin"
+                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Bénin </a> <span>|</span> <a
+                                href="https://www.isaworld.net/cm" class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050336_032504_cm.webp" alt="Cameroun"
+                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Cameroun </a> <!-- More countries... -->
+                        </div>
+                    </div>
+                    <div class="mb-4"> <span class="font-semibold">Europe:</span>
+                        <div class="flex flex-wrap gap-2 mt-2"> <a href="https://www.isaworld.net/be"
+                                class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050457_040934_be.webp" alt="Belgique"
+                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Belgique </a> <span>|</span> <a
+                                href="https://www.isaworld.net/fr" class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050354_023818_dreapeu_fr.webp"
+                                    alt="France" class="w-5 h-3 mr-1 rounded shadow-sm"> France </a> <span>|</span> <a
+                                href="https://www.isaworld.net/lu" class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050521_103603_lu.webp" alt="Luxembourg"
+                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Luxembourg </a> <!-- More countries... -->
+                        </div>
+                    </div>
+                    <div> <span class="font-semibold">Monde:</span>
+                        <div class="flex flex-wrap gap-2 mt-2"> <a href="https://www.isaworld.net/ca"
+                                class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050526_103624_ca.webp" alt="Canada"
+                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Canada </a> <span>|</span> <a
+                                href="https://www.isaworld.net/wd" class="flex items-center hover:text-white"> <img
+                                    src="https://www.isaworld.net/imgs/pays/big/050359_092508_world.webp" alt="Monde"
+                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Monde </a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> <!-- Go to Top Button -->
+    <div class="go-top" id="goTop"> <i class="fas fa-arrow-up"></i> </div> <!-- Country Selection Modal -->
+    <div id="countryModal" class="country-modal">
+        <div class="country-modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Choisissez votre pays:</h3> <span onclick="closeCountryModal()"
+                    class="cursor-pointer text-2xl">&times;</span>
+            </div>
+            <div class="mb-6">
+                <h4 class="font-semibold mb-2">Afrique</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> <a href="https://www.isaworld.net/dz"
+                        class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
+                            src="https://www.isaworld.net/imgs/pays/big/050235_101020_dz.webp" alt="Algérie"
+                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Algérie (DA)</span> </a> <a
+                        href="https://www.isaworld.net/bf" class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
+                            src="https://www.isaworld.net/imgs/pays/big/050605_103744_bf.webp" alt="Burkina Faso"
+                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Burkina Faso (FCFA)</span> </a> <a
+                        href="https://www.isaworld.net/bj" class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
+                            src="https://www.isaworld.net/imgs/pays/big/050652_040542_bj.webp" alt="Bénin"
+                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Bénin (FCFA)</span> </a>
+                    <!-- More African countries... --> </div>
+            </div>
+            <div class="mb-6">
+                <h4 class="font-semibold mb-2">Europe</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> <a href="https://www.isaworld.net/be"
+                        class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
+                            src="https://www.isaworld.net/imgs/pays/big/050457_040934_be.webp" alt="Belgique"
+                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Belgique (€)</span> </a> <a
+                        href="https://www.isaworld.net/fr" class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
+                            src="https://www.isaworld.net/imgs/pays/big/050354_023818_dreapeu_fr.webp" alt="France"
+                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>France (€)</span> </a>
+                    <!-- More European countries... --> </div>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-2">Monde</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> <a href="https://www.isaworld.net/ca"
+                        class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
+                            src="https://www.isaworld.net/imgs/pays/big/050526_103624_ca.webp" alt="Canada"
+                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Canada ($)</span> </a> <a
+                        href="https://www.isaworld.net/wd" class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
+                            src="https://www.isaworld.net/imgs/pays/big/050359_092508_world.webp" alt="Monde"
+                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Monde (€)</span> </a> </div>
+            </div>
+        </div>
+    </div> <!-- Search Overlay -->
+    <div id="searchOverlay" class="search-overlay">
+        <div class="w-full max-w-2xl px-4">
+            <div class="relative"> <button onclick="closeSearch()"
+                    class="absolute right-0 top-0 text-white text-3xl focus:outline-none"> &times; </button>
+                <form action="https://www.isaworld.net/tg/result" method="get" class="w-full"> <input type="text"
+                        name="query" placeholder="Vous cherchez une formation ?"
+                        class="w-full px-6 py-4 text-xl bg-transparent border-b-2 border-white text-white focus:outline-none">
+                    <button type="submit" class="absolute right-12 top-3 text-white"> <i
+                            class="fas fa-search text-xl"></i> </button> </form>
+            </div>
+        </div>
+    </div>
+    <script> 
+    
+    function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+
+function toggleSubMenu(id) {
+  const submenu = document.getElementById(id);
+  submenu.classList.toggle('hidden');
+}
+
+function openCountryModal() {
+  document.getElementById('countryModal').style.display = 'block';
+}
+
+function closeCountryModal() {
+  document.getElementById('countryModal').style.display = 'none';
+}
+
+function openSearch() {
+  document.getElementById('searchOverlay').classList.add('open');
+}
+
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('open');
+}
+
+window.addEventListener('scroll', () => {
+  const goTop = document.getElementById('goTop');
+  goTop.classList.toggle('visible', window.pageYOffset > 300);
+});
+
+document.getElementById('goTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+function animateOdometer() {
+  const odometers = document.querySelectorAll('.odometer');
+  odometers.forEach(odometer => {
+    const target = parseInt(odometer.getAttribute('data-count'));
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      odometer.textContent = Math.floor(current);
+    }, 20);
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.target.classList.contains('odometer')) {
+      animateOdometer();
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.odometer').forEach(el => observer.observe(el));
+
+window.onclick = (event) => {
+  if (event.target.id === 'countryModal') {
+    closeCountryModal();
+  }
+  if (event.target.id === 'searchOverlay') {
+    closeSearch();
+  }
+};
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-item');
+const indicators = document.querySelectorAll('.carousel-indicator');
+const totalSlides = slides.length;
+
+function updateCarousel() {
+  const carouselInner = document.getElementById('carouselInner');
+  carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentSlide);
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateCarousel();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  updateCarousel();
+}
+
+setInterval(nextSlide, 5000);
+
+    </script>
+</body>
+
+</html>

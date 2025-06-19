@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - ACAN Formation des Leaders Numériques</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .team-card:hover .team-img {
+            transform: scale(1.05);
+        }
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            height: calc(100% - 32px);
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        
+        /* New refined styles */
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .timeline-dot {
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+        .footer-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .footer-link:hover {
+            color: white;
+        }
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Stats counter animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stat-item {
+            animation: countUp 0.8s ease-out forwards;
+        }
+        
+        /* Responsive text sizes */
+        @media (max-width: 640px) {
+            .text-responsive {
+                font-size: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=ACAN" alt="ACAN Logo">
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Accueil</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Formations</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Campus</a>
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">À propos</a>
+                        <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium mr-4">Se connecter</button>
+                    <button class="bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 px-4 py-2 rounded-md text-sm font-medium">S'inscrire</button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="mobile-menu sm:hidden bg-white" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-2">
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Accueil</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Formations</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Campus</a>
+                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">À propos</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+                <div class="pt-4 pb-3 border-t border-gray-200 px-4">
+                    <div class="space-y-2">
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Se connecter</button>
+                        <button class="w-full bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 px-4 py-2 rounded-md text-sm font-medium">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+                Notre mission : former les leaders du numérique
+            </h1>
+            <p class="max-w-3xl mx-auto text-xl md:text-2xl text-blue-100">
+                Depuis 2010, ACAN s'engage à fournir une éducation technologique d'excellence
+            </p>
+        </div>
+    </div>
+
+    <!-- About Intro -->
+    <div class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+                <div class="lg:col-span-6 mb-8 md:mb-12 lg:mb-0">
+                    <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">NOTRE HISTOIRE</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Une école née d'une passion pour l'innovation</h2>
+                    <p class="text-base md:text-lg text-gray-600 mb-6">
+                        Fondée en 2010 par trois experts du numérique, ACAN est née d'un constat simple : le monde a besoin de professionnels du numérique hautement qualifiés, formés aux dernières technologies avec une approche pédagogique moderne.
+                    </p>
+                    <p class="text-base md:text-lg text-gray-600 mb-6">
+                        Ce qui a commencé comme un petit centre de formation à Paris est rapidement devenu une référence dans l'enseignement des métiers du numérique, avec aujourd'hui trois campus en France et une communauté de plus de 5 000 diplômés.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="#" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                            Rencontrer notre équipe
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50">
+                            <i class="fas fa-download mr-2"></i>
+                            Brochure PDF
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-6">
+                    <div class="rounded-xl overflow-hidden shadow-xl">
+                        <img class="w-full h-auto" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Étudiants ACAN en cours">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="py-12 md:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="stat-item bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2" id="students-count">0</div>
+                    <div class="text-sm md:text-base font-medium text-gray-500">Étudiants formés</div>
+                </div>
+                <div class="stat-item bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2" id="campuses-count">0</div>
+                    <div class="text-sm md:text-base font-medium text-gray-500">Campus</div>
+                </div>
+                <div class="stat-item bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2" id="partners-count">0</div>
+                    <div class="text-sm md:text-base font-medium text-gray-500">Partenaires entreprises</div>
+                </div>
+                <div class="stat-item bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2" id="employment-rate">0</div>
+                    <div class="text-sm md:text-base font-medium text-gray-500">Taux d'insertion</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission & Values -->
+    <div class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">NOTRE ENGAGEMENT</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Notre mission et nos valeurs</h2>
+                <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600">Les principes qui guident chacune de nos actions</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="mission-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Excellence académique</h3>
+                    <p class="text-sm text-gray-600">
+                        Nous maintenons les plus hauts standards d'enseignement avec un corps professoral composé d'experts en activité.
+                    </p>
+                </div>
+
+                <div class="mission-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                        <i class="fas fa-briefcase text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Insertion professionnelle</h3>
+                    <p class="text-sm text-gray-600">
+                        Notre objectif premier est de vous préparer aux réalités du marché du travail avec des compétences recherchées.
+                    </p>
+                </div>
+
+                <div class="mission-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                        <i class="fas fa-lightbulb text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Innovation pédagogique</h3>
+                    <p class="text-sm text-gray-600">
+                        Nous repensons constamment nos méthodes d'enseignement pour les adapter aux évolutions technologiques.
+                    </p>
+                </div>
+
+                <div class="mission-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Communauté inclusive</h3>
+                    <p class="text-sm text-gray-600">
+                        Nous croyons en la diversité et créons un environnement où chacun peut s'épanouir professionnellement.
+                    </p>
+                </div>
+
+                <div class="mission-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                        <i class="fas fa-hand-holding-heart text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Impact social</h3>
+                    <p class="text-sm text-gray-600">
+                        Nous nous engageons à rendre l'éducation technologique accessible à travers des programmes sociaux.
+                    </p>
+                </div>
+
+                <div class="mission-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm transition duration-300">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                        <i class="fas fa-globe-europe text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Vision internationale</h3>
+                    <p class="text-sm text-gray-600">
+                        Nos programmes préparent les étudiants à travailler dans un environnement numérique globalisé.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leadership Team -->
+    <div class="py-12 md:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">NOTRE ÉQUIPE</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Rencontrez notre équipe dirigeante</h2>
+                <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600">Des experts passionnés par l'éducation technologique</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Team Member 1 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-sm transition duration-300">
+                    <div class="overflow-hidden h-48">
+                        <img class="w-full h-full object-cover team-img transition duration-500" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Marc Dubois">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Marc Dubois</h3>
+                        <p class="text-sm text-blue-600 mb-3">Fondateur & CEO</p>
+                        <p class="text-xs text-gray-500">
+                            Ancien CTO de plusieurs startups, Marc a fondé ACAN pour combler le fossé entre l'éducation et les besoins réels des entreprises.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-blue-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-sm transition duration-300">
+                    <div class="overflow-hidden h-48">
+                        <img class="w-full h-full object-cover team-img transition duration-500" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Sophie Martin">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Sophie Martin</h3>
+                        <p class="text-sm text-blue-600 mb-3">Directrice Pédagogique</p>
+                        <p class="text-xs text-gray-500">
+                            Docteure en informatique, Sophie supervise l'élaboration de tous nos programmes pour garantir leur excellence académique.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-blue-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-sm transition duration-300">
+                    <div class="overflow-hidden h-48">
+                        <img class="w-full h-full object-cover team-img transition duration-500" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Thomas Leroy">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Thomas Leroy</h3>
+                        <p class="text-sm text-blue-600 mb-3">Directeur des Opérations</p>
+                        <p class="text-xs text-gray-500">
+                            Expert en gestion de projets éducatifs, Thomas assure le bon fonctionnement quotidien de nos campus et plateformes.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-blue-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="team-card bg-white rounded-xl overflow-hidden shadow-sm transition duration-300">
+                    <div class="overflow-hidden h-48">
+                        <img class="w-full h-full object-cover team-img transition duration-500" src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Élodie Bernard">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Élodie Bernard</h3>
+                        <p class="text-sm text-blue-600 mb-3">Directrice des Relations Entreprises</p>
+                        <p class="text-xs text-gray-500">
+                            Élodie crée des ponts entre nos étudiants et les entreprises pour faciliter les stages et embauches post-formation.
+                        </p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-blue-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-blue-600">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                    Voir toute l'équipe
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accreditation -->
+    <div class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+                <div class="lg:col-span-6 mb-8 md:mb-12 lg:mb-0 order-2 lg:order-1">
+                    <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">RECONNAISSANCE</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Nos accréditations et partenariats</h2>
+                    <p class="text-base md:text-lg text-gray-600 mb-6">
+                        ACAN est reconnue par l'État français comme établissement privé d'enseignement supérieur technique. Nos diplômes sont enregistrés au RNCP (Répertoire National des Certifications Professionnelles).
+                    </p>
+                    <p class="text-base md:text-lg text-gray-600 mb-6">
+                        Nous collaborons avec les plus grandes entreprises technologiques pour garantir que nos programmes répondent aux besoins actuels du marché.
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-center">
+                            <img class="h-12" src="https://via.placeholder.com/100x50?text=RNCP" alt="RNCP">
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-center">
+                            <img class="h-12" src="https://via.placeholder.com/100x50?text=État" alt="État Français">
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-center">
+                            <img class="h-12" src="https://via.placeholder.com/100x50?text=Microsoft" alt="Microsoft">
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-center">
+                            <img class="h-12" src="https://via.placeholder.com/100x50?text=Google" alt="Google">
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 order-1 lg:order-2">
+                    <div class="rounded-xl overflow-hidden shadow-xl">
+                        <img class="w-full h-auto" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cérémonie de remise des diplômes ACAN">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alumni Success -->
+    <div class="py-12 md:py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-blue-300 bg-blue-900 bg-opacity-50 rounded-full mb-4">SUCCÈS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nos anciens élèves témoignent</h2>
+                <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-300">Découvrez où nos diplômés ont construit leur carrière</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Alumni 1 -->
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Camille">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Camille Lefèvre</h4>
+                            <p class="text-sm text-blue-300">Développeuse Fullstack @Google</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300 italic">
+                        "La formation ACAN m'a donné les compétences techniques et la confiance nécessaires pour intégrer une entreprise leader comme Google. Les projets concrets étaient particulièrement précieux."
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-xs text-gray-400">Promotion 2018 - Expertise JavaScript</p>
+                    </div>
+                </div>
+
+                <!-- Alumni 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/54.jpg" alt="Mehdi">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Mehdi Benali</h4>
+                            <p class="text-sm text-blue-300">Data Scientist @BNP Paribas</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300 italic">
+                        "Le programme Data Science d'ACAN couvrait exactement les technologies que j'utilise aujourd'hui dans mon travail. L'accent mis sur les cas réels d'entreprise fait toute la différence."
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-xs text-gray-400">Promotion 2020 - Data Science Pro</p>
+                    </div>
+                </div>
+
+                <!-- Alumni 3 -->
+                <div class="bg-gray-800 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/63.jpg" alt="Aurélie">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Aurélie Dumont</h4>
+                            <p class="text-sm text-blue-300">Responsable Cybersécurité @SopraSteria</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300 italic">
+                        "Après une reconversion professionnelle, la formation Cybersécurité d'ACAN m'a permis d'acquérir des compétences pointues et d'intégrer rapidement le marché du travail."
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-xs text-gray-400">Promotion 2021 - Cybersécurité Expert</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-gray-900 bg-white hover:bg-gray-100">
+                    Voir plus de témoignages
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800">
+        <div class="max-w-7xl mx-auto py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-4 md:mb-6">
+                <span class="block">Prêt à rejoindre notre communauté?</span>
+                <span class="block text-blue-200 mt-2">Nous sommes là pour vous guider.</span>
+            </h2>
+            <p class="max-w-2xl mx-auto text-base md:text-lg text-blue-100 mb-6 md:mb-8">
+                Que vous soyez étudiant, parent ou professionnel en reconversion, notre équipe se fera un plaisir de répondre à toutes vos questions.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
+                <a href="#" class="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-3 border border-transparent text-sm md:text-base font-medium rounded-md shadow-sm text-blue-600 bg-white hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    S'inscrire à une formation
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-3 border border-transparent text-sm md:text-base font-medium rounded-md shadow-sm text-white bg-blue-500 bg-opacity-60 hover:bg-opacity-70 transition duration-300">
+                    <i class="fas fa-calendar-alt mr-2"></i>
+                    Visite guidée
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Formations</h3>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Développement Web</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Data Science</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Cybersécurité</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Management Digital</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Toutes les formations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Entreprise</h3>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#" class="footer-link text-xs md:text-sm">À propos</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Carrières</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Blog</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Presse</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Partenariats</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Support</h3>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Centre d'aide</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">FAQ</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Conditions</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Confidentialité</a></li>
+                        <li><a href="#" class="footer-link text-xs md:text-sm">Accessibilité</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-3 md:mb-4">Contact</h3>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400 text-xs md:text-sm"></i>
+                            <span class="text-xs md:text-sm">15 Rue de la République<br>75010 Paris, France</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400 text-xs md:text-sm"></i>
+                            <a href="mailto:contact@acan-formation.com" class="footer-link text-xs md:text-sm">contact@acan-formation.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400 text-xs md:text-sm"></i>
+                            <a href="tel:+33123456789" class="footer-link text-xs md:text-sm">01 23 45 67 89</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-800 md:flex md:items-center md:justify-between">
+                <div class="flex justify-center space-x-6 md:order-2">
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white text-sm md:text-base">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                <div class="mt-4 md:mt-0 md:order-1 text-center md:text-left">
+                    <p class="text-xs md:text-sm text-gray-400">
+                        &copy; 2023 ACAN Formation. Tous droits réservés.
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1 md:mt-2">
+                        ACAN est un établissement privé d'enseignement supérieur technique déclaré auprès du rectorat de Paris.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('open');
+            const isExpanded = mobileMenu.classList.contains('open');
+            this.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                mobileMenu.classList.remove('open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Stats counter animation
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Start counters when stats section comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue('students-count', 0, 5000, 2000);
+                    animateValue('campuses-count', 0, 3, 1500);
+                    animateValue('partners-count', 0, 120, 1800);
+                    animateValue('employment-rate', 0, 92, 2200);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {threshold: 0.5});
+
+        const statsSection = document.querySelector('.bg-gray-50');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

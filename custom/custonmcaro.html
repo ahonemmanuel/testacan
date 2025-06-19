@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Skills Academy</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <style>
+        :root {
+            --primary-color: #5436e6;
+            --primary-hover: #4630c7;
+        }
+        
+        /* Navbar Styles */
+        .navbar-area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background-color: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-area.sticky {
+            position: fixed;
+            top: 0;
+            background-color: #fff !important;
+            box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+        }
+        
+        .main-navbar {
+            padding: 15px 0;
+        }
+        
+        .navbar-brand img {
+            max-height: 50px;
+        }
+        
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+            padding: 10px 15px;
+        }
+        
+        .navbar-light.sticky .navbar-nav .nav-link {
+            color: #333;
+        }
+        
+        .nav-link.active {
+            color: #fff !important;
+            font-weight: 600;
+        }
+        
+        .sticky .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .default-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .default-btn:hover {
+            background-color: var(--primary-hover);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        
+        /* Slider Styles */
+        .main-slider {
+            position: relative;
+            height: 100vh;
+            z-index: 1;
+        }
+        
+        .main-slider-item {
+            position: relative;
+            height: 100vh;
+            background-color: #000;
+        }
+        
+        .main-slider-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .main-slider-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        
+        .main-slider-content {
+            color: #fff;
+            padding-top: 180px;
+        }
+        
+        .main-slider-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .main-slider-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .slider-btn .default-btn {
+            background-color: transparent;
+            border: 2px solid #fff;
+        }
+        
+        .slider-btn .default-btn:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+        }
+        
+        /* Navigation buttons */
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        
+        .owl-prev, .owl-next {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,255,255,0.3) !important;
+            border-radius: 50% !important;
+            color: #fff !important;
+            font-size: 24px !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            margin: 0 20px !important;
+            pointer-events: all;
+            transition: all 0.3s ease;
+        }
+        
+        .owl-prev:hover, .owl-next:hover {
+            background-color: rgba(84, 54, 230, 0.8) !important;
+        }
+        
+        /* Dots navigation */
+        .owl-dots {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 0 !important;
+        }
+        
+        .owl-theme .owl-dots .owl-dot span {
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.5);
+            border: 2px solid transparent;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .owl-theme .owl-dots .owl-dot.active span, 
+        .owl-theme .owl-dots .owl-dot:hover span {
+            background: var(--primary-color);
+            border-color: #fff;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar-area">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="https://www.isaworld.net/assets/img/logo.png" alt="ISA World" style="height: 50px;">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Formations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Certifications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">À propos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                        
+                        <div class="ms-3">
+                            <a href="#" class="default-btn">
+                                <i class='bx bx-user-circle'></i> Espace étudiant
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Carousel/Slider -->
+    <div class="owl-carousel owl-theme main-slider">
+        <div class="main-slider-item">
+            <div class="main-slider-image">
+                <img src="">
+            </div>
+            <div class="container">
+                <div class="main-slider-content">
+                    <h1>Formations professionnelles au Togo</h1>
+                    <p>Des formations dans tous les domaines par le leader de la formation à distance</p>
+                    <div class="slider-btn">
+                        <a href="#" class="default-btn">
+                            <i class='bx bx-book-reader'></i> Nos formations
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-slider-item">
+            <div class="main-slider-image">
+                <img src="">
+            </div>
+            <div class="container">
+                <div class="main-slider-content">
+                    <h1>Certifications internationales</h1>
+                    <p>Obtenez des certifications reconnues dans votre domaine professionnel</p>
+                    <div class="slider-btn">
+                        <a href="#" class="default-btn">
+                            <i class='bx bx-award'></i> Nos certifications
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
+    <script>
+        // Initialize Owl Carousel
+        $(document).ready(function(){
+            $(".main-slider").owlCarousel({
+                items: 1,
+                loop: true,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                animateOut: 'fadeOut',
+                smartSpeed: 1000,
+                navText: [
+                    '<i class="bx bx-chevron-left"></i>',
+                    '<i class="bx bx-chevron-right"></i>'
+                ]
+            });
+            
+            // Sticky navbar on scroll
+            $(window).scroll(function(){
+                if($(this).scrollTop() > 100) {
+                    $('.navbar-area').addClass('sticky');
+                    $('.navbar-light .navbar-nav .nav-link').css('color', '#333');
+                } else {
+                    $('.navbar-area').removeClass('sticky');
+                    $('.navbar-light .navbar-nav .nav-link').css('color', '#fff');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

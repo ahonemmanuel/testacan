@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACAN - Excellence Numérique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        
+        .feature-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .course-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .testimonial-card {
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            height: calc(100% - 32px);
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        
+        .timeline-dot {
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+        }
+        
+        .footer-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #2563eb;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Glassmorphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1e40af;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-10 w-auto" src="https://via.placeholder.com/150x50?text=ACAN" alt="ACAN Logo">
+                    </div>
+                    <div class="hidden lg:ml-10 lg:flex lg:space-x-8">
+                        <a href="#" class="nav-link active text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">Accueil</a>
+                        <a href="#" class="nav-link text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Formations</a>
+                        <a href="#" class="nav-link text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Campus</a>
+                        <a href="#" class="nav-link text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Événements</a>
+                        <a href="#" class="nav-link text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden lg:ml-4 lg:flex lg:items-center">
+                    <button class="bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 px-4 py-2 rounded-lg text-sm font-medium mr-4 transition duration-300 hover:shadow-md">
+                        Se connecter
+                    </button>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition duration-300 hover:shadow-md">
+                        S'inscrire
+                    </button>
+                </div>
+                <div class="-mr-2 flex items-center lg:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1 px-2">
+                <a href="#" class="bg-blue-50 border-blue-500 text-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Accueil</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Formations</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Campus</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Événements</a>
+                <a href="#" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
+                <div class="pt-4 pb-3 border-t border-gray-200 px-4">
+                    <div class="space-y-2">
+                        <button class="w-full bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 px-4 py-2 rounded-lg text-sm font-medium">
+                            Se connecter
+                        </button>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                            S'inscrire
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+            <div class="relative z-10 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in">
+                    Formez-vous aux <span class="text-blue-200">métiers du futur</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8 animate-fade-in delay-100">
+                    Des formations certifiantes en développement web, data science et cybersécurité avec un taux d'insertion de 92%
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in delay-200">
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-blue-600 bg-white hover:bg-blue-50 transition duration-300 hover:scale-105">
+                        Explorer nos formations
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-500 bg-opacity-20 hover:bg-opacity-30 transition duration-300">
+                        <i class="fas fa-play-circle mr-2"></i>
+                        Voir la vidéo
+                    </a>
+                </div>
+            </div>
+            <div class="absolute inset-0 opacity-20">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-400 to-blue-600 opacity-50"></div>
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')] bg-cover bg-center mix-blend-overlay"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="bg-white py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="text-center animate-fade-in">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">5,000+</div>
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Diplômés</div>
+                </div>
+                <div class="text-center animate-fade-in delay-100">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">92%</div>
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Taux d'insertion</div>
+                </div>
+                <div class="text-center animate-fade-in delay-200">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">120+</div>
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Entreprises partenaires</div>
+                </div>
+                <div class="text-center animate-fade-in delay-300">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">10+</div>
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Années d'expérience</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-12 sm:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full mb-4 animate-fade-in">
+                    POURQUOI CHOISIR ACAN
+                </span>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 animate-fade-in delay-100">
+                    Une pédagogie innovante pour des résultats concrets
+                </h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600 animate-fade-in delay-200">
+                    Notre approche unique combine théorie et pratique pour une formation optimale
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="feature-card bg-white p-8 text-center rounded-xl shadow-sm animate-fade-in">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-6">
+                        <i class="fas fa-laptop-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Apprentissage par projets</h3>
+                    <p class="text-gray-600">
+                        Travaillez sur des cas réels d'entreprises pour développer des compétences immédiatement applicables.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white p-8 text-center rounded-xl shadow-sm animate-fade-in delay-100">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-6">
+                        <i class="fas fa-chalkboard-teacher text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Experts métiers</h3>
+                    <p class="text-gray-600">
+                        Nos formateurs sont des professionnels en activité qui partagent leur expertise terrain.
+                    </p>
+                </div>
+
+                <div class="feature-card bg-white p-8 text-center rounded-xl shadow-sm animate-fade-in delay-200">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-blue-600 mx-auto mb-6">
+                        <i class="fas fa-briefcase text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Accompagnement carrière</h3>
+                    <p class="text-gray-600">
+                        Coaching personnalisé et accès à notre réseau d'entreprises partenaires pour votre insertion.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popular Courses -->
+    <div class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">
+                    NOS FORMATIONS
+                </span>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Découvrez nos programmes phares
+                </h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                    Des formations conçues pour répondre aux besoins du marché
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Course 1 -->
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative h-48 bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-code text-white text-6xl"></i>
+                        <div class="absolute top-4 right-4 bg-white text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">
+                            Nouveau
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Expertise Laravel</h3>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i>
+                                    <span>12 semaines</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="ml-1 text-sm text-gray-500">4.7</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            Maîtrisez le framework PHP Laravel pour développer des applications web robustes et performantes.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xl font-bold text-gray-900">€1,200</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">€1,500</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                En savoir plus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative h-48 bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-database text-white text-6xl"></i>
+                        <div class="absolute top-4 right-4 bg-white text-purple-600 px-3 py-1 rounded-full text-xs font-semibold">
+                            Populaire
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Data Science Pro</h3>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i>
+                                    <span>10 semaines</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="ml-1 text-sm text-gray-500">5.0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            Devenez expert en analyse de données et intelligence artificielle avec Python et R.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xl font-bold text-gray-900">€1,500</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                En savoir plus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="relative h-48 bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white text-6xl"></i>
+                        <div class="absolute top-4 right-4 bg-white text-red-600 px-3 py-1 rounded-full text-xs font-semibold">
+                            Intensif
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">Cybersécurité Expert</h3>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i>
+                                    <span>8 semaines</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="ml-1 text-sm text-gray-500">4.2</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            Apprenez à protéger les systèmes contre les cyberattaques avec des techniques offensives et défensives.
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xl font-bold text-gray-900">€1,800</span>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                En savoir plus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition duration-300 hover:scale-105">
+                    Voir toutes les formations
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Platform -->
+    <div class="py-12 sm:py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-300 bg-blue-900 bg-opacity-50 rounded-full mb-4">
+                        PLATEFORME ACAN
+                    </span>
+                    <h2 class="text-3xl font-bold mb-6">
+                        Une expérience d'apprentissage unique
+                    </h2>
+                    <p class="text-lg text-blue-100 mb-8">
+                        Notre plateforme interactive combine cours en ligne, projets pratiques et accompagnement personnalisé pour une formation complète.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="glass-card p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 bg-opacity-20 p-2 rounded-full text-blue-300 mr-4">
+                                    <i class="fas fa-video text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold">Cours vidéo HD</h4>
+                                    <p class="text-xs text-blue-100">Accessibles 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 bg-opacity-20 p-2 rounded-full text-blue-300 mr-4">
+                                    <i class="fas fa-laptop-code text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold">Environnements pratiques</h4>
+                                    <p class="text-xs text-blue-100">Sandbox intégrés</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 bg-opacity-20 p-2 rounded-full text-blue-300 mr-4">
+                                    <i class="fas fa-comments text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold">Communauté active</h4>
+                                    <p class="text-xs text-blue-100">Entraide entre étudiants</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 bg-opacity-20 p-2 rounded-full text-blue-300 mr-4">
+                                    <i class="fas fa-chart-line text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold">Suivi de progression</h4>
+                                    <p class="text-xs text-blue-100">Tableaux de bord personnalisés</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="bg-white hover:bg-gray-100 text-blue-600 px-6 py-3 rounded-lg text-base font-medium transition duration-300">
+                        Essayer la démo
+                        <i class="fas fa-external-link-alt ml-2"></i>
+                    </button>
+                </div>
+                
+                <div class="relative">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Plateforme ACAN" class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Découvrez notre interface</h3>
+                            <p class="text-blue-200 text-sm">
+                                Une plateforme intuitive conçue pour optimiser votre apprentissage
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">
+                    TÉMOIGNAGES
+                </span>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Ils nous font confiance
+                </h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                    Découvrez ce que nos étudiants et partenaires disent de nous
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-6">
+                        <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Marie Dubois">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Marie Dubois</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">
+                        "La formation Laravel m'a permis de décrocher un poste de développeuse back-end en seulement 3 mois après l'obtention de mon certificat. Les projets pratiques sont très bien conçus."
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Expertise Laravel - 2022</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-6">
+                        <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Thomas Leroy">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Thomas Leroy</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">
+                        "J'ai suivi la formation Data Science en parallèle de mon travail. La flexibilité de la plateforme et la qualité des enseignants ont fait toute la différence dans mon apprentissage."
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Data Science Pro - 2021</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-6">
+                        <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/63.jpg" alt="Sophie Lambert">
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold text-gray-900">Sophie Lambert</h4>
+                            <div class="flex text-yellow-400 mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6">
+                        "Après 10 ans dans l'administration, j'ai pu me reconvertir grâce à la formation Cybersécurité. L'accompagnement professionnel m'a aidé à trouver mon premier emploi dans le domaine."
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Cybersécurité Expert - 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Modes -->
+    <div class="py-12 sm:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">
+                    MODES D'APPRENTISSAGE
+                </span>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Choisissez votre rythme
+                </h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                    Adaptez votre formation à vos contraintes et préférences
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                <!-- Mode 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-user-graduate text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Présentiel</h3>
+                        <p class="text-gray-600 mb-6">
+                            Apprentissage en immersion dans nos campus équipés avec des formateurs experts.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Cours en direct avec les formateurs</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Travail collaboratif en groupe</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Accès aux installations</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg text-base font-medium">
+                            Choisir ce mode
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-laptop text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">100% en ligne</h3>
+                        <p class="text-gray-600 mb-6">
+                            Formez-vous à distance avec notre plateforme interactive et nos classes virtuelles.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Horaires flexibles</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Vidéos et supports 24/7</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Classes virtuelles</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg text-base font-medium">
+                            Choisir ce mode
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center">
+                        <i class="fas fa-blender-phone text-white text-6xl"></i>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Hybride</h3>
+                        <p class="text-gray-600 mb-6">
+                            Combinez le meilleur des deux mondes avec des cours en présentiel et à distance.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Flexibilité optimale</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Alternance selon vos besoins</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-blue-500 mr-3"></i>
+                                <span class="text-gray-700">Accès complet aux ressources</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg text-base font-medium">
+                            Choisir ce mode
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full mb-4">
+                    NOTRE HISTOIRE
+                </span>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Innovation et excellence depuis 2010
+                </h2>
+                <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                    Un parcours marqué par l'innovation pédagogique et technologique
+                </p>
+            </div>
+
+            <div class="relative max-w-2xl mx-auto">
+                <!-- Timeline item 1 -->
+                <div class="relative timeline-item pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">2010 - Fondation</h3>
+                    <p class="text-gray-600">
+                        Création d'ACAN avec une première formation en développement web à Paris. Lancement de notre approche pédagogique unique.
+                    </p>
+                </div>
+
+                <!-- Timeline item 2 -->
+                <div class="relative timeline-item pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">2014 - Expansion</h3>
+                    <p class="text-gray-600">
+                        Ouverture du campus de Lyon et lancement des formations en data science. Premiers partenariats avec des entreprises technologiques.
+                    </p>
+                </div>
+
+                <!-- Timeline item 3 -->
+                <div class="relative timeline-item pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">2017 - Plateforme E-Learning</h3>
+                    <p class="text-gray-600">
+                        Déploiement de notre plateforme d'apprentissage en ligne avec des cours hybrides. Adoption massive par les professionnels en activité.
+                    </p>
+                </div>
+
+                <!-- Timeline item 4 -->
+                <div class="relative timeline-item pl-16 pb-12">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">2020 - Reconnaissance</h3>
+                    <p class="text-gray-600">
+                        Certification de nos formations par l'État et partenariats avec des entreprises du CAC40. Lancement du réseau alumni ACAN.
+                    </p>
+                </div>
+
+                <!-- Timeline item 5 -->
+                <div class="relative timeline-item pl-16">
+                    <div class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-white timeline-dot">
+                        <span>5</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">2023 - Nouveaux Horizons</h3>
+                    <p class="text-gray-600">
+                        Lancement de formations en intelligence artificielle et cybersécurité offensive. Expansion internationale avec un premier campus à Bruxelles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800">
+        <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-6">
+                <span class="block">Prêt à transformer votre carrière?</span>
+                <span class="block text-blue-200 mt-2">Inscrivez-vous dès aujourd'hui.</span>
+            </h2>
+            <p class="max-w-2xl mx-auto text-lg text-blue-100 mb-8">
+                Rejoignez notre communauté de plus de 5 000 diplômés qui ont boosté leur carrière grâce à nos formations.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-blue-600 bg-white hover:bg-blue-50 transition duration-300 hover:scale-105">
+                    Commencer maintenant
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-500 bg-opacity-20 hover:bg-opacity-30 transition duration-300">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                    Nous contacter
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">Formations</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link text-sm">Développement Web</a></li>
+                        <li><a href="#" class="footer-link text-sm">Data Science</a></li>
+                        <li><a href="#" class="footer-link text-sm">Cybersécurité</a></li>
+                        <li><a href="#" class="footer-link text-sm">Management Digital</a></li>
+                        <li><a href="#" class="footer-link text-sm">Toutes les formations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">Entreprise</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link text-sm">À propos</a></li>
+                        <li><a href="#" class="footer-link text-sm">Carrières</a></li>
+                        <li><a href="#" class="footer-link text-sm">Blog</a></li>
+                        <li><a href="#" class="footer-link text-sm">Presse</a></li>
+                        <li><a href="#" class="footer-link text-sm">Partenariats</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">Support</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link text-sm">Centre d'aide</a></li>
+                        <li><a href="#" class="footer-link text-sm">FAQ</a></li>
+                        <li><a href="#" class="footer-link text-sm">Conditions</a></li>
+                        <li><a href="#" class="footer-link text-sm">Confidentialité</a></li>
+                        <li><a href="#" class="footer-link text-sm">Accessibilité</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-sm font-semibold tracking-wider uppercase mb-4">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400 text-sm"></i>
+                            <span class="text-sm">15 Rue de la République<br>75010 Paris, France</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400 text-sm"></i>
+                            <a href="mailto:contact@acan-formation.com" class="footer-link text-sm">contact@acan-formation.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400 text-sm"></i>
+                            <a href="tel:+33123456789" class="footer-link text-sm">01 23 45 67 89</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=ACAN" alt="ACAN Logo">
+                    <p class="mt-2 text-xs text-gray-500">
+                        &copy; 2023 ACAN Formation. Tous droits réservés.
+                    </p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-icon text-gray-400 hover:text-white">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            const isExpanded = !mobileMenu.classList.contains('hidden');
+            this.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
