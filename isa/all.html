@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre de formation au Togo professionnelle et continue à distance - International Skills Academy</title>
+    <meta name="description" content="Des formations professionnelles au Togo dans tous les domaines par le leader et international de la formation au Togo – CPF. Qualifié OPQF, Certifié IS...">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom styles that complement Tailwind */
+        :root {
+            --primary-color: #1a1c26;
+            --secondary-color: #d8a857;
+            --accent-color: #926365;
+            --light-bg: #fafafa;
+            --text-gray: #909192;
+            --text-light: #c2c8cb;
+            --blue-accent: #4f93a2;
+            --border-color: #dfc796;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            overflow-x: hidden;
+        }
+        
+        .hero-slider {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2a2d3e 100%);
+        }
+        
+        .slide {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .dot {
+            background: rgba(255,255,255,0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: var(--secondary-color);
+        }
+        
+        .course-card:hover .course-image img {
+            transform: scale(1.05);
+        }
+        
+        .category-card:hover .category-icon {
+            transform: scale(1.1);
+        }
+        
+        .partner-logo:hover img {
+            opacity: 1;
+        }
+        
+        /* Animation classes */
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 1000px;
+        }
+        
+        /* Notification animation */
+        .notification {
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        /* Custom dropdown styles */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Country modal styles */
+        .country-modal {
+            display: none;
+        }
+        
+        .country-modal.active {
+            display: flex;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide-content {
+                text-align: center;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding: 0;
+            }
+            
+            .dropdown-menu a {
+                padding: 8px 0;
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 ">
+    <!-- Top Contact Bar -->
+    <div class="bg-gray-900 text-white py-5 text-sm">
+        <div class="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6">
+                <span class="flex items-center gap-2">
+                    <i class="fas fa-phone text-amber-500"></i>
+                    <a href="tel:+212668580485" class="hover:text-amber-400 transition">+212 668 580 485</a>
+                </span>
+                <span class="flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-amber-500"></i>
+                    <a href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22" class="hover:text-amber-400 transition">WhatsApp</a>
+                </span>
+                <span class="flex items-center gap-2">
+                    <i class="fas fa-envelope text-amber-500"></i>
+                    <a href="mailto:contact@isaworld.net" class="hover:text-amber-400 transition">Email</a>
+                </span>
+            </div>
+            <div>
+                <a href="#" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-1 rounded transition">Connexion</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo">
+                    <img src="https://ext.same-assets.com/3843800498/1706854766.svg" alt="International Skills Academy" class="h-12">
+                </div>
+                
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#" class="font-medium text-gray-800 hover:text-amber-500 transition relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-amber-500 after:opacity-100">Accueil</a>
+                    
+                    <div class="dropdown relative">
+                        <a href="#" class="font-medium text-gray-800 hover:text-amber-500 transition flex items-center gap-1">
+                            Nos Formations <i class="fas fa-chevron-down text-xs"></i>
+                        </a>
+                        <ul class="dropdown-menu absolute top-full left-0 bg-white shadow-lg rounded-md min-w-[200px] py-2 z-10">
+                            <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-amber-500 transition">Commerce et Marketing</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-amber-500 transition">GRH et Emploi</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-amber-500 transition">Gestion et Comptabilité</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-amber-500 transition">Informatique</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-amber-500 transition">Logistique</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-amber-500 transition">Qualité et Management</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-amber-500 transition">Santé</a></li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#" class="font-medium text-gray-800 hover:text-amber-500 transition">Webinaires</a>
+                    <a href="#" class="font-medium text-gray-800 hover:text-amber-500 transition">A propos</a>
+                    <a href="#" class="font-medium text-gray-800 hover:text-amber-500 transition">Contact</a>
+                </nav>
+                
+                <div class="country-selector hidden lg:block">
+                    <button id="countryBtn" class="flex items-center gap-2 border border-amber-200 px-3 py-1 rounded hover:border-amber-400 transition">
+                        <img src="https://ext.same-assets.com/3843800498/3052759465.webp" alt="Togo" class="w-6 h-auto rounded">
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+                
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-800 text-xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu lg:hidden bg-white shadow-lg rounded-b-lg overflow-hidden">
+                <div class="px-4 py-2">
+                    <a href="#" class="block py-3 border-b border-gray-100 font-medium text-gray-800 hover:text-amber-500 transition">Accueil</a>
+                    
+                    <div class="py-3 border-b border-gray-100">
+                        <button class="flex items-center justify-between w-full font-medium text-gray-800 hover:text-amber-500 transition">
+                            Nos Formations <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="mt-2 pl-4">
+                            <a href="#" class="block py-2 text-gray-700 hover:text-amber-500 transition">Commerce et Marketing</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-amber-500 transition">GRH et Emploi</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-amber-500 transition">Gestion et Comptabilité</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-amber-500 transition">Informatique</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-amber-500 transition">Logistique</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-amber-500 transition">Qualité et Management</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-amber-500 transition">Santé</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="block py-3 border-b border-gray-100 font-medium text-gray-800 hover:text-amber-500 transition">Webinaires</a>
+                    <a href="#" class="block py-3 border-b border-gray-100 font-medium text-gray-800 hover:text-amber-500 transition">A propos</a>
+                    <a href="#" class="block py-3 font-medium text-gray-800 hover:text-amber-500 transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Country Selection Modal -->
+    <div id="countryModal" class="country-modal fixed inset-0 bg-black bg-opacity-80 z-50 items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-gray-200 p-6">
+                <h3 class="text-2xl font-bold text-gray-800">Choisissez votre pays:</h3>
+                <button id="closeModal" class="text-gray-500 text-3xl hover:text-gray-700 transition">&times;</button>
+            </div>
+            
+            <div class="p-6 space-y-8">
+                <div class="region">
+                    <h4 class="text-lg font-semibold text-amber-500 mb-4">Afrique</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/3610565565.webp" alt="Algérie" class="w-6 h-auto rounded"> Algérie (DA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/2086963772.webp" alt="Burkina Faso" class="w-6 h-auto rounded"> Burkina Faso (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/1028706143.webp" alt="Bénin" class="w-6 h-auto rounded"> Bénin (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/2747192410.webp" alt="Cameroun" class="w-6 h-auto rounded"> Cameroun (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/2101165106.webp" alt="Congo" class="w-6 h-auto rounded"> Congo (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/461719165.webp" alt="Congo RDC" class="w-6 h-auto rounded"> Congo (RDC) (FC)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/2032125549.webp" alt="Côte d'Ivoire" class="w-6 h-auto rounded"> Côte d'Ivoire (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/299623229.webp" alt="Gabon" class="w-6 h-auto rounded"> Gabon (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/568752525.webp" alt="Ghana" class="w-6 h-auto rounded"> Ghana (GH₵)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/2669041918.webp" alt="Guinée" class="w-6 h-auto rounded"> Guinée Conakry (FG)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/783212389.webp" alt="Guinée équatoriale" class="w-6 h-auto rounded"> Guinée équatoriale (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/4087414123.webp" alt="Mali" class="w-6 h-auto rounded"> Mali (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/1696256548.webp" alt="Maroc" class="w-6 h-auto rounded"> Maroc (Dhs)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/602118346.webp" alt="Mauritanie" class="w-6 h-auto rounded"> Mauritanie (UM)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/4100302826.webp" alt="Niger" class="w-6 h-auto rounded"> Niger (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/2952113984.webp" alt="Centrafrique" class="w-6 h-auto rounded"> Rép. centrafricaine (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/1815809116.webp" alt="Sénégal" class="w-6 h-auto rounded"> Sénégal (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/4153372018.webp" alt="Tchad" class="w-6 h-auto rounded"> Tchad (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-amber-500 bg-amber-50 text-amber-500 rounded">
+                            <img src="https://ext.same-assets.com/3843800498/3052759465.webp" alt="Togo" class="w-6 h-auto rounded"> Togo (FCFA)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/2432369216.webp" alt="Tunisie" class="w-6 h-auto rounded"> Tunisie (DT)
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="region">
+                    <h4 class="text-lg font-semibold text-amber-500 mb-4">Europe</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/4189740496.webp" alt="Belgique" class="w-6 h-auto rounded"> Belgique (€)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/1010843524.webp" alt="France" class="w-6 h-auto rounded"> France (€)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/1571179162.webp" alt="Luxembourg" class="w-6 h-auto rounded"> Luxembourg (€)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/1648007534.webp" alt="Monaco" class="w-6 h-auto rounded"> Monaco (€)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/331421630.webp" alt="Suisse" class="w-6 h-auto rounded"> Suisse (CHF)
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="region">
+                    <h4 class="text-lg font-semibold text-amber-500 mb-4">Monde</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/1726714999.webp" alt="Canada" class="w-6 h-auto rounded"> Canada ($)
+                        </a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2 border border-gray-200 rounded hover:border-amber-500 hover:bg-amber-50 hover:text-amber-500 transition">
+                            <img src="https://ext.same-assets.com/3843800498/3134970233.webp" alt="Monde" class="w-6 h-auto rounded"> Monde (€)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider relative h-[500px] md:h-[600px] overflow-hidden">
+        <div class="slider-container relative h-full">
+            <!-- Slide 1 -->
+            <div class="slide active absolute inset-0 w-full h-full flex items-center">
+                <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="text-white animate-in">
+                        <span class="text-amber-400 text-sm font-semibold uppercase tracking-wider mb-2 block">Assistanat et Secrétariat</span>
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">Assistante de direction au Togo</h1>
+                        <p class="text-gray-300 text-lg mb-6">Collaboratrice directe au Togo d'un service, d'un cadre supérieur ou d'un chef d'entreprise, elle est chargée d'assister dans la gestion et l'organisation administrative de sa direction.</p>
+                        <a href="#" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md font-semibold uppercase inline-block transition transform hover:-translate-y-1">Voir détail</a>
+                    </div>
+                    <div class="animate-in">
+                        <img src="https://ext.same-assets.com/3843800498/640280625.webp" alt="Assistante de direction" class="rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide absolute inset-0 w-full h-full flex items-center">
+                <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="text-white">
+                        <span class="text-amber-400 text-sm font-semibold uppercase tracking-wider mb-2 block">Responsable webmarketing</span>
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">Formation en marketing digital au Togo</h1>
+                        <p class="text-gray-300 text-lg mb-6">La formation Marketing Digital au Togo est axée sur les derniers outils et techniques vous permettant de mieux accompagner la révolution digitale vécue par les entreprises et les consommateurs.</p>
+                        <a href="#" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md font-semibold uppercase inline-block transition transform hover:-translate-y-1">Voir détail</a>
+                    </div>
+                    <div>
+                        <img src="https://ext.same-assets.com/3843800498/486954743.webp" alt="Marketing digital" class="rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide absolute inset-0 w-full h-full flex items-center">
+                <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="text-white">
+                        <span class="text-amber-400 text-sm font-semibold uppercase tracking-wider mb-2 block">E-commerce</span>
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">Formation en création et gestion d'un site E-commerce au Togo</h1>
+                        <p class="text-gray-300 text-lg mb-6">Dans cette formation à distance au Togo, nous vous présentons les principales étapes pour créer et gérer une boutique en ligne et commencer votre commerce électronique au Togo.</p>
+                        <a href="#" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md font-semibold uppercase inline-block transition transform hover:-translate-y-1">Voir détail</a>
+                    </div>
+                    <div>
+                        <img src="https://ext.same-assets.com/3843800498/233311770.webp" alt="E-commerce" class="rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="slide absolute inset-0 w-full h-full flex items-center">
+                <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="text-white">
+                        <span class="text-amber-400 text-sm font-semibold uppercase tracking-wider mb-2 block">La norme ISO 9001 v 2015</span>
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">La mise en place d'un système de management de la qualité ISO 9001 v 2015 au Togo</h1>
+                        <p class="text-gray-300 text-lg mb-6">La qualité au Togo est l'affaire de tous mais surtout de chacun. Cette formation permet de mettre en place un système de management de la qualité en suivant la version 2015 de la norme ISO 9001.</p>
+                        <a href="#" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md font-semibold uppercase inline-block transition transform hover:-translate-y-1">Voir détail</a>
+                    </div>
+                    <div>
+                        <img src="https://ext.same-assets.com/3843800498/1560922886.webp" alt="ISO 9001" class="rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slider Navigation -->
+        <div class="slider-nav absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between px-4">
+            <button class="prev-btn bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md text-white w-12 h-12 rounded-full flex items-center justify-center transition hover:bg-amber-500">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="next-btn bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-md text-white w-12 h-12 rounded-full flex items-center justify-center transition hover:bg-amber-500">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Slider Dots -->
+        <div class="slider-dots absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+            <span class="dot w-3 h-3 rounded-full cursor-pointer active" data-slide="0"></span>
+            <span class="dot w-3 h-3 rounded-full cursor-pointer" data-slide="1"></span>
+            <span class="dot w-3 h-3 rounded-full cursor-pointer" data-slide="2"></span>
+            <span class="dot w-3 h-3 rounded-full cursor-pointer" data-slide="3"></span>
+        </div>
+    </section>
+
+    <!-- Popular Courses Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 relative">
+                <span class="text-amber-500 text-sm font-semibold uppercase tracking-wider mb-2 block">Découvrez les formations</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nos formations populaires</h2>
+                <a href="#" class="absolute top-0 right-0 border-2 border-amber-500 text-amber-500 px-6 py-2 rounded-md font-semibold hover:bg-amber-500 hover:text-white transition hidden md:inline-block">Nos formations</a>
+                <a href="#" class="border-2 border-amber-500 text-amber-500 px-6 py-2 rounded-md font-semibold hover:bg-amber-500 hover:text-white transition inline-block md:hidden mt-4">Nos formations</a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Course 1 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:-translate-y-2">
+                    <div class="course-image h-48 overflow-hidden">
+                        <img src="https://ext.same-assets.com/3843800498/1556320151.webp" alt="ISO 17025" class="w-full h-full object-cover transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-amber-500 transition"><a href="#">La norme ISO / IEC 17025 v 2017</a></h3>
+                        <p class="text-gray-600 mb-4">La mise en place d'un système de management conformément aux exigences de la norme ISO/IEC 17025 version...</p>
+                        <a href="#" class="border-2 border-amber-500 text-amber-500 px-4 py-2 rounded-md font-medium hover:bg-amber-500 hover:text-white transition inline-block">Voir détail</a>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-gray-100">
+                            <span class="text-gray-600 text-sm flex items-center gap-1"><i class="fas fa-clock"></i> 8 jours (24H)</span>
+                            <span class="text-amber-500 font-bold">86000 Fcfa</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:-translate-y-2">
+                    <div class="course-image h-48 overflow-hidden">
+                        <img src="https://ext.same-assets.com/3843800498/1162992347.webp" alt="Outils qualité" class="w-full h-full object-cover transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-amber-500 transition"><a href="#">Les outils avancés de la qualité</a></h3>
+                        <p class="text-gray-600 mb-4">Réussir à améliorer la qualité en interne et/ou en externe et à inscrire durablement son entreprise dans...</p>
+                        <a href="#" class="border-2 border-amber-500 text-amber-500 px-4 py-2 rounded-md font-medium hover:bg-amber-500 hover:text-white transition inline-block">Voir détail</a>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-gray-100">
+                            <span class="text-gray-600 text-sm flex items-center gap-1"><i class="fas fa-clock"></i> 5 jours (15H)</span>
+                            <span class="text-amber-500 font-bold">123000 Fcfa</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition transform hover:-translate-y-2">
+                    <div class="course-image h-48 overflow-hidden">
+                        <img src="https://ext.same-assets.com/3843800498/1635845389.jpeg" alt="Montage vidéo" class="w-full h-full object-cover transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-amber-500 transition"><a href="#">Montage vidéo</a></h3>
+                        <p class="text-gray-600 mb-4">Parce que la réalisation de vidéos est devenue de plus en plus indispensable au fil des années, nous vous...</p>
+                        <a href="#" class="border-2 border-amber-500 text-amber-500 px-4 py-2 rounded-md font-medium hover:bg-amber-500 hover:text-white transition inline-block">Voir détail</a>
+                        <div class="flex justify-between items-center mt-5 pt-4 border-t border-gray-100">
+                            <span class="text-gray-600 text-sm flex items-center gap-1"><i class="fas fa-clock"></i> 3H</span>
+                            <span class="text-amber-500 font-bold">18000 Fcfa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-amber-500 text-sm font-semibold uppercase tracking-wider mb-2 block">Nos catégories</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Les catégories de nos formations</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Category 1 -->
+                <a href="#" class="category-card bg-white p-8 rounded-lg text-center border border-gray-200 hover:border-amber-500 hover:shadow-lg transition transform hover:-translate-y-2">
+                    <div class="category-icon bg-gradient-to-br from-amber-500 to-amber-400 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 transition">
+                        <i class="fas fa-chart-line text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 hover:text-amber-500 transition">Commerce et Marketing</h3>
+                </a>
+                
+                <!-- Category 2 -->
+                <a href="#" class="category-card bg-white p-8 rounded-lg text-center border border-gray-200 hover:border-amber-500 hover:shadow-lg transition transform hover:-translate-y-2">
+                    <div class="category-icon bg-gradient-to-br from-amber-500 to-amber-400 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 transition">
+                        <i class="fas fa-users text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 hover:text-amber-500 transition">GRH et Emploi</h3>
+                </a>
+                
+                <!-- Category 3 -->
+                <a href="#" class="category-card bg-white p-8 rounded-lg text-center border border-gray-200 hover:border-amber-500 hover:shadow-lg transition transform hover:-translate-y-2">
+                    <div class="category-icon bg-gradient-to-br from-amber-500 to-amber-400 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 transition">
+                        <i class="fas fa-calculator text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 hover:text-amber-500 transition">Gestion et Comptabilité</h3>
+                </a>
+                
+                <!-- Category 4 -->
+                <a href="#" class="category-card bg-white p-8 rounded-lg text-center border border-gray-200 hover:border-amber-500 hover:shadow-lg transition transform hover:-translate-y-2">
+                    <div class="category-icon bg-gradient-to-br from-amber-500 to-amber-400 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 transition">
+                        <i class="fas fa-laptop-code text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 hover:text-amber-500 transition">Informatique</h3>
+                </a>
+                
+                <!-- Category 5 -->
+                <a href="#" class="category-card bg-white p-8 rounded-lg text-center border border-gray-200 hover:border-amber-500 hover:shadow-lg transition transform hover:-translate-y-2">
+                    <div class="category-icon bg-gradient-to-br from-amber-500 to-amber-400 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 transition">
+                        <i class="fas fa-truck text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 hover:text-amber-500 transition">Logistique</h3>
+                </a>
+                
+                <!-- Category 6 -->
+                <a href="#" class="category-card bg-white p-8 rounded-lg text-center border border-gray-200 hover:border-amber-500 hover:shadow-lg transition transform hover:-translate-y-2">
+                    <div class="category-icon bg-gradient-to-br from-amber-500 to-amber-400 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 transition">
+                        <i class="fas fa-award text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 hover:text-amber-500 transition">Qualité et Management</h3>
+                </a>
+                
+                <!-- Category 7 -->
+                <a href="#" class="category-card bg-white p-8 rounded-lg text-center border border-gray-200 hover:border-amber-500 hover:shadow-lg transition transform hover:-translate-y-2">
+                    <div class="category-icon bg-gradient-to-br from-amber-500 to-amber-400 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 transition">
+                        <i class="fas fa-heartbeat text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 hover:text-amber-500 transition">Santé</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="stat-item p-5">
+                    <div class="stat-number text-4xl md:text-5xl font-bold text-amber-500 mb-2">8,483</div>
+                    <div class="stat-label text-gray-300 font-medium">Formateurs experts</div>
+                </div>
+                <div class="stat-item p-5">
+                    <div class="stat-number text-4xl md:text-5xl font-bold text-amber-500 mb-2">838,182</div>
+                    <div class="stat-label text-gray-300 font-medium">Total Courses</div>
+                </div>
+                <div class="stat-item p-5">
+                    <div class="stat-number text-4xl md:text-5xl font-bold text-amber-500 mb-2">81,828,485</div>
+                    <div class="stat-label text-gray-300 font-medium">Étudiants heureux</div>
+                </div>
+                <div class="stat-item p-5">
+                    <div class="stat-number text-4xl md:text-5xl font-bold text-amber-500 mb-2">818,582</div>
+                    <div class="stat-label text-gray-300 font-medium">Webinaires</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://ext.same-assets.com/3843800498/172597513.webp" alt="ISA Academy" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div>
+                    <span class="text-amber-500 text-sm font-semibold uppercase tracking-wider mb-2 block">International Skills Academy au Togo</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">Apprenez de nouvelles compétences pour poursuivre votre carrière</h2>
+                    <h6 class="text-lg font-semibold text-amber-500 mb-6">Nous pouvons offrir des formations dans plusieurs domaines de compétences pour les étudiants nationaux et internationaux.</h6>
+                    <p class="text-gray-600 mb-4 leading-relaxed">La formation professionnelle à distance au Togo est devenue indispensable tant pour les personnes en quête de travail que pour le personnel en poste. Notre organisme de formation est une structure ayant pour mission de dispenser ses formations à distance et d'apporter aux apprenants de nouvelles compétences et connaissances au Togo.</p>
+                    <h5 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Nous vous proposons bien plus que des savoirs</h5>
+                    <p class="text-gray-600 leading-relaxed">Engagé à vos côtés, nos experts partagent une connaissance profonde de vos enjeux, de vos métiers et de vos besoins. Formation clé en main ou sur mesure à distance, projets internationaux ou conseils opérationnels, nous sommes là pour créer et déployer avec vous la solution la plus compétitive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Nos Partenaires</h2>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <div class="partner-logo bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
+                    <img src="https://ext.same-assets.com/3843800498/497652467.png" alt="Partner" class="h-12 opacity-70 hover:opacity-100 transition" style="height: 60px;">
+                </div>
+                <div class="partner-logo bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
+                    <img src="https://ext.same-assets.com/3843800498/1603704986.png" alt="Partner" class="h-12 opacity-70 hover:opacity-100 transition" style="height: 60px;">
+                </div>
+                <div class="partner-logo bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
+                    <img src="https://ext.same-assets.com/3843800498/497652467.png" alt="Partner" class="h-12 opacity-70 hover:opacity-100 transition" style="height: 60px;">
+                </div>
+                <div class="partner-logo bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
+                    <img src="https://ext.same-assets.com/3843800498/1603704986.png" alt="Partner" class="h-12 opacity-70 hover:opacity-100 transition" style="height: 60px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-white max-w-4xl mx-auto leading-tight">En apprenant ensemble, nous réalisons de grandes ambitions.</h2>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-900 bg-opacity-90 relative" style="background-image: url('https://ext.same-assets.com/3843800498/3333245934.webp'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-90"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold text-white mb-8">Formulaire de contact rapide</h3>
+                    <form class="contact-form space-y-4">
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre nom" class="w-full px-4 py-3 rounded bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:border-amber-500 focus:bg-opacity-15 transition" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" class="w-full px-4 py-3 rounded bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:border-amber-500 focus:bg-opacity-15 transition" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Votre téléphone" class="w-full px-4 py-3 rounded bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:border-amber-500 focus:bg-opacity-15 transition" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Votre message" rows="5" class="w-full px-4 py-3 rounded bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-70 focus:outline-none focus:border-amber-500 focus:bg-opacity-15 transition" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md font-semibold uppercase transition">Envoyer</button>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold text-white mb-8">Nous contacter</h3>
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-map-marker-alt text-amber-500 mt-1"></i>
+                            <p class="text-white">Av. Palestine Lot. Ratma N°6, Daoudiate. 40000 Marrakech - Maroc</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-phone text-amber-500 mt-1"></i>
+                            <div class="space-y-1">
+                                <a href="tel:+212668580485" class="block text-white hover:text-amber-400 transition">+212 668 580 485</a>
+                                <a href="tel:+212808558581" class="block text-white hover:text-amber-400 transition">+212 808 558 581</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-envelope text-amber-500 mt-1"></i>
+                            <a href="mailto:contact@isaworld.net" class="text-white hover:text-amber-400 transition">contact@isaworld.net</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition transform hover:-translate-y-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition transform hover:-translate-y-1">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition transform hover:-translate-y-1">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center text-white hover:bg-amber-500 hover:text-white transition transform hover:-translate-y-1">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="footer-section">
+                    <img src="https://ext.same-assets.com/3843800498/2769670788.svg" alt="ISA Logo" class="h-12 mb-6">
+                    <div class="payment-methods">
+                        <img src="https://ext.same-assets.com/3843800498/1346687299.webp" alt="Payment methods" class="max-w-[200px] opacity-70">
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="text-lg font-semibold text-amber-500 mb-4">Menu</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Accueil</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Nos Formations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Webinaires</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">A propos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="text-lg font-semibold text-amber-500 mb-4">Liens utiles</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Conditions Générales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Espace membres</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-400 transition">Mots clés</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="text-lg font-semibold text-amber-500 mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Pour recevoir les dernières nouvelles..</p>
+                    <form class="newsletter-form flex gap-2">
+                        <input type="email" placeholder="Votre adresse email" class="flex-1 px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition">
+                        <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="countries-list mb-6">
+                    <p class="text-gray-500 mb-2 leading-relaxed">
+                        <strong class="text-gray-400">Afrique:</strong>
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Algérie</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Burkina Faso</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Bénin</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Cameroun</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Congo</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Congo (RDC)</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Côte d'Ivoire</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Gabon</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Ghana</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Guinée Conakry</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Guinée équatoriale</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Mali</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Maroc</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Mauritanie</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Niger</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Rép. centrafricaine</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Sénégal</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Tchad</a> | 
+                        <a href="#" class="text-amber-400 hover:text-amber-300 transition">Togo</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Tunisie</a>
+                    </p>
+                    <p class="text-gray-500 mb-2 leading-relaxed">
+                        <strong class="text-gray-400">Europe:</strong>
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Belgique</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">France</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Luxembourg</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Monaco</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Suisse</a>
+                    </p>
+                    <p class="text-gray-500 leading-relaxed">
+                        <strong class="text-gray-400">Monde:</strong>
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Canada</a> | 
+                        <a href="#" class="text-gray-400 hover:text-amber-400 transition">Monde</a>
+                    </p>
+                </div>
+                
+                <div class="copyright text-center text-gray-500 text-sm">
+                    <p>2022 <a href="#" class="text-amber-400 hover:text-amber-300 transition">International Skills Academy</a> | Tous les droits sont réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('open');
+                });
+            }
+            
+            // Country Modal
+            const countryBtn = document.getElementById('countryBtn');
+            const countryModal = document.getElementById('countryModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            if (countryBtn && countryModal) {
+                countryBtn.addEventListener('click', function() {
+                    countryModal.classList.add('active');
+                });
+            }
+            
+            if (closeModal && countryModal) {
+                closeModal.addEventListener('click', function() {
+                    countryModal.classList.remove('active');
+                });
+            }
+            
+            // Close modal when clicking outside
+            if (countryModal) {
+                countryModal.addEventListener('click', function(e) {
+                    if (e.target === countryModal) {
+                        countryModal.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && countryModal && countryModal.classList.contains('active')) {
+                    countryModal.classList.remove('active');
+                }
+            });
+            
+            // Slider Functionality
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const totalSlides = slides.length;
+            let autoPlayInterval;
+            
+            function goToSlide(index) {
+                // Reset all slides and dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Activate current slide and dot
+                if (slides[index]) slides[index].classList.add('active');
+                if (dots[index]) dots[index].classList.add('active');
+                
+                currentSlide = index;
+            }
+            
+            function nextSlide() {
+                const nextIndex = (currentSlide + 1) % totalSlides;
+                goToSlide(nextIndex);
+            }
+            
+            function prevSlide() {
+                const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+                goToSlide(prevIndex);
+            }
+            
+            function startAutoPlay() {
+                stopAutoPlay();
+                autoPlayInterval = setInterval(nextSlide, 5000);
+            }
+            
+            function stopAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                }
+            }
+            
+            // Initialize slider
+            if (slides.length > 0) {
+                // Navigation buttons
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+                
+                if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+                if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+                
+                // Dot navigation
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => goToSlide(index));
+                });
+                
+                // Pause on hover
+                const sliderContainer = document.querySelector('.hero-slider');
+                if (sliderContainer) {
+                    sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+                    sliderContainer.addEventListener('mouseleave', startAutoPlay);
+                }
+                
+                // Start autoplay
+                startAutoPlay();
+            }
+            
+            // Stats Counter Animation
+            const statNumbers = document.querySelectorAll('.stat-number');
+            let countAnimationTriggered = false;
+            
+            function animateCount(element, target, duration = 2000) {
+                let start = 0;
+                const startTime = performance.now();
+                
+                function updateCount(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Easing function for smooth animation
+                    const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(start + (target - start) * easeOutCubic);
+                    
+                    element.textContent = current.toLocaleString();
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        element.textContent = target.toLocaleString();
+                    }
+                }
+                
+                requestAnimationFrame(updateCount);
+            }
+            
+            // Intersection Observer for stats animation
+            if ('IntersectionObserver' in window) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !countAnimationTriggered) {
+                            countAnimationTriggered = true;
+                            
+                            statNumbers.forEach(stat => {
+                                const target = parseInt(stat.textContent.replace(/,/g, '') || '0');
+                                stat.textContent = '0';
+                                animateCount(stat, target);
+                            });
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                const statsSection = document.querySelector('.stats-section');
+                if (statsSection) {
+                    statsObserver.observe(statsSection);
+                }
+            }
+            
+            // Form Handling
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    let isValid = true;
+                    const requiredFields = this.querySelectorAll('[required]');
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.classList.add('border-red-500');
+                        } else {
+                            field.classList.remove('border-red-500');
+                        }
+                    });
+                    
+                    if (isValid) {
+                        showNotification('Message envoyé avec succès!', 'success');
+                        this.reset();
+                    } else {
+                        showNotification('Veuillez remplir tous les champs requis.', 'error');
+                    }
+                });
+            }
+            
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    
+                    if (emailInput && emailInput.value.trim() && isValidEmail(emailInput.value)) {
+                        showNotification('Inscription réussie à la newsletter!', 'success');
+                        this.reset();
+                    } else {
+                        showNotification('Veuillez entrer une adresse email valide.', 'error');
+                    }
+                });
+            }
+            
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Notification System
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.className = `notification fixed top-5 right-5 px-6 py-3 rounded-md font-semibold z-50 ${
+                    type === 'success' ? 'bg-green-500' : 'bg-red-500'
+                } text-white shadow-lg`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                // Show animation
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 100);
+                
+                // Hide after 4 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }, 4000);
+            }
+            
+            // Smooth Scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Page Loader
+            window.addEventListener('load', function() {
+                const loader = document.createElement('div');
+                loader.className = 'fixed inset-0 bg-gray-900 flex items-center justify-center z-50 transition-opacity duration-500';
+                loader.innerHTML = `
+                    <div class="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+                `;
+                
+                document.body.appendChild(loader);
+                
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.remove();
+                    }, 500);
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

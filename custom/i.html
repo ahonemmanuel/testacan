@@ -21,6 +21,14 @@
             --primary-hover: #4630c7;
         }
         
+        /* Reset des marges et padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
         /* Navbar Styles */
         .navbar-area {
             position: absolute;
@@ -83,16 +91,68 @@
             transform: translateY(-3px);
         }
         
+        /* Style pour le menu mobile */
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        .sticky .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Menu déroulant mobile */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background-color: white;
+                padding: 20px;
+                border-radius: 5px;
+                margin-top: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .navbar-light .navbar-nav .nav-link {
+                color: #333 !important;
+                padding: 10px 0;
+            }
+            
+            .navbar-light .navbar-nav .nav-link.active {
+                color: var(--primary-color) !important;
+            }
+            
+            .ms-3 {
+                margin-left: 0 !important;
+                margin-top: 15px;
+            }
+        }
+        
         /* Slider Styles */
         .main-slider {
             position: relative;
             height: 100vh;
+            width: 100%;
             z-index: 1;
+            overflow: hidden;
+        }
+        
+        .main-slider .owl-stage-outer,
+        .main-slider .owl-stage,
+        .main-slider .owl-item {
+            height: 100%;
         }
         
         .main-slider-item {
             position: relative;
             height: 100vh;
+            width: 100%;
         }
         
         .main-slider-image {
@@ -102,6 +162,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            overflow: hidden;
         }
         
         .main-slider-image img {
@@ -200,12 +261,13 @@
     <!-- Navbar -->
     <div class="navbar-area">
         <div class="container">
+            
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand " href="#">
-                        <img src="logo.png" alt="ISA World" style="height:50px ; width: ;">
+                    <a class="navbar-brand" href="#">
+                        <img src="https://www.isaworld.net/assets/img/logo.png" alt="ISA World" style="height: 50px;">
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     
@@ -275,7 +337,6 @@
             </div>
         </div>
         
-        <!-- Nouveau troisième slide -->
         <div class="main-slider-item">
             <div class="main-slider-image">
                 <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Formation en ligne">
