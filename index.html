@@ -18,6 +18,535 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     
     <style>
+        /* Categories Section */
+.categories-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.categories-section .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.categories-section .section-subtitle {
+    display: block;
+    font-size: 18px;
+    color: #4a90e2;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.categories-section h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.category-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: #f0f7ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+    background: #4a90e2;
+    color: #fff;
+}
+
+.category-icon i {
+    font-size: 32px;
+    color: #4a90e2;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover .category-icon i {
+    color: #fff;
+}
+
+.category-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .categories-section {
+        padding: 60px 0;
+    }
+    
+    .categories-section h2 {
+        font-size: 28px;
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-card {
+        padding: 25px 15px;
+    }
+    
+    .category-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .category-icon i {
+        font-size: 28px;
+    }
+    
+    .category-card h3 {
+        font-size: 18px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Stats Section */
+.stats-section {
+  padding: 80px 0;
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.stat-item {
+  padding: 20px;
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  transition: all 1s ease-out;
+}
+
+.stat-label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* About Section */
+.about-section {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.about-images {
+  flex: 1;
+}
+
+.about-main-img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text .section-subtitle {
+  display: block;
+  font-size: 18px;
+  color: #4a90e2;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.about-text h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.about-text h6 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.about-text p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.about-text h5 {
+  font-size: 20px;
+  color: #333;
+  margin: 30px 0 15px;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .about-content {
+    flex-direction: column;
+  }
+  
+  .about-images, 
+  .about-text {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-section,
+  .about-section {
+    padding: 60px 0;
+  }
+  
+  .stat-number {
+    font-size: 36px;
+  }
+  
+  .stat-label {
+    font-size: 16px;
+  }
+  
+  .about-text h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-item {
+    padding: 15px 0;
+  }
+  
+  .about-text .section-subtitle {
+    font-size: 16px;
+  }
+  
+  .about-text h2 {
+    font-size: 24px;
+  margin-bottom: 15px;
+  }
+  
+  .about-text h6 {
+    font-size: 16px;
+  }
+  
+  .about-text p {
+    font-size: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Contact Section */
+.contact-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.contact-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-form-area, 
+.contact-info-area {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form-area h3,
+.contact-info-area h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.contact-item i {
+    color: #3498db;
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.contact-item a {
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: #3498db;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #2980b9;
+}
+
+/* Footer */
+.footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-logo {
+    max-width: 180px;
+    margin-bottom: 20px;
+}
+
+.payment-methods img {
+    max-width: 200px;
+    height: auto;
+}
+
+.footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+.footer-section p {
+    color: #bdc3c7;
+    margin-bottom: 15px;
+}
+
+.newsletter-form {
+    display: flex;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+}
+
+.newsletter-form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.newsletter-form button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-content,
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .contact-form-area,
+    .contact-info-area,
+    .footer-section {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
         /* Custom styles that complement Tailwind */
         :root {
             --primary-color: #1a1c26;
@@ -316,15 +845,15 @@
             <div class="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6">
                 <span class="flex items-center gap-2">
                     <i class="fas fa-phone text-amber-500"></i>
-                    <a href="tel:+212668580485" class="hover:text-amber-400 transition">+212 668 580 485</a>
+                    <a href="" class="hover:text-amber-400 transition">+28898177380</a>
                 </span>
                 <span class="flex items-center gap-2">
                     <i class="fab fa-whatsapp text-amber-500"></i>
-                    <a href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22" class="hover:text-amber-400 transition">WhatsApp</a>
+                    <a href="https://api.whatsapp.com/send/?phone=+28898177380&text=%22Salut%22" class="hover:text-amber-400 transition">WhatsApp</a>
                 </span>
                 <span class="flex items-center gap-2">
                     <i class="fas fa-envelope text-amber-500"></i>
-                    <a href="mailto:contact@isaworld.net" class="hover:text-amber-400 transition">Email</a>
+                    <a href="emmanuelahonsu@gmail.com" class="hover:text-amber-400 transition">Email</a>
                 </span>
             </div>
             <div>
@@ -456,7 +985,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- Slide 4 -->
             <div class="slide absolute inset-0 w-full h-full">
                 <div class="slide-content">
@@ -471,7 +999,6 @@
                 </div>
             </div>
         </div>
-        
         <!-- Slider Dots -->
         <div class="slider-dots absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
             <span class="dot w-3 h-3 rounded-full cursor-pointer active" data-slide="0"></span>
@@ -591,6 +1118,258 @@
         </div>
     </div>
 </section>
+
+   <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Nos catégories</span>
+                <h2>Les catégories de nos formations</h2>
+            </div>
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Commerce et Marketing</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>GRH et Emploi</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Gestion et Comptabilité</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Informatique</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Logistique</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Qualité et Management</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Santé</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+     <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="8483">0</div>
+                    <div class="stat-label">Formateurs experts</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="838182">0</div>
+                    <div class="stat-label">Total Courses</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="81828485">0</div>
+                    <div class="stat-label">Étudiants heureux</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="818582">0</div>
+                    <div class="stat-label">Webinaires</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-images">
+                    <img src="https://ext.same-assets.com/3843800498/172597513.webp" alt="ISA Academy" class="about-main-img">
+                </div>
+                <div class="about-text">
+                    <span class="section-subtitle">International Skills Academy au Togo</span>
+                    <h2>Apprenez de nouvelles compétences pour poursuivre votre carrière</h2>
+                    <h6>Nous pouvons offrir des formations dans plusieurs domaines de compétences pour les étudiants nationaux et internationaux.</h6>
+                    <p>La formation professionnelle à distance au Togo est devenue indispensable tant pour les personnes en quête de travail que pour le personnel en poste. Notre organisme de formation est une structure ayant pour mission de dispenser ses formations à distance et d'apporter aux apprenants de nouvelles compétences et connaissances au Togo.</p>
+                    <h5>Nous vous proposons bien plus que des savoirs</h5>
+                    <p>Engagé à vos côtés, nos experts partagent une connaissance profonde de vos enjeux, de vos métiers et de vos besoins. Formation clé en main ou sur mesure à distance, projets internationaux ou conseils opérationnels, nous sommes là pour créer et déployer avec vous la solution la plus compétitive.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+      <!-- Partners -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Nos Partenaires</h2>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md"> <img
+                        src="https://www.isaworld.net/imgs/partenaires/big/010534_3.png" alt="McGill"
+                        class="h-16 object-contain"> </div>
+                <div class="bg-white p-6 rounded-lg shadow-md"> <img
+                        src="https://www.isaworld.net/imgs/partenaires/big/051957_qmp.png" alt="QMP Management"
+                        class="h-16 object-contain"> </div>
+            </div>
+        </div>
+    </section> 
+    <!-- Contact Form -->
+    <section class="py-16 bg-blue-600 text-white"
+        style="background-image: url('https://www.isaworld.net/assets/img/map.png'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap -mx-4 items-center">
+                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4">En apprenant ensemble, nous réalisons de grandes ambitions.</h2>
+                    <p class="text-blue-100">Contactez-nous pour plus d'informations sur nos formations et programmes.
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2 px-4">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800">
+                        <h3 class="text-xl font-bold mb-6">Formulaire de contact rapide</h3>
+                        <form>
+                            <div class="mb-4"> <input type="text" placeholder="Votre Nom"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="flex flex-wrap -mx-2 mb-4">
+                                <div class="w-full md:w-1/2 px-2 mb-4 md:mb-0"> <input type="email"
+                                        placeholder="Votre Adresse Email*"
+                                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="w-full md:w-1/2 px-2"> <input type="text" placeholder="Votre téléphone*"
+                                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </div>
+                            <div class="mb-4"> <textarea placeholder="Votre message (Optionnel)" rows="4"
+                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div> <button type="submit"
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition">
+                                <i class="fas fa-paper-plane mr-2"></i> Envoyer </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+       <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-form-area">
+                    <h3>Formulaire de contact rapide</h3>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Votre téléphone" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Votre message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Envoyer</button>
+                    </form>
+                </div>
+                <div class="contact-info-area">
+                    <h3>Nous contacter</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Av. Palestine Lot. Ratma N°6, Daoudiate. 40000 Marrakech - Maroc</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <a href="tel:+212668580485">+212 668 580 485</a>
+                                <a href="tel:+212808558581">+212 808 558 581</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:contact@isaworld.net">contact@isaworld.net</a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./custom/logo.png" alt="ISA Logo" class="footer-logo">
+                    <div class="payment-methods">
+                        <img src="https://ext.same-assets.com/3843800498/1346687299.webp" alt="Payment methods">
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Nos Formations</a></li>
+                        <li><a href="#">Webinaires</a></li>
+                        <li><a href="#">A propos</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens utiles</h4>
+                    <ul>
+                        <li><a href="#">Conditions Générales</a></li>
+                        <li><a href="#">Espace membres</a></li>
+                        <li><a href="#">Mots clés</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Pour recevoir les dernières nouvelles..</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre adresse email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
 
     <!-- Bouton retour en haut - TAILLE AUGMENTÉE -->
     <div class="back-to-top">

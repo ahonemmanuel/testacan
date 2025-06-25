@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Magazine | Blog Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for enhancements */
+        .article-content p {
+            @apply mb-4 text-lg leading-relaxed;
+        }
+        
+        .article-content h2 {
+            @apply text-3xl font-bold mt-10 mb-6 text-gray-800;
+        }
+        
+        .article-content img {
+            @apply w-full h-auto rounded-lg my-8 shadow-lg;
+        }
+        
+        .highlight-quote {
+            @apply border-l-4 border-blue-500 pl-6 py-2 my-8 italic text-xl text-gray-700 bg-blue-50 rounded-r;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            @apply bg-gray-100;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            @apply bg-blue-400 rounded-full;
+        }
+        
+        /* Animation for share buttons */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .share-btn:hover {
+            animation: pulse 0.5s ease-in-out;
+        }
+        
+        /* Dark mode toggle transition */
+        .dark-mode-transition {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark-mode-transition">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 dark:bg-gray-800 dark:text-white dark-mode-transition">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <button id="menuBtn" class="md:hidden text-gray-600 dark:text-gray-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">Mag<span class="text-gray-800 dark:text-white">Read</span></a>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Accueil</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Catégories</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Magazines</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">À propos</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="darkModeToggle" class="text-gray-600 dark:text-yellow-300">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">
+                    S'abonner
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg absolute w-full left-0 px-4 py-2">
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Accueil</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Catégories</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Magazines</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">À propos</a>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="container mx-auto px-4 py-8 flex flex-col lg:flex-row dark:text-gray-200">
+        <!-- Main Article -->
+        <article class="lg:w-2/3 lg:pr-8">
+            <!-- Article Header -->
+            <div class="mb-8">
+                <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium dark:bg-blue-900 dark:text-blue-200">Technologie</span>
+                    <span class="mx-2">•</span>
+                    <span>Publié le 15 juin 2023</span>
+                    <span class="mx-2">•</span>
+                    <span>10 min de lecture</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">L'avenir de l'IA dans la création de contenu : Révolution ou menace ?</h1>
+                
+                <div class="flex items-center mb-8">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Auteur" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <p class="font-medium text-gray-900 dark:text-white">Sophie Martin</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Rédactrice en chef, TechMag</p>
+                    </div>
+                </div>
+                
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Image principale" class="w-full h-auto rounded-xl shadow-lg mb-8">
+                
+                <div class="flex justify-between items-center border-b border-t border-gray-200 dark:border-gray-700 py-4">
+                    <div class="flex space-x-2">
+                        <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                            <i class="far fa-heart"></i> <span class="ml-1">245</span>
+                        </button>
+                        <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 ml-4">
+                            <i class="far fa-comment"></i> <span class="ml-1">32</span>
+                        </button>
+                    </div>
+                    <div class="flex space-x-3">
+                        <button class="share-btn text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                        <button class="share-btn text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                            <i class="fab fa-facebook"></i>
+                        </button>
+                        <button class="share-btn text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                            <i class="fab fa-linkedin"></i>
+                        </button>
+                        <button class="share-btn text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Article Content -->
+            <div class="article-content text-gray-700 dark:text-gray-300">
+                <p class="text-xl font-medium mb-8">L'intelligence artificielle transforme radicalement le paysage de la création de contenu, mais cette évolution soulève des questions cruciales sur l'originalité, l'authenticité et l'avenir des créateurs humains.</p>
+                
+                <h2>L'essor des outils de création IA</h2>
+                
+                <p>Ces dernières années, nous avons assisté à une explosion des outils d'IA capables de générer du texte, des images, de la musique et même des vidéos. Des plateformes comme ChatGPT, MidJourney ou DALL-E permettent désormais à quiconque de produire du contenu en quelques secondes.</p>
+                
+                <img src="https://images.unsplash.com/photo-1677442135137-cbe2a4c5af0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="IA créative">
+                
+                <p>Selon une récente étude de McKinsey, 65% des entreprises utilisent déjà des outils d'IA pour au moins une partie de leur production de contenu. Cette adoption massive s'explique par des gains de productivité pouvant atteindre 80% pour certaines tâches répétitives.</p>
+                
+                <div class="highlight-quote dark:bg-gray-700 dark:border-blue-400">
+                    "L'IA ne remplacera pas les créateurs humains, mais les créateurs qui utilisent l'IA remplaceront ceux qui ne le font pas." - David Smith, expert en créativité numérique
+                </div>
+                
+                <h2>Les avantages incontestables</h2>
+                
+                <p>Les bénéfices de l'IA dans la création de contenu sont multiples :</p>
+                
+                <ul class="list-disc pl-8 mb-6 space-y-2">
+                    <li><strong>Productivité accrue</strong> : Génération rapide de premières ébauches</li>
+                    <li><strong>Accessibilité</strong> : Permet à des non-experts de créer du contenu de qualité</li>
+                    <li><strong>Personnalisation</strong> : Adaptation du contenu à différents publics</li>
+                    <li><strong>Coûts réduits</strong> : Diminution des budgets de création</li>
+                </ul>
+                
+                <h2>Les défis et limites</h2>
+                
+                <p>Cependant, cette révolution technologique ne va pas sans poser problème :</p>
+                
+                <img src="https://images.unsplash.com/photo-1677442135453-7a3d00e7f0c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Défis IA">
+                
+                <p>Les principaux écueils incluent le manque d'originalité (avec des contenus souvent similaires), les problèmes de copyright (l'IA s'entraînant sur des œuvres existantes), et la perte de la "touche humaine" si chère aux lecteurs.</p>
+                
+                <h2>L'avenir : collaboration plutôt que substitution</h2>
+                
+                <p>Les experts s'accordent à dire que l'avenir réside dans une collaboration homme-machine. L'IA excelle pour la génération rapide d'idées et de contenus basiques, tandis que les humains apportent la nuance, l'émotion et la profondeur d'analyse.</p>
+                
+                <p>Les créateurs qui réussiront demain seront ceux qui sauront intégrer l'IA dans leur processus créatif tout en préservant leur voix unique et leur authenticité.</p>
+                
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-6 my-8">
+                    <h3 class="text-xl font-bold mb-4 dark:text-white">Points clés à retenir</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full p-1 mr-3">
+                                <i class="fas fa-check text-xs"></i>
+                            </span>
+                            <span>L'IA est un outil, pas un remplacement</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full p-1 mr-3">
+                                <i class="fas fa-check text-xs"></i>
+                            </span>
+                            <span>La créativité humaine reste irremplaçable</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full p-1 mr-3">
+                                <i class="fas fa-check text-xs"></i>
+                            </span>
+                            <span>L'éthique et le copyright sont des défis majeurs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full p-1 mr-3">
+                                <i class="fas fa-check text-xs"></i>
+                            </span>
+                            <span>L'hybridation homme-machine est la voie du futur</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <h2>Conclusion</h2>
+                
+                <p>L'IA dans la création de contenu est une révolution en marche, mais loin d'être une menace pour les créateurs humains, elle représente une opportunité sans précédent d'augmenter nos capacités créatives. À condition, bien sûr, de l'utiliser avec discernement et éthique.</p>
+                
+                <p>Comme pour toute technologie disruptive, c'est à nous, humains, de fixer les limites et de guider son développement vers des usages qui enrichissent plutôt qu'ils n'appauvrissent la création.</p>
+            </div>
+            
+            <!-- Article Footer -->
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap items-center justify-between mb-6">
+                    <div class="flex space-x-2">
+                        <span class="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm">IA</span>
+                        <span class="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm">Technologie</span>
+                        <span class="bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm">Futur</span>
+                    </div>
+                    <div class="flex space-x-4 mt-4 md:mt-0">
+                        <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                            <i class="far fa-bookmark"></i> Sauvegarder
+                        </button>
+                        <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                            <i class="fas fa-print"></i> Imprimer
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <button class="flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                        <i class="fas fa-arrow-left mr-2"></i> Article précédent
+                    </button>
+                    <button class="flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                        Article suivant <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Comments Section -->
+            <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                <h3 class="text-2xl font-bold mb-6 dark:text-white">Commentaires (32)</h3>
+                
+                <div class="mb-8">
+                    <div class="flex items-start mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Utilisateur" class="w-10 h-10 rounded-full mr-4">
+                        <div class="flex-1">
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium dark:text-white">Jean Dupont</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Il y a 2 heures</span>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300">Excellent article qui pose les bonnes questions. Je pense que l'IA va effectivement transformer notre métier, mais comme vous le dites, c'est une opportunité à saisir.</p>
+                                <div class="flex space-x-4 mt-3 text-sm">
+                                    <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                                        <i class="far fa-thumbs-up"></i> 12
+                                    </button>
+                                    <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                                        <i class="far fa-thumbs-down"></i> 2
+                                    </button>
+                                    <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                                        Répondre
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Reply -->
+                            <div class="flex items-start mt-4 ml-12">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Auteur" class="w-8 h-8 rounded-full mr-3">
+                                <div class="bg-blue-50 dark:bg-gray-600 rounded-xl p-4 flex-1">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium dark:text-white">Sophie Martin <span class="text-blue-600 dark:text-blue-400 text-xs bg-blue-100 dark:bg-blue-900 px-2 py-0.5 rounded">AUTEUR</span></span>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400">Il y a 1 heure</span>
+                                    </div>
+                                    <p class="text-gray-700 dark:text-gray-300">Merci Jean pour votre commentaire ! Je partage votre optimisme, à condition que nous gardions le contrôle sur ces outils.</p>
+                                    <div class="flex space-x-4 mt-3 text-sm">
+                                        <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                                            <i class="far fa-thumbs-up"></i> 5
+                                        </button>
+                                        <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                                            <i class="far fa-thumbs-down"></i> 0
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Utilisateur" class="w-10 h-10 rounded-full mr-4">
+                        <div class="flex-1">
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium dark:text-white">Marie Leroy</span>
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Hier</span>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300">En tant qu'artiste, je trouve que l'IA pose de réels problèmes éthiques. Beaucoup de ces outils sont entraînés sur des œuvres protégées sans le consentement des créateurs.</p>
+                                <div class="flex space-x-4 mt-3 text-sm">
+                                    <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                                        <i class="far fa-thumbs-up"></i> 24
+                                    </button>
+                                    <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                                        <i class="far fa-thumbs-down"></i> 3
+                                    </button>
+                                    <button class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                                        Répondre
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-6">
+                    <h4 class="text-lg font-medium mb-4 dark:text-white">Ajouter un commentaire</h4>
+                    <textarea class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white mb-4" rows="4" placeholder="Votre commentaire..."></textarea>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Profil" class="w-8 h-8 rounded-full mr-2">
+                            <span class="text-sm dark:text-gray-300">Connecté en tant que Pierre Durand</span>
+                        </div>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Publier</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Sidebar -->
+        <aside class="lg:w-1/3 mt-8 lg:mt-0">
+            <!-- Author Bio -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-8">
+                <div class="flex items-center mb-4">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Auteur" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h3 class="font-bold text-lg dark:text-white">Sophie Martin</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Rédactrice en chef, TechMag</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 mb-4">Journaliste spécialisée en technologie et innovation depuis 10 ans. Passionnée par l'impact des nouvelles technologies sur la société et les métiers créatifs.</p>
+                <div class="flex space-x-3">
+                    <a href="#" class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="bg-blue-50 dark:bg-gray-700 rounded-xl p-6 mb-8">
+                <h3 class="text-xl font-bold mb-3 dark:text-white">Abonnez-vous à notre newsletter</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-4">Recevez chaque semaine les derniers articles et analyses directement dans votre boîte mail.</p>
+                <form class="space-y-3">
+                    <input type="email" placeholder="Votre email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
+                    <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">S'abonner</button>
+                </form>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Nous ne partagerons jamais votre email. Désabonnez-vous à tout moment.</p>
+            </div>
+            
+            <!-- Trending Articles -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-8">
+                <h3 class="text-xl font-bold mb-4 dark:text-white">Articles tendances</h3>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="Article" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-blue-600 dark:text-blue-400">TECHNOLOGIE</span>
+                            <h4 class="font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><a href="#">Comment les GPT-4 changent le paysage du SEO</a></h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">12 juin 2023 • 8 min</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="Article" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-green-600 dark:text-green-400">ENVIRONNEMENT</span>
+                            <h4 class="font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><a href="#">Les villes intelligentes de demain : mythe ou réalité ?</a></h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">5 juin 2023 • 12 min</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="Article" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-purple-600 dark:text-purple-400">INNOVATION</span>
+                            <h4 class="font-medium text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><a href="#">La réalité augmentée dans l'éducation : révolution pédagogique</a></h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">29 mai 2023 • 15 min</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="inline-block mt-4 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium">Voir plus d'articles <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <!-- Magazine Issue -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+                <div class="relative rounded-lg overflow-hidden mb-4">
+                    <img src="https://images.unsplash.com/photo-1624996752380-8ec242e0f523?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Magazine" class="w-full h-auto">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                        <span class="text-xs font-medium text-white">DERNIER NUMÉRO</span>
+                        <h3 class="text-xl font-bold text-white">TechMag #147</h3>
+                    </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 mb-4">Notre dernier numéro explore en profondeur l'impact de l'IA générative sur les industries créatives, avec des interviews exclusives et des analyses pointues.</p>
+                <button class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center justify-center">
+                    <i class="fas fa-book-open mr-2"></i> Lire le magazine
+                </button>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Related Articles -->
+    <section class="bg-gray-100 dark:bg-gray-800 py-12 dark-mode-transition">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 dark:text-white">Articles similaires</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="bg-white dark:bg-gray-700 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="Article" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-xs font-medium text-blue-600 dark:text-blue-400">TECHNOLOGIE</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">8 min</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><a href="#">Les limites éthiques de l'IA générative</a></h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">Exploration des dilemmes moraux posés par les IA créatives et comment les résoudre.</p>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Auteur" class="w-6 h-6 rounded-full mr-2">
+                            <span>Paul Lefèvre</span>
+                            <span class="mx-2">•</span>
+                            <span>12 juin 2023</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="bg-white dark:bg-gray-700 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="Article" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-xs font-medium text-purple-600 dark:text-purple-400">DÉVELOPPEMENT</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">10 min</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><a href="#">Comment intégrer l'IA dans votre workflow créatif</a></h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">Guide pratique pour les créateurs souhaitant adopter l'IA sans perdre leur authenticité.</p>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Auteur" class="w-6 h-6 rounded-full mr-2">
+                            <span>Élodie Bernard</span>
+                            <span class="mx-2">•</span>
+                            <span>5 juin 2023</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="bg-white dark:bg-gray-700 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="Article" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-xs font-medium text-green-600 dark:text-green-400">ENTREPRISE</span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">15 min</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 dark:text-white hover:text-blue-600 dark:hover:text-blue-400"><a href="#">Les entreprises qui réussissent avec l'IA créative</a></h3>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">Cas d'étude de 5 entreprises ayant transformé leur production de contenu grâce à l'IA.</p>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Auteur" class="w-6 h-6 rounded-full mr-2">
+                            <span>Thomas Moreau</span>
+                            <span class="mx-2">•</span>
+                            <span>29 mai 2023</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">MagRead</h3>
+                    <p class="text-gray-400">La référence pour les passionnés de technologie, d'innovation et de culture digitale.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accueil</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Articles</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Magazines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Catégories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">À propos</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Catégories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Technologie</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Innovation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Science</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Entreprise</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Culture</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Abonnez-vous pour recevoir nos derniers articles directement dans votre boîte mail.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 rounded-l-lg bg-gray-800 text-white w-full">
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2023 MagRead. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm">Conditions d'utilisation</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm">Politique de confidentialité</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-blue-700 transition hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+        
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            html.classList.add('dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Article reading progress
+        window.addEventListener('scroll', () => {
+            const article = document.querySelector('article');
+            if (article) {
+                const articleHeight = article.offsetHeight;
+                const articleTop = article.offsetTop;
+                const scrollPosition = window.pageYOffset;
+                
+                if (scrollPosition > articleTop) {
+                    const progress = ((scrollPosition - articleTop) / articleHeight) * 100;
+                    // You could display this progress somewhere
+                    console.log(`Reading progress: ${Math.min(100, progress.toFixed(2))}%`);
+                }
+            }
+        });
+        
+        // Share buttons functionality
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Here you would implement actual sharing functionality
+                alert('Fonctionnalité de partage à implémenter !');
+            });
+        });
+        
+        // Simulate like button functionality
+        document.querySelectorAll('[aria-label="Like"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                const countSpan = this.querySelector('span');
+                
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas', 'text-red-500');
+                    countSpan.textContent = parseInt(countSpan.textContent) + 1;
+                } else {
+                    icon.classList.remove('fas', 'text-red-500');
+                    icon.classList.add('far');
+                    countSpan.textContent = parseInt(countSpan.textContent) - 1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

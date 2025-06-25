@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous - International Skills Academy</title>
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        /* Styles pour la section Contact Info */
+        .contact-info-area {
+            background-color: #fff;
+        }
+        
+        .contact-info-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .contact-info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info-box .icon {
+            font-size: 40px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info-box h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .contact-info-box p, 
+        .contact-info-box a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info-box a:hover {
+            color: #007bff;
+        }
+        
+        /* Styles pour la section Contact Form */
+        .contact-area {
+            background-color: #f1f3f5;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title .sub-title {
+            display: inline-block;
+            color: #007bff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .section-title p {
+            color: #666;
+        }
+        
+        .contact-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0069d9;
+            transform: translateY(-2px);
+        }
+        
+        /* Styles responsives */
+        @media (max-width: 767px) {
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Section Contact Info -->
+    <section class="contact-info-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-info-box">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Par Email</h3>
+                        <p><a href="mailto:contact@isaworld.net">contact@isaworld.net</a></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-box">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Par courrier</h3>
+                        <p>Av. Palestine Lot. Ratma N6, Daoudiate. 40000 Marrakech - Maroc</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-info-box">
+                        <div class="icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Par Téléphone</h3>
+                        <p><a href="tel:+212808558581">+212 808 558 581</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact Form -->
+    <section class="contact-area">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">Nous Contacter</span>
+                <h2>Envoyez-nous un message pour tout type de demande</h2>
+                <p>* Tous les champs ci-dessous sont obligatoires.</p>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Votre nom</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Votre adresse email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone">Votre téléphone</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="subject">Sujet de votre demande</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="message">Votre message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn">Envoyer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Font Awesome pour les icônes -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- JavaScript pour le formulaire -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupération des valeurs du formulaire
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validation simple
+            if (!name || !email || !phone || !subject || !message) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+            
+            // Ici vous pourriez ajouter une requête AJAX pour envoyer le formulaire
+            console.log('Formulaire soumis:', { name, email, phone, subject, message });
+            
+            // Message de confirmation
+            alert('Merci pour votre message! Nous vous contacterons bientôt.');
+            
+            // Réinitialisation du formulaire
+            this.reset();
+        });
+    </script>
+</body>
+</html>
