@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre de Formation Professionnelle</title>
+    <meta name="description" content="Formations professionnelles dans tous les domaines - Qualifié OPQF, Certifié ISO">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Custom styles */
+        .hero-slide {
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .search-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .go-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #3f51b5;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 99;
+        }
+        
+        .go-top.active {
+            opacity: 1;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .mobile-menu.active {
+            max-height: 1000px;
+        }
+        
+        /* Hamburger menu icon */
+        .hamburger {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #333;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+        
+        .hamburger span:nth-child(1) {
+            top: 0px;
+        }
+        
+        .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+            top: 8px;
+        }
+        
+        .hamburger span:nth-child(4) {
+            top: 16px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            top: 8px;
+            width: 0%;
+            left: 50%;
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+        
+        .hamburger.active span:nth-child(4) {
+            top: 8px;
+            width: 0%;
+            left: 50%;
+        }
+        
+        /* Formation dropdown */
+        .formation-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-left: 1rem;
+        }
+        
+        .formation-dropdown.active {
+            max-height: 500px;
+        }
+        
+        /* Full width header */
+        .full-width-header {
+            width: 100%;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-slide {
+                height: 400px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .facts-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-slide {
+                height: 300px;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .facts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Top Header -->
+    <div class="full-width-header bg-blue-900 text-white py-2 hidden md:block">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex flex-wrap gap-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Par Téléphone</span>
+                        <span class="hover:underline">+212 668 580 485</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Contact Par</span>
+                        <span class="hover:underline">WhatsApp</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Par</span>
+                        <span class="hover:underline">Email</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-100 transition flex items-center gap-2">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Connexion</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="#" class="mr-10">
+                        <div class="text-2xl font-bold text-blue-600">FORMA<span class="text-blue-800">PRO</span></div>
+                    </a>
+                    
+                    <!-- Desktop Menu -->
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="#" class="text-gray-700 hover:text-blue-600">Accueil</a>
+                        <div class="relative group">
+                            <button class="text-gray-700 hover:text-blue-600 flex items-center">
+                                Nos Formations <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-2 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Commerce et Marketing</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">GRH et Emploi</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Gestion et Comptabilité</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Informatique</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Logistique</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Qualité et Management</a>
+                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Santé</a>
+                            </div>
+                        </div>
+                        <a href="#" class="text-gray-700 hover:text-blue-600">Webinaires</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600">A propos</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+                    </nav>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="cursor-pointer" id="search-toggle">
+                        <i class="fas fa-search text-gray-600 hover:text-blue-600"></i>
+                    </div>
+                    <div class="cursor-pointer" id="country-toggle">
+                        <div class="w-6 h-4 rounded shadow bg-blue-600"></div>
+                    </div>
+                    <div class="md:hidden hamburger" id="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+                    
+            <!-- Mobile Menu -->
+            <div class="mobile-menu md:hidden" id="mobile-menu">
+                <div class="py-4 space-y-3">
+                    <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Accueil</a>
+                    <div>
+                        <button class="w-full py-2 text-gray-700 hover:text-blue-600 flex items-center justify-between" id="mobile-formations-toggle">
+                            Nos Formations <i class="fas fa-chevron-down text-xs" id="mobile-formations-icon"></i>
+                        </button>
+                        <div class="formation-dropdown" id="mobile-formations-dropdown">
+                            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Commerce et Marketing</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">GRH et Emploi</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Gestion et Comptabilité</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Informatique</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Logistique</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Qualité et Management</a>
+                            <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Santé</a>
+                        </div>
+                    </div>
+                    <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Webinaires</a>
+                    <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">A propos</a>
+                    <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="relative">
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center">
+                <div class="container mx-auto px-4 text-center text-white hero-content">
+                    <span class="inline-block bg-blue-600 px-4 py-1 rounded-full mb-4">E-commerce</span>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Formation en création et gestion d'un site E-commerce</h1>
+                    <p class="text-xl mb-8 max-w-3xl mx-auto">Dans cette formation à distance, nous vous présentons les principales étapes pour créer et gérer une boutique en ligne et commencer votre commerce électronique.</p>
+                    <button class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full transition">
+                        Voir détail
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Courses -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+                <div>
+                    <span class="inline-block text-blue-600 font-medium mb-2">Découvrez les formations</span>
+                    <h2 class="text-3xl font-bold">Nos formations populaires</h2>
+                </div>
+                <button class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full transition mt-4 md:mt-0">
+                    Nos formations
+                </button>
+            </div>
+                    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 course-grid">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden course-card transition duration-300">
+                    <div class="block">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="ISO 17025" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a href="#" class="hover:text-blue-600">La norme ISO / IEC 17025 v 2017</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">La mise en place d'un système de management conformément aux exigences de la norme ISO/IEC 17025 version...</p>
+                        <button class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm transition">
+                            Voir détail
+                        </button>
+                        <div class="flex items-center mt-4 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 px-6 py-4 flex justify-between items-center">
+                        <div class="flex items-center text-gray-600">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>8 jours (24H)</span>
+                        </div>
+                        <div class="text-blue-600 font-bold">
+                            86000 <span class="text-gray-600 font-normal">Fcfa</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden course-card transition duration-300">
+                    <div class="block">
+                        <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Management de projet" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a href="#" class="hover:text-blue-600">Management de projet</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">La gestion de projet ou management de projet est la méthode visant à organiser le bon déroulement d'un...</p>
+                        <button class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm transition">
+                            Voir détail
+                        </button>
+                        <div class="flex items-center mt-4 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 px-6 py-4 flex justify-between items-center">
+                        <div class="flex items-center text-gray-600">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>6 jours (18H)</span>
+                        </div>
+                        <div class="text-blue-600 font-bold">
+                            123000 <span class="text-gray-600 font-normal">Fcfa</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden course-card transition duration-300">
+                    <div class="block">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="WooCommerce" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">
+                            <a href="#" class="hover:text-blue-600">WooCommerce</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">Vous voulez créer un site Internet et vendre vos produits en ligne ? Vous êtes au bon endroit ! Cette...</p>
+                        <button class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm transition">
+                            Voir détail
+                        </button>
+                        <div class="flex items-center mt-4 text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 px-6 py-4 flex justify-between items-center">
+                        <div class="flex items-center text-gray-600">
+                            <i class="far fa-clock mr-2"></i>
+                            <span>1 mois (16H)</span>
+                        </div>
+                        <div class="text-blue-600 font-bold">
+                            56000 <span class="text-gray-600 font-normal">Fcfa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Categories -->
+    <section class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block text-blue-600 font-medium mb-2">Nos catégories</span>
+                <h2 class="text-3xl font-bold">Les catégories de nos formations</h2>
+            </div>
+                    
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 category-grid">
+                <!-- Category 1 -->
+                <button class="bg-[#e74d57] text-white rounded-lg p-6 text-center category-card transition duration-300">
+                    <div class="text-3xl mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="font-bold">Commerce et Marketing</h3>
+                </button>
+                
+                <!-- Category 2 -->
+                <button class="bg-[#1cb5a3] text-white rounded-lg p-6 text-center category-card transition duration-300">
+                    <div class="text-3xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="font-bold">GRH et Emploi</h3>
+                </button>
+                
+                <!-- Category 3 -->
+                <button class="bg-[#9764df] text-white rounded-lg p-6 text-center category-card transition duration-300">
+                    <div class="text-3xl mb-4">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="font-bold">Gestion et Comptabilité</h3>
+                </button>
+                
+                <!-- Category 4 -->
+                <button class="bg-[#4869ed] text-white rounded-lg p-6 text-center category-card transition duration-300">
+                    <div class="text-3xl mb-4">
+                        <i class="fas fa-at"></i>
+                    </div>
+                    <h3 class="font-bold">Informatique</h3>
+                </button>
+                
+                <!-- Category 5 -->
+                <button class="bg-[#cc7340] text-white rounded-lg p-6 text-center category-card transition duration-300">
+                    <div class="text-3xl mb-4">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="font-bold">Logistique</h3>
+                </button>
+                
+                <!-- Category 6 -->
+                <button class="bg-[#fea116] text-white rounded-lg p-6 text-center category-card transition duration-300">
+                    <div class="text-3xl mb-4">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3 class="font-bold">Qualité et Management</h3>
+                </button>
+                
+                <!-- Category 7 -->
+                <button class="bg-[#1cd5e0] text-white rounded-lg p-6 text-center category-card transition duration-300">
+                    <div class="text-3xl mb-4">
+                        <i class="fas fa-first-aid"></i>
+                    </div>
+                    <h3 class="font-bold">Santé</h3>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Facts -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-8 text-white relative overflow-hidden">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10 facts-grid">
+                    <!-- Fact 1 -->
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="text-4xl font-bold" id="trainers-count">43</div>
+                        <p class="mt-2">Formateurs experts</p>
+                    </div>
+                                    
+                    <!-- Fact 2 -->
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <div class="text-4xl font-bold" id="courses-count">312</div>
+                        <p class="mt-2">Total Courses</p>
+                    </div>
+                                    
+                    <!-- Fact 3 -->
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="text-4xl font-bold" id="students-count">1245</div>
+                        <p class="mt-2">Etudiants heureux</p>
+                    </div>
+                                    
+                    <!-- Fact 4 -->
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="text-4xl font-bold" id="webinars-count">152</div>
+                        <p class="mt-2">Webinaires</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Formation en groupe" class="rounded-lg shadow-md w-full h-64 object-cover">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Formation individuelle" class="rounded-lg shadow-md w-full h-64 object-cover mt-8">
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="inline-block text-blue-600 font-medium mb-2">Notre centre de formation</span>
+                    <h2 class="text-3xl font-bold mb-6">Apprenez de nouvelles compétences pour poursuivre votre carrière</h2>
+                    <h6 class="text-lg font-medium mb-4">Nous pouvons offrir des formations dans plusieurs domaines de compétences pour les étudiants nationaux et internationaux.</h6>
+                    <p class="text-gray-600 mb-6">La formation professionnelle à distance est devenue indispensable tant pour les personnes en quête de travail que pour le personnel en poste. Notre organisme de formation est une structure ayant pour mission de dispenser ses formations à distance et d'apporter aux apprenants de nouvelles compétences et connaissances.</p>
+                                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h5 class="font-bold mb-3 flex items-center">
+                            <i class="fas fa-globe-americas mr-3 text-blue-600"></i>
+                            Nous vous proposons bien plus que des savoirs
+                        </h5>
+                        <p class="text-gray-600">Engagé à vos côtés, nos experts partagent une connaissance profonde de vos enjeux, de vos métiers et de vos besoins. Formation clé en main ou sur mesure à distance, projets internationaux ou conseils opérationnels, nous sommes là pour créer et déployer avec vous la solution la plus compétitive.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">Nos Partenaires</h2>
+            </div>
+                    
+            <div class="flex flex-wrap justify-center items-center gap-8">
+                <img src="https://via.placeholder.com/150x80?text=Partenaire+1" alt="Partenaire 1" class="h-16 object-contain">
+                <img src="https://via.placeholder.com/150x80?text=Partenaire+2" alt="Partenaire 2" class="h-16 object-contain">
+                <img src="https://via.placeholder.com/150x80?text=Partenaire+3" alt="Partenaire 3" class="h-16 object-contain">
+                <img src="https://via.placeholder.com/150x80?text=Partenaire+4" alt="Partenaire 4" class="h-16 object-contain">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-16 bg-blue-600 text-white" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl font-bold mb-6">En apprenant ensemble, nous réalisons de grandes ambitions.</h2>
+                </div>
+                <div class="lg:w-1/2 bg-white rounded-lg shadow-lg p-8 text-gray-800">
+                    <h3 class="text-2xl font-bold mb-6">Formulaire de contact rapide</h3>
+                                    
+                    <form>
+                        <div class="mb-4">
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Votre Nom*">
+                        </div>
+                                                
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Votre Adresse Email*">
+                            </div>
+                            <div>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Votre téléphone*">
+                            </div>
+                        </div>
+                                                
+                        <div class="mb-6">
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Votre message (Optionnel)"></textarea>
+                        </div>
+                                                
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg transition">
+                            Envoyer
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Nous contacter</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span>Av. Palestine Lot. Ratma N6, Daoudiate. 40000 Marrakech - Maroc</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                            <span class="hover:underline">+212 668 580 485</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                            <span class="hover:underline">+212 808 558 581</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            <span class="hover:underline">contact@formationpro.net</span>
+                        </li>
+                    </ul>
+                                    
+                    <div class="flex space-x-4 mt-6">
+                        <button class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition">
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                        <button class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </button>
+                        <button class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Menu -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Menu</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-blue-400 transition">Accueil</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Nos Formations</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Webinaires</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">A propos</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Useful Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Liens utiles</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-blue-400 transition">Conditions Générales</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Espace membres</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Mots clès</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Newsletter</h3>
+                    <p class="mb-4">Pour recevoir les dernières nouvelles..</p>
+                                    
+                    <form class="space-y-4">
+                        <label class="block">Votre adresse email:</label>
+                        <input type="email" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre email">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg transition">
+                            S'abonner
+                        </button>
+                    </form>
+                </div>
+            </div>
+                    
+            <div class="text-center mb-8">
+                <a href="#" class="inline-block mb-6">
+                    <div class="text-2xl font-bold text-white">FORMA<span class="text-blue-400">PRO</span></div>
+                </a>
+                                
+                <div class="mt-8 text-gray-400 text-sm">
+                    <p><i class="far fa-copyright mr-1"></i> 2023 <span class="hover:text-blue-400">Centre de Formation Professionnelle</span> | Tous les droits sont réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Go to Top Button -->
+    <div class="go-top" id="go-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Country Selection Modal -->
+    <div id="country-modal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Choisissez votre pays:</h3>
+                <span class="close-modal cursor-pointer text-2xl">&times;</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="col-span-3 font-bold text-lg mt-4">Afrique</div>
+                <button class="flex items-center p-2 hover:bg-gray-100 rounded">
+                    <div class="w-6 h-4 mr-2 shadow-sm bg-blue-500"></div>
+                    <span>Algérie (DA)</span>
+                </button>
+                <button class="flex items-center p-2 hover:bg-gray-100 rounded">
+                    <div class="w-6 h-4 mr-2 shadow-sm bg-green-500"></div>
+                    <span>Burkina Faso (FCFA)</span>
+                </button>
+                <button class="flex items-center p-2 hover:bg-gray-100 rounded">
+                    <div class="w-6 h-4 mr-2 shadow-sm bg-yellow-500"></div>
+                    <span>Bénin (FCFA)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-overlay-content w-full max-w-2xl px-4">
+            <div class="flex justify-end mb-4">
+                <span class="close-search text-white text-3xl cursor-pointer">&times;</span>
+            </div>
+            <form class="relative">
+                <input type="text" class="w-full py-4 px-6 rounded-full text-lg" id="query" name="query" required placeholder="Vous cherchez une formation ?">
+                <button type="submit" class="absolute right-2 top-2 bg-blue-600 text-white p-2 rounded-full w-12 h-12 flex items-center justify-center">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileFormationsToggle = document.getElementById('mobile-formations-toggle');
+        const mobileFormationsDropdown = document.getElementById('mobile-formations-dropdown');
+        const mobileFormationsIcon = document.getElementById('mobile-formations-icon');
+                
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+                
+        mobileFormationsToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileFormationsDropdown.classList.toggle('active');
+            mobileFormationsIcon.classList.toggle('fa-chevron-down');
+            mobileFormationsIcon.classList.toggle('fa-chevron-up');
+        });
+                
+        // Country Modal
+        const countryToggle = document.getElementById('country-toggle');
+        const countryModal = document.getElementById('country-modal');
+        const closeModal = document.querySelector('.close-modal');
+                
+        countryToggle.addEventListener('click', () => {
+            countryModal.style.display = 'block';
+        });
+                
+        closeModal.addEventListener('click', () => {
+            countryModal.style.display = 'none';
+        });
+                
+        window.addEventListener('click', (event) => {
+            if (event.target === countryModal) {
+                countryModal.style.display = 'none';
+            }
+        });
+                
+        // Search Overlay
+        const searchToggle = document.getElementById('search-toggle');
+        const searchOverlay = document.getElementById('search-overlay');
+        const closeSearch = document.querySelector('.close-search');
+                
+        searchToggle.addEventListener('click', () => {
+            searchOverlay.style.display = 'flex';
+        });
+                
+        closeSearch.addEventListener('click', () => {
+            searchOverlay.style.display = 'none';
+        });
+                
+        // Go to Top Button
+        const goTopButton = document.getElementById('go-top');
+                
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                goTopButton.classList.add('active');
+            } else {
+                goTopButton.classList.remove('active');
+            }
+        });
+                
+        goTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+                
+        // Counter Animation
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+                    
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    clearInterval(timer);
+                    current = target;
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+                
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'trainers-count') {
+                        animateCounter(entry.target, 43);
+                    } else if (entry.target.id === 'courses-count') {
+                        animateCounter(entry.target, 312);
+                    } else if (entry.target.id === 'students-count') {
+                        animateCounter(entry.target, 1245);
+                    } else if (entry.target.id === 'webinars-count') {
+                        animateCounter(entry.target, 152);
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+                
+        document.querySelectorAll('#trainers-count, #courses-count, #students-count, #webinars-count').forEach(counter => {
+            observer.observe(counter);
+        });
+    </script>
+</body>
+</html>

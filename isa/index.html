@@ -1,466 +1,85 @@
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centre de formation au Togo professionnelle et continue à distance - International Skills Academy</title>
-    <meta name="description" content="Des formations professionnelles au Togo dans tous les domaines par le leader et international de la formation au Togo – CPF. Qualifié OPQF, Certifié IS...">
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Gestion des Actualités</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        #wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #content {
+            margin-left: 250px; /* largeur supposée de la sidebar */
+            width: 100%;
+            padding: 20px;
+        }
+
+        x-sidebar {
+            flex-shrink: 0;
+            width: 250px;
+        }
+
+        /* Optionnel : s'assure que le formulaire ne déborde pas */
+        .container {
+            max-width: 900px;
+        }
+    </style>
+
 </head>
 <body>
-    <!-- Top Contact Bar -->
-    <div class="top-contact-bar">
-        <div class="container">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> <a href="tel:+212668580485">+212 668 580 485</a></span>
-                <span><i class="fab fa-whatsapp"></i> <a href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22">WhatsApp</a></span>
-                <span><i class="fas fa-envelope"></i> <a href="mailto:contact@isaworld.net">Email</a></span>
+
+<div class="d-flex" id="wrapper">
+    <x-sidebar />
+    <div class="flex-grow-1" id="content">
+        <x-navnew />
+
+        <div class="container py-4">
+
+            <div class="container my-5">
+                <h1 class="mb-4">{{ $article->titre }}</h1>
+
+
+
+                 Image principale si présente 
+                @if($article->image_path)
+                    <div class="mb-4">
+                        <img src="{{ asset('storage/app/public' . $article->image_path) }}" class="img-fluid" alt="Image de l'article">
+                    </div>
+                @endif
+
+                 Description courte 
+                <p class="text-muted">
+                    {{ $article->description }}
+                </p>
+
+                <hr>
+
+                 Contenu HTML rédigé dans TinyMCE 
+                <div class="mt-4">
+                    {!! $article->contenu !!}
+                </div>
             </div>
-            <div class="auth-links">
-                <a href="#" class="login-btn">Connexion</a>
-            </div>
+
+
+
+
         </div>
     </div>
+</div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="https://ext.same-assets.com/3843800498/1706854766.svg" alt="International Skills Academy">
-                </div>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="#" class="active">Accueil</a></li>
-                        <li class="dropdown">
-                            <a href="#">Nos Formations <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Commerce et Marketing</a></li>
-                                <li><a href="#">GRH et Emploi</a></li>
-                                <li><a href="#">Gestion et Comptabilité</a></li>
-                                <li><a href="#">Informatique</a></li>
-                                <li><a href="#">Logistique</a></li>
-                                <li><a href="#">Qualité et Management</a></li>
-                                <li><a href="#">Santé</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Webinaires</a></li>
-                        <li><a href="#">A propos</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="country-selector">
-                    <button class="country-btn" id="countryBtn">
-                        <img src="https://ext.same-assets.com/3843800498/3052759465.webp" alt="Togo">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                </div>
-                <div class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Country Selection Modal -->
-    <div class="country-modal" id="countryModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Choisissez votre pays:</h3>
-                <button class="close-btn" id="closeModal">&times;</button>
-            </div>
-            <div class="countries-grid">
-                <div class="region">
-                    <h4>Afrique</h4>
-                    <div class="countries">
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/3610565565.webp" alt="Algérie"> Algérie (DA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/2086963772.webp" alt="Burkina Faso"> Burkina Faso (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/1028706143.webp" alt="Bénin"> Bénin (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/2747192410.webp" alt="Cameroun"> Cameroun (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/2101165106.webp" alt="Congo"> Congo (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/461719165.webp" alt="Congo RDC"> Congo (RDC) (FC)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/2032125549.webp" alt="Côte d'Ivoire"> Côte d'Ivoire (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/299623229.webp" alt="Gabon"> Gabon (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/568752525.webp" alt="Ghana"> Ghana (GH₵)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/2669041918.webp" alt="Guinée"> Guinée Conakry (FG)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/783212389.webp" alt="Guinée équatoriale"> Guinée équatoriale (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/4087414123.webp" alt="Mali"> Mali (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/1696256548.webp" alt="Maroc"> Maroc (Dhs)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/602118346.webp" alt="Mauritanie"> Mauritanie (UM)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/4100302826.webp" alt="Niger"> Niger (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/2952113984.webp" alt="Centrafrique"> Rép. centrafricaine (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/1815809116.webp" alt="Sénégal"> Sénégal (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/4153372018.webp" alt="Tchad"> Tchad (FCFA)</a>
-                        <a href="#" class="active"><img src="https://ext.same-assets.com/3843800498/3052759465.webp" alt="Togo"> Togo (FCFA)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/2432369216.webp" alt="Tunisie"> Tunisie (DT)</a>
-                    </div>
-                </div>
-                <div class="region">
-                    <h4>Europe</h4>
-                    <div class="countries">
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/4189740496.webp" alt="Belgique"> Belgique (€)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/1010843524.webp" alt="France"> France (€)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/1571179162.webp" alt="Luxembourg"> Luxembourg (€)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/1648007534.webp" alt="Monaco"> Monaco (€)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/331421630.webp" alt="Suisse"> Suisse (CHF)</a>
-                    </div>
-                </div>
-                <div class="region">
-                    <h4>Monde</h4>
-                    <div class="countries">
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/1726714999.webp" alt="Canada"> Canada ($)</a>
-                        <a href="#"><img src="https://ext.same-assets.com/3843800498/3134970233.webp" alt="Monde"> Monde (€)</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero Slider -->
-    <section class="hero-slider">
-        <div class="slider-container">
-            <div class="slide active">
-                <div class="slide-content">
-                    <div class="slide-text">
-                        <span class="category">Assistanat et Secrétariat</span>
-                        <h1>Assistante de direction au Togo</h1>
-                        <p>Collaboratrice directe au Togo d'un service, d'un cadre supérieur ou d'un chef d'entreprise, elle est chargée d'assister dans la gestion et l'organisation administrative de sa direction.</p>
-                        <a href="#" class="btn-primary">Voir détail</a>
-                    </div>
-                    <div class="slide-image">
-                        <img src="https://ext.same-assets.com/3843800498/640280625.webp" alt="Assistante de direction">
-                    </div>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <div class="slide-text">
-                        <span class="category">Responsable webmarketing</span>
-                        <h1>Formation en marketing digital au Togo</h1>
-                        <p>La formation Marketing Digital au Togo est axée sur les derniers outils et techniques vous permettant de mieux accompagner la révolution digitale vécue par les entreprises et les consommateurs.</p>
-                        <a href="#" class="btn-primary">Voir détail</a>
-                    </div>
-                    <div class="slide-image">
-                        <img src="https://ext.same-assets.com/3843800498/486954743.webp" alt="Marketing digital">
-                    </div>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <div class="slide-text">
-                        <span class="category">E-commerce</span>
-                        <h1>Formation en création et gestion d'un site E-commerce au Togo</h1>
-                        <p>Dans cette formation à distance au Togo, nous vous présentons les principales étapes pour créer et gérer une boutique en ligne et commencer votre commerce électronique au Togo.</p>
-                        <a href="#" class="btn-primary">Voir détail</a>
-                    </div>
-                    <div class="slide-image">
-                        <img src="https://ext.same-assets.com/3843800498/233311770.webp" alt="E-commerce">
-                    </div>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <div class="slide-text">
-                        <span class="category">La norme ISO 9001 v 2015</span>
-                        <h1>La mise en place d'un système de management de la qualité ISO 9001 v 2015 au Togo</h1>
-                        <p>La qualité au Togo est l'affaire de tous mais surtout de chacun. Cette formation permet de mettre en place un système de management de la qualité en suivant la version 2015 de la norme ISO 9001.</p>
-                        <a href="#" class="btn-primary">Voir détail</a>
-                    </div>
-                    <div class="slide-image">
-                        <img src="https://ext.same-assets.com/3843800498/1560922886.webp" alt="ISO 9001">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="slider-nav">
-            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
-            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        <div class="slider-dots">
-            <span class="dot active" data-slide="0"></span>
-            <span class="dot" data-slide="1"></span>
-            <span class="dot" data-slide="2"></span>
-            <span class="dot" data-slide="3"></span>
-        </div>
-    </section>
-
-    <!-- Popular Courses Section -->
-    <section class="popular-courses">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Découvrez les formations</span>
-                <h2>Nos formations populaires</h2>
-                <a href="#" class="view-all">Nos formations</a>
-            </div>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://ext.same-assets.com/3843800498/1556320151.webp" alt="ISO 17025">
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="#">La norme ISO / IEC 17025 v 2017</a></h3>
-                        <p>La mise en place d'un système de management conformément aux exigences de la norme ISO/IEC 17025 version...</p>
-                        <a href="#" class="btn-outline">Voir détail</a>
-                        <div class="course-meta">
-                            <span class="duration"><i class="fas fa-clock"></i> 8 jours (24H)</span>
-                            <span class="price">86000 Fcfa</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://ext.same-assets.com/3843800498/1162992347.webp" alt="Outils qualité">
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="#">Les outils avancés de la qualité</a></h3>
-                        <p>Réussir à améliorer la qualité en interne et/ou en externe et à inscrire durablement son entreprise dans...</p>
-                        <a href="#" class="btn-outline">Voir détail</a>
-                        <div class="course-meta">
-                            <span class="duration"><i class="fas fa-clock"></i> 5 jours (15H)</span>
-                            <span class="price">123000 Fcfa</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://ext.same-assets.com/3843800498/1635845389.jpeg" alt="Montage vidéo">
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="#">Montage vidéo</a></h3>
-                        <p>Parce que la réalisation de vidéos est devenue de plus en plus indispensable au fil des années, nous vous...</p>
-                        <a href="#" class="btn-outline">Voir détail</a>
-                        <div class="course-meta">
-                            <span class="duration"><i class="fas fa-clock"></i> 3H</span>
-                            <span class="price">18000 Fcfa</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="categories-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Nos catégories</span>
-                <h2>Les catégories de nos formations</h2>
-            </div>
-            <div class="categories-grid">
-                <a href="#" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Commerce et Marketing</h3>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>GRH et Emploi</h3>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3>Gestion et Comptabilité</h3>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Informatique</h3>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Logistique</h3>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>Qualité et Management</h3>
-                </a>
-                <a href="#" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3>Santé</h3>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="8483">0</div>
-                    <div class="stat-label">Formateurs experts</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="838182">0</div>
-                    <div class="stat-label">Total Courses</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="81828485">0</div>
-                    <div class="stat-label">Étudiants heureux</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="818582">0</div>
-                    <div class="stat-label">Webinaires</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-images">
-                    <img src="https://ext.same-assets.com/3843800498/172597513.webp" alt="ISA Academy" class="about-main-img">
-                </div>
-                <div class="about-text">
-                    <span class="section-subtitle">International Skills Academy au Togo</span>
-                    <h2>Apprenez de nouvelles compétences pour poursuivre votre carrière</h2>
-                    <h6>Nous pouvons offrir des formations dans plusieurs domaines de compétences pour les étudiants nationaux et internationaux.</h6>
-                    <p>La formation professionnelle à distance au Togo est devenue indispensable tant pour les personnes en quête de travail que pour le personnel en poste. Notre organisme de formation est une structure ayant pour mission de dispenser ses formations à distance et d'apporter aux apprenants de nouvelles compétences et connaissances au Togo.</p>
-                    <h5>Nous vous proposons bien plus que des savoirs</h5>
-                    <p>Engagé à vos côtés, nos experts partagent une connaissance profonde de vos enjeux, de vos métiers et de vos besoins. Formation clé en main ou sur mesure à distance, projets internationaux ou conseils opérationnels, nous sommes là pour créer et déployer avec vous la solution la plus compétitive.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section class="partners-section">
-        <div class="container">
-            <h2>Nos Partenaires</h2>
-            <div class="partners-slider">
-                <div class="partner-logo">
-                    <img src="https://ext.same-assets.com/3843800498/497652467.png" alt="Partner">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://ext.same-assets.com/3843800498/1603704986.png" alt="Partner">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://ext.same-assets.com/3843800498/497652467.png" alt="Partner">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://ext.same-assets.com/3843800498/1603704986.png" alt="Partner">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>En apprenant ensemble, nous réalisons de grandes ambitions.</h2>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-form-area">
-                    <h3>Formulaire de contact rapide</h3>
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Votre email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Votre téléphone" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Votre message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">Envoyer</button>
-                    </form>
-                </div>
-                <div class="contact-info-area">
-                    <h3>Nous contacter</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Av. Palestine Lot. Ratma N°6, Daoudiate. 40000 Marrakech - Maroc</p>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <a href="tel:+212668580485">+212 668 580 485</a>
-                                <a href="tel:+212808558581">+212 808 558 581</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:contact@isaworld.net">contact@isaworld.net</a>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img src="https://ext.same-assets.com/3843800498/2769670788.svg" alt="ISA Logo" class="footer-logo">
-                    <div class="payment-methods">
-                        <img src="https://ext.same-assets.com/3843800498/1346687299.webp" alt="Payment methods">
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Menu</h4>
-                    <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Nos Formations</a></li>
-                        <li><a href="#">Webinaires</a></li>
-                        <li><a href="#">A propos</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Liens utiles</h4>
-                    <ul>
-                        <li><a href="#">Conditions Générales</a></li>
-                        <li><a href="#">Espace membres</a></li>
-                        <li><a href="#">Mots clés</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Newsletter</h4>
-                    <p>Pour recevoir les dernières nouvelles..</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Votre adresse email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-            
-        </div>
-    </footer>
-    <script src="script.js"></script>
 
 </body>
 </html>

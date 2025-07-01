@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Unique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 2rem 0 1rem;
+            color: #2d3748;
+        }
+        
+        .article-content blockquote {
+            border-left: 4px solid #4299e1;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #4a5568;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <!-- Article Card -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:shadow-xl">
+            <!-- Article Image -->
+            <div class="h-64 md:h-80 w-full overflow-hidden">
+                <img 
+                    src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                    alt="Image de l'article" 
+                    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                >
+            </div>
+            
+            <!-- Article Content -->
+            <div class="p-6 md:p-8">
+                <!-- Category -->
+                <div class="mb-4">
+                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+                        Technologie
+                    </span>
+                </div>
+                
+                <!-- Title -->
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    L'avenir de l'intelligence artificielle dans notre quotidien
+                </h1>
+                
+                <!-- Meta Info -->
+                <div class="flex items-center mb-6">
+                    <div class="flex items-center mr-4">
+                        <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                            <img 
+                                src="https://randomuser.me/api/portraits/women/44.jpg" 
+                                alt="Auteur" 
+                                class="w-full h-full object-cover"
+                            >
+                        </div>
+                        <span class="text-gray-600">Marie Dupont</span>
+                    </div>
+                    <div class="text-gray-500">
+                        <i class="far fa-calendar-alt mr-2"></i>
+                        <span>15 Juin 2023</span>
+                    </div>
+                </div>
+                
+                <!-- Article Body -->
+                <div class="article-content text-gray-700 mb-8">
+                    <p class="text-lg leading-relaxed">
+                        L'intelligence artificielle (IA) est en train de révolutionner notre façon de vivre, de travailler et d'interagir avec le monde qui nous entoure. Des assistants vocaux aux voitures autonomes, l'IA s'intègre progressivement dans notre quotidien.
+                    </p>
+                    
+                    <h2>Les applications concrètes de l'IA</h2>
+                    
+                    <p>
+                        Dans le domaine de la santé, l'IA aide déjà à diagnostiquer des maladies avec une précision croissante. Les algorithmes peuvent analyser des images médicales, détecter des anomalies et même prédire des risques pour la santé avant qu'ils ne se manifestent.
+                    </p>
+                    
+                    <blockquote>
+                        "L'IA n'est pas une menace pour l'humanité, mais un outil puissant qui, utilisé à bon escient, peut résoudre certains de nos plus grands défis." - Expert en IA
+                    </blockquote>
+                    
+                    <p>
+                        Dans l'éducation, les systèmes d'apprentissage adaptatif utilisent l'IA pour personnaliser les parcours d'apprentissage en fonction des besoins de chaque étudiant. Cela permet une éducation plus inclusive et efficace.
+                    </p>
+                    
+                    <h2>Les défis à venir</h2>
+                    
+                    <p>
+                        Cependant, cette révolution technologique ne se fait pas sans poser des questions éthiques et sociétales. La protection des données personnelles, les biais algorithmiques et l'impact sur l'emploi sont des sujets qui nécessitent une réflexion approfondie.
+                    </p>
+                    
+                    <p>
+                        Il est essentiel de développer des cadres réglementaires robustes tout en encourageant l'innovation, afin que les bénéfices de l'IA profitent au plus grand nombre sans compromettre nos valeurs fondamentales.
+                    </p>
+                </div>
+                
+                <!-- Tags -->
+                <div class="mb-8">
+                    <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        #IA
+                    </span>
+                    <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        #Technologie
+                    </span>
+                    <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        #Innovation
+                    </span>
+                </div>
+                
+                <!-- Actions -->
+                <div class="flex items-center justify-between border-t pt-6">
+                    <div class="flex items-center space-x-4">
+                        <button class="flex items-center text-gray-500 hover:text-blue-500 transition">
+                            <i class="far fa-heart mr-2"></i>
+                            <span>245</span>
+                        </button>
+                        <button class="flex items-center text-gray-500 hover:text-blue-500 transition">
+                            <i class="far fa-comment mr-2"></i>
+                            <span>32</span>
+                        </button>
+                    </div>
+                    <button class="flex items-center text-blue-500 hover:text-blue-700 transition">
+                        <span>Partager</span>
+                        <i class="fas fa-share-alt ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Back Button -->
+        <div class="mt-8">
+            <a href="#" class="inline-flex items-center text-blue-500 hover:text-blue-700 transition">
+                <i class="fas fa-arrow-left mr-2"></i>
+                <span>Retour aux articles</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

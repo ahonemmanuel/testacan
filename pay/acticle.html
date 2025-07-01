@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="NUe22S14EaW8JhEHIjZHRhfJSgOfsifu4H4xjsdV">
+    <title>Gestion des Actualités</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="bg-light sidebar">
+        <div class="sidebar-content">
+            <div class="p-3">
+                <div class="d-flex align-items-center mb-4 ms-3">
+                    <a href="" class="text-secondary me-3">
+                        <i class="fas fa-user-circle fs-2"></i>
+                    </a>
+                    <div>
+                        <h2 class="fs-5 fw-semibold mb-0">adminn</h2>
+                        <p class="text-muted small mb-0">Admin</p>
+                    </div>
+                </div>
+
+                <nav class="flex-grow-1">
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/dashboard">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/livreAdmin">
+                                <i class="fas fa-book me-2"></i>Livres
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/coursAdmin">
+                                <i class="fas fa-graduation-cap me-2"></i>Cours
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/eventAdmin">
+                                <i class="fas fa-calendar-alt me-2"></i>Events
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/userAdmin">
+                                <i class="fas fa-users me-2"></i>Users
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/notifAdmin">
+                                <i class="fas fa-bell me-2"></i>Notifications
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/newsAdmin">
+                                <i class="fas fa-bullhorn me-2"></i>News
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/espaceAdmin">
+                                <i class="fas fa-microphone me-2"></i>Espace Samedi
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link d-flex align-items-center text-dark" href="http://127.0.0.1:8000/admin/settingsAdmin">
+                                <i class="fas fa-cog me-2"></i>Settings
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Logout button -->
+        <div class="logout-container">
+            <form method="POST" action="http://127.0.0.1:8000/logout" class="logout-form">
+                <input type="hidden" name="_token" value="NUe22S14EaW8JhEHIjZHRhfJSgOfsifu4H4xjsdV" autocomplete="off">
+                <button type="submit" class="btn btn-link text-danger p-0 d-flex align-items-center">
+                    <i class="fas fa-sign-out-alt me-2"></i>
+                    Déconnexion
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="flex justify-between items-center bg-[#f3f4f6] p-4 shadow-md mb-6 w-full">
+            <div class="flex items-center justify-between w-full">
+                <div>
+                    <h1 class="text-xl md:text-2xl font-semibold">Dashboard</h1>
+                    <p class="text-sm md:text-base text-gray-600">1 Jul 2025</p>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <i class="fas fa-sun text-yellow-500 text-xl"></i>
+                    <a href="/" target="_blank" class="text-gray-600 hover:text-blue-500">
+                        <i class="fas fa-globe text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="container py-4">
+            <h1 class="mb-4">Créer un nouvel article</h1>
+            <form action="http://127.0.0.1:8000/admin/articles" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="NUe22S14EaW8JjEHIjZHRhfJSgOfsifu4H4xjsdV" autocomplete="off">
+                
+                <div class="mb-3">
+                    <label for="titre" class="form-label">Titre de l'article</label>
+                    <input type="text" name="titre" id="titre" class="form-control" placeholder="Entrez le titre ici" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description (courte)</label>
+                    <textarea name="description" class="form-control" rows="4" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="contenu" class="form-label">Contenu</label>
+                    <textarea name="contenu" id="editor" rows="15"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Illustration (optionnelle)</label>
+                    <input type="file" name="image" id="image" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Publier l'article</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="admin-bottom-nav">
+        <a href="http://127.0.0.1:8000/admin/dashboard" class="bottom-nav-item">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+        <a href="http://127.0.0.1:8000/admin/livreAdmin" class="bottom-nav-item">
+            <i class="fas fa-book"></i>
+            <span>Livres</span>
+        </a>
+        <a href="http://127.0.0.1:8000/admin/coursAdmin" class="bottom-nav-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Cours</span>
+        </a>
+        <a href="#" class="bottom-nav-item" id="moreBtn">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>Plus</span>
+        </a>
+    </nav>
+
+    <!-- More Menu Modal -->
+    <div class="more-menu" id="moreMenu">
+        <div class="more-menu-content bg-white rounded-top shadow-lg">
+            <a href="http://127.0.0.1:8000/admin/eventAdmin" class="more-menu-item">
+                <i class="fas fa-calendar-alt me-2"></i>
+                <span>Events</span>
+            </a>
+            <a href="http://127.0.0.1:8000/admin/userAdmin" class="more-menu-item">
+                <i class="fas fa-users me-2"></i>
+                <span>Users</span>
+            </a>
+            <a href="http://127.0.0.1:8000/admin/notifAdmin" class="more-menu-item">
+                <i class="fas fa-bell me-2"></i>
+                <span>Notifications</span>
+            </a>
+            <a href="http://127.0.0.1:8000/admin/newsAdmin" class="more-menu-item">
+                <i class="fas fa-bullhorn me-2"></i>
+                <span>News</span>
+            </a>
+            <a href="http://127.0.0.1:8000/admin/espaceAdmin" class="more-menu-item">
+                <i class="fas fa-microphone me-2"></i>
+                <span>Espace Samedi</span>
+            </a>
+            <a href="http://127.0.0.1:8000/admin/settingsAdmin" class="more-menu-item">
+                <i class="fas fa-cog me-2"></i>
+                <span>Settings</span>
+            </a>
+            <form method="POST" action="http://127.0.0.1:8000/logout" class="more-menu-item text-danger">
+                <input type="hidden" name="_token" value="NUe22S14EaW8JhEHIjZHRhfJSgOfsifu4H4xjsdV" autocomplete="off">
+                <button type="submit" class="btn btn-link text-danger p-0 w-100 text-start">
+                    <i class="fas fa-sign-out-alt me-2"></i>
+                    <span>Déconnexion</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1030;
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .logout-container {
+            padding-left: 20px;
+            background-color: #f8f9fa;
+            position: absolute;
+            bottom: 40px;
+            width: 100%;
+        }
+
+        .admin-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1020;
+        }
+
+        .bottom-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.8rem;
+            padding: 5px 0;
+            width: 25%;
+        }
+
+        .bottom-nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .bottom-nav-item.active {
+            color: var(--bs-primary);
+        }
+
+        .more-menu {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1019;
+            display: none;
+            height: calc(100vh - 60px);
+        }
+
+        .more-menu.show {
+            display: block;
+        }
+
+        .more-menu-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+        }
+
+        .more-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #eee;
+        }
+
+        .more-menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding-bottom: 80px;
+            }
+            
+            .admin-bottom-nav {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 1092px) {
+            .admin-bottom-nav {
+                display: none;
+            }
+        }
+
+        .nav-link {
+            transition: color 0.2s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: var(--bs-primary) !important;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const moreBtn = document.getElementById('moreBtn');
+            const moreMenu = document.getElementById('moreMenu');
+
+            moreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                moreMenu.classList.toggle('show');
+            });
+
+            // Fermer le menu au clic en dehors
+            moreMenu.addEventListener('click', function(e) {
+                if (e.target === moreMenu) {
+                    moreMenu.classList.remove('show');
+                }
+            });
+
+            // Gestion de la déconnexion
+            const logoutForms = document.querySelectorAll('.logout-form');
+            logoutForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
+                        this.submit();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="https://cdn.tiny.cloud/1/dnkyrq8hm2a3pkj2nnszildk39b81mh1l9sayiui75gv9wxj/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#editor',
+            height: 600,
+            menubar: true,
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview', 'anchor',
+                'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'paste', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | blocks fontfamily fontsize | ' +
+                'bold italic underline strikethrough forecolor backcolor | ' +
+                'alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link image media table | ' +
+                'preview code fullscreen help',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
+
+            // Activation du téléversement d'images
+            images_upload_url: 'http://127.0.0.1:8000/admin/upload-image',
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            images_upload_handler: function (blobInfo, success, failure) {
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://127.0.0.1:8000/admin/upload-image');
+                xhr.setRequestHeader('X-CSRF-TOKEN', 'NUe22S14EaW8JhEHIjZHRhfJSgOfsifu4H4xjsdV');
+                xhr.onload = function() {
+                    if (xhr.status !== 200) {
+                        failure('Erreur HTTP: ' + xhr.status);
+                        return;
+                    }
+                    const json = JSON.parse(xhr.responseText);
+                    if (!json || typeof json.location !== 'string') {
+                        failure('Réponse invalide: ' + xhr.responseText);
+                        return;
+                    }
+                    success(json.location);
+                };
+                let formData = new FormData();
+                formData.append('file', blobInfo.blob(), blobInfo.filename());
+                xhr.send(formData);
+            }
+        });
+    </script>
+</body>
+</html>
