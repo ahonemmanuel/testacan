@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez nous pour la formation professionnelle et continue à distance au Togo - International Skills Academy</title>
+    <meta property="og:title" content="contactez nous pour la formation professionnelle et continue à distance au Togo - International Skills Academy">
+    <meta name="Description" content="contactez nous pour les formations professionnelles au Togo dans tous les domaines par le leader et international de la formation au Togo – CPF. Qualifié OPQF, Certifié IS...">
+    <meta property="og:description" content="contactez nous pour les formations professionnelles au Togo dans tous les domaines par le leader et international de la formation au Togo – CPF. Qualifié OPQF, Certifié IS...">
+    <link rel="icon" type="image/png" href="https://www.isaworld.net/assets/img/favicon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom CSS for elements that can't be done with Tailwind */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .contact-bg-image {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .go-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #3a3a3a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        
+        .go-top:hover {
+            background: #4f4f4f;
+        }
+        
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: none;
+        }
+        
+        .search-overlay-form input {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            font-size: 1.5rem;
+            border: none;
+            border-bottom: 2px solid #fff;
+            background: transparent;
+            color: white;
+        }
+        
+        .search-overlay-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+        
+        .search-overlay-close-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: white;
+        }
+        
+        .search-overlay-close-line:first-child {
+            transform: rotate(45deg);
+        }
+        
+        .search-overlay-close-line:last-child {
+            transform: rotate(-45deg);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 5px;
+        }
+        
+        .close-modal {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .CountryGroup {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 15px 0;
+            width: 100%;
+            color: #3a3a3a;
+        }
+        
+        .linkCountry {
+            margin-bottom: 15px;
+        }
+        
+        .linkCountry a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .linkCountry a:hover {
+            background: #f5f5f5;
+        }
+        
+        .linkCountry img {
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Top Header -->
+    <div class="bg-blue-900 text-white py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex flex-col md:flex-row md:space-x-8 mb-2 md:mb-0">
+                    <div class="flex items-center mb-2 md:mb-0">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        <span class="mr-2">Par Téléphone:</span>
+                        <a href="tel:+212668580485" class="hover:text-blue-200">+212 668 580 485</a>
+                    </div>
+                    <div class="flex items-center mb-2 md:mb-0">
+                        <i class="fab fa-whatsapp mr-2"></i>
+                        <span class="mr-2">Contact Par:</span>
+                        <a target="_blank" href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22" class="hover:text-blue-200">WhatsApp</a>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span class="mr-2">Contact Par:</span>
+                        <a href="mailto:contact@isaworld.net" class="hover:text-blue-200">Email</a>
+                    </div>
+                </div>
+                <div>
+                    <a target="_blank" href="https://www.isaworld.net/membres.php" class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200 transition flex items-center">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        <span>Connexion</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="https://www.isaworld.net/tg" class="mr-10">
+                        <img src="https://www.isaworld.net/assets/img/logo.svg" alt="ISA" class="h-12">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="https://www.isaworld.net/tg" class="text-gray-800 hover:text-blue-600">Accueil</a>
+                    
+                    <div class="dropdown relative">
+                        <button class="text-gray-800 hover:text-blue-600 flex items-center">
+                            Nos Formations <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded mt-2 py-2 w-64 z-50">
+                            <a href="https://www.isaworld.net/tg/1-commerce-et-marketing" class="block px-4 py-2 hover:bg-gray-100">Commerce et Marketing</a>
+                            <a href="https://www.isaworld.net/tg/7-grh-et-emploi" class="block px-4 py-2 hover:bg-gray-100">GRH et Emploi</a>
+                            <a href="https://www.isaworld.net/tg/6-gestion-et-comptabilite" class="block px-4 py-2 hover:bg-gray-100">Gestion et Comptabilité</a>
+                            <a href="https://www.isaworld.net/tg/3-informatique" class="block px-4 py-2 hover:bg-gray-100">Informatique</a>
+                            <a href="https://www.isaworld.net/tg/10-logistique" class="block px-4 py-2 hover:bg-gray-100">Logistique</a>
+                            <a href="https://www.isaworld.net/tg/2-qualite-et-management" class="block px-4 py-2 hover:bg-gray-100">Qualité et Management</a>
+                            <a href="https://www.isaworld.net/tg/8-sante" class="block px-4 py-2 hover:bg-gray-100">Santé</a>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.isaworld.net/tg/webinaires.html" class="text-gray-800 hover:text-blue-600">Webinaires</a>
+                    <a href="https://www.isaworld.net/tg/presentation.html" class="text-gray-800 hover:text-blue-600">A propos</a>
+                    <a href="https://www.isaworld.net/tg/contact.html" class="text-blue-600 font-medium">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="cursor-pointer search-box">
+                        <i class="fas fa-search text-gray-800 hover:text-blue-600"></i>
+                    </div>
+                    
+                    <div class="cursor-pointer" onclick="openCountryModal()">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050419_040336_tg.webp" class="w-6 h-4 shadow" alt="Togo">
+                    </div>
+                    
+                    <button class="md:hidden text-gray-800">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div class="md:hidden bg-white shadow-lg hidden" id="mobileMenu">
+        <div class="container mx-auto px-4 py-2">
+            <a href="https://www.isaworld.net/tg" class="block py-2 hover:bg-gray-100">Accueil</a>
+            
+            <div class="py-2">
+                <button class="w-full text-left flex justify-between items-center hover:bg-gray-100" onclick="toggleMobileDropdown('formationsDropdown')">
+                    Nos Formations <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="hidden pl-4" id="formationsDropdown">
+                    <a href="https://www.isaworld.net/tg/1-commerce-et-marketing" class="block py-2 hover:bg-gray-100">Commerce et Marketing</a>
+                    <a href="https://www.isaworld.net/tg/7-grh-et-emploi" class="block py-2 hover:bg-gray-100">GRH et Emploi</a>
+                    <a href="https://www.isaworld.net/tg/6-gestion-et-comptabilite" class="block py-2 hover:bg-gray-100">Gestion et Comptabilité</a>
+                    <a href="https://www.isaworld.net/tg/3-informatique" class="block py-2 hover:bg-gray-100">Informatique</a>
+                    <a href="https://www.isaworld.net/tg/10-logistique" class="block py-2 hover:bg-gray-100">Logistique</a>
+                    <a href="https://www.isaworld.net/tg/2-qualite-et-management" class="block py-2 hover:bg-gray-100">Qualité et Management</a>
+                    <a href="https://www.isaworld.net/tg/8-sante" class="block py-2 hover:bg-gray-100">Santé</a>
+                </div>
+            </div>
+            
+            <a href="https://www.isaworld.net/tg/webinaires.html" class="block py-2 hover:bg-gray-100">Webinaires</a>
+            <a href="https://www.isaworld.net/tg/presentation.html" class="block py-2 hover:bg-gray-100">A propos</a>
+            <a href="https://www.isaworld.net/tg/contact.html" class="block py-2 bg-blue-50 text-blue-600">Contact</a>
+        </div>
+    </div>
+
+    <!-- Page Title -->
+    <div class="relative bg-blue-800 text-white py-20">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center">
+                <ul class="flex justify-center space-x-4 mb-4">
+                    <li><a href="https://www.isaworld.net/tg" class="hover:text-blue-300">ISA Togo</a></li>
+                    <li>Contact</li>
+                </ul>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Nous Contacter</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Info -->
+    <section class="py-16 relative">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Par Email</h3>
+                    <p class="text-blue-600 hover:text-blue-800">
+                        <a href="mailto:contact@isaworld.net">contact@isaworld.net</a>
+                    </p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Par courrier</h3>
+                    <p>Av. Palestine Lot. Ratma N6, Daoudiate. 40000 Marrakech - Maroc</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Par Téléphone</h3>
+                    <p class="text-blue-600 hover:text-blue-800">
+                        <a href="tel:+212808558581">+212 808 558 581</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-16 bg-gray-50 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-semibold">Nous Contacter</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4">Envoyez-nous un message pour tout type de demande</h2>
+                <p class="text-gray-600">* Tous les champs ci-dessous sont obligatoires.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Votre nom</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Votre adresse email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        
+                        <div>
+                            <label for="phone_number" class="block text-gray-700 mb-2">Votre téléphone</label>
+                            <input type="text" id="phone_number" name="phone_number" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        
+                        <div>
+                            <label for="msg_subject" class="block text-gray-700 mb-2">Sujet de votre demande</label>
+                            <input type="text" id="msg_subject" name="msg_subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-gray-700 mb-2">Votre message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="bg-blue-600 text-white px-8 py-3 rounded hover:bg-blue-700 transition flex items-center justify-center mx-auto">
+                            <i class="fas fa-paper-plane mr-2"></i> Envoyer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="contact-bg-image">
+            <img src="https://www.isaworld.net/assets/img/map.png" alt="map" class="w-full max-w-2xl">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Nous contacter</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span>Av. Palestine Lot. Ratma N6, Daoudiate. 40000 Marrakech - Maroc</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                            <a href="tel:+212668580485" class="hover:text-blue-400">+212 668 580 485</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                            <a href="tel:+212808558581" class="hover:text-blue-400">+212 808 558 581</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            <a href="mailto:contact@isaworld.net" class="hover:text-blue-400">contact@isaworld.net</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://www.facebook.com/isaworld.net" target="_blank" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/isaworldnet/" target="_blank" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/isaworld" target="_blank" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22" target="_blank" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Menu</h3>
+                    <ul class="space-y-3">
+                        <li><a href="https://www.isaworld.net/tg/index.html" class="hover:text-blue-400">Accueil</a></li>
+                        <li><a href="https://www.isaworld.net/tg/formations" class="hover:text-blue-400">Nos Formations</a></li>
+                        <li><a href="https://www.isaworld.net/tg/webinaires.html" class="hover:text-blue-400">Webinaires</a></li>
+                        <li><a href="https://www.isaworld.net/tg/presentation.html" class="hover:text-blue-400">A propos</a></li>
+                        <li><a href="https://www.isaworld.net/tg/contact.html" class="hover:text-blue-400">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Liens utiles</h3>
+                    <ul class="space-y-3">
+                        <li><a href="https://www.isaworld.net/tg/cg.html" class="hover:text-blue-400">Conditions Générales</a></li>
+                        <li><a href="https://www.isaworld.net/membres.php" class="hover:text-blue-400">Espace membres</a></li>
+                        <li><a href="https://www.isaworld.net/tg/mots" class="hover:text-blue-400">Mots clès</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Newsletter</h3>
+                    <p class="mb-4">Pour recevoir les dernières nouvelles..</p>
+                    <form class="space-y-4">
+                        <label class="block">Votre adresse email:</label>
+                        <input type="email" class="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre email" required>
+                        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="text-center mb-8">
+                <a href="https://www.isaworld.net/tg" class="inline-block mb-6">
+                    <img src="https://www.isaworld.net/assets/img/logo_white.svg" alt="ISA" class="h-12">
+                </a>
+                
+                <div class="text-sm text-gray-400 mb-6">
+                    <div class="mb-4">
+                        <span class="font-semibold">Afrique:</span>
+                        <a href="https://www.isaworld.net/dz" class="mx-1 hover:text-white">Algérie</a> |
+                        <a href="https://www.isaworld.net/bf" class="mx-1 hover:text-white">Burkina Faso</a> |
+                        <a href="https://www.isaworld.net/bj" class="mx-1 hover:text-white">Bénin</a> |
+                        <a href="https://www.isaworld.net/cm" class="mx-1 hover:text-white">Cameroun</a> |
+                        <a href="https://www.isaworld.net/cg" class="mx-1 hover:text-white">Congo</a> |
+                        <a href="https://www.isaworld.net/cd" class="mx-1 hover:text-white">Congo (RDC)</a> |
+                        <a href="https://www.isaworld.net/ci" class="mx-1 hover:text-white">Côte d'Ivoire</a> |
+                        <a href="https://www.isaworld.net/ga" class="mx-1 hover:text-white">Gabon</a> |
+                        <a href="https://www.isaworld.net/gh" class="mx-1 hover:text-white">Ghana</a> |
+                        <a href="https://www.isaworld.net/gn" class="mx-1 hover:text-white">Guinée Conakry</a> |
+                        <a href="https://www.isaworld.net/gq" class="mx-1 hover:text-white">Guinée équatoriale</a> |
+                        <a href="https://www.isaworld.net/ml" class="mx-1 hover:text-white">Mali</a> |
+                        <a href="https://www.isaworld.net/ma" class="mx-1 hover:text-white">Maroc</a> |
+                        <a href="https://www.isaworld.net/mr" class="mx-1 hover:text-white">Mauritanie</a> |
+                        <a href="https://www.isaworld.net/ne" class="mx-1 hover:text-white">Niger</a> |
+                        <a href="https://www.isaworld.net/cf" class="mx-1 hover:text-white">Rép. centrafricaine</a> |
+                        <a href="https://www.isaworld.net/sn" class="mx-1 hover:text-white">Sénégal</a> |
+                        <a href="https://www.isaworld.net/td" class="mx-1 hover:text-white">Tchad</a> |
+                        <a href="https://www.isaworld.net/tg" class="mx-1 hover:text-white">Togo</a> |
+                        <a href="https://www.isaworld.net/tn" class="mx-1 hover:text-white">Tunisie</a>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <span class="font-semibold">Europe:</span>
+                        <a href="https://www.isaworld.net/be" class="mx-1 hover:text-white">Belgique</a> |
+                        <a href="https://www.isaworld.net/fr" class="mx-1 hover:text-white">France</a> |
+                        <a href="https://www.isaworld.net/lu" class="mx-1 hover:text-white">Luxembourg</a> |
+                        <a href="https://www.isaworld.net/mc" class="mx-1 hover:text-white">Monaco</a> |
+                        <a href="https://www.isaworld.net/ch" class="mx-1 hover:text-white">Suisse</a>
+                    </div>
+                    
+                    <div>
+                        <span class="font-semibold">Monde:</span>
+                        <a href="https://www.isaworld.net/ca" class="mx-1 hover:text-white">Canada</a> |
+                        <a href="https://www.isaworld.net/wd" class="mx-1 hover:text-white">Monde</a>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <img src="https://www.isaworld.net/assets/img/payement.webp" alt="payment methods" class="mx-auto">
+                </div>
+                
+                <p class="text-gray-400">
+                    <i class="far fa-copyright"></i> 2023 <a href="#" class="hover:text-blue-400">International Skills Academy</a> | Tous les droits sont réservés.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Go Top Button -->
+    <div class="go-top" id="goTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="flex items-center justify-center h-full">
+            <div class="text-center">
+                <div class="search-overlay-close" id="closeSearch">
+                    <span class="search-overlay-close-line"></span>
+                    <span class="search-overlay-close-line"></span>
+                </div>
+                
+                <div class="search-overlay-form">
+                    <form action="https://www.isaworld.net/tg/result" method="get">
+                        <input type="text" id="query" name="query" required placeholder="Vous cherchez une formation ?">
+                        <button type="submit" class="absolute right-0 top-0 mt-5 mr-5">
+                            <i class="fas fa-search text-white text-2xl"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Country Modal -->
+    <div id="countryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCountryModal()">&times;</span>
+            <h3 class="text-xl font-semibold mb-6">Choisissez votre pays:</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="CountryGroup">Afrique</div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/dz/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050235_101020_dz.webp" class="shadow-sm" alt="Algérie">
+                        <span>Algérie (DA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/bf/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050605_103744_bf.webp" class="shadow-sm" alt="Burkina Faso">
+                        <span>Burkina Faso (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/bj/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050652_040542_bj.webp" class="shadow-sm" alt="Bénin">
+                        <span>Bénin (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/cm/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050336_032504_cm.webp" class="shadow-sm" alt="Cameroun">
+                        <span>Cameroun (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/cg/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050558_103732_cg.webp" class="shadow-sm" alt="Congo">
+                        <span>Congo (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/cd/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050316_032450_rdc.webp" class="shadow-sm" alt="Congo (RDC)">
+                        <span>Congo (RDC) (FC)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/ci/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050252_032356_ci.webp" class="shadow-sm" alt="Côte d'Ivoire">
+                        <span>Côte d'Ivoire (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/ga/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050441_040707_ga.webp" class="shadow-sm" alt="Gabon">
+                        <span>Gabon (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/gh/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050412_040213_gh.webp" class="shadow-sm" alt="Ghana">
+                        <span>Ghana (GH₵)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/gn/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050348_032526_gn.webp" class="shadow-sm" alt="Guinée Conakry">
+                        <span>Guinée Conakry (FG)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/gq/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050547_103711_gq.webp" class="shadow-sm" alt="Guinée équatoriale">
+                        <span>Guinée équatoriale (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/ml/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050311_032416_ml.webp" class="shadow-sm" alt="Mali">
+                        <span>Mali (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/ma/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050221_032224_ma.webp" class="shadow-sm" alt="Maroc">
+                        <span>Maroc (Dhs)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/mr/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050404_040059_mr.webp" class="shadow-sm" alt="Mauritanie">
+                        <span>Mauritanie (UM)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/ne/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050552_103719_ne.webp" class="shadow-sm" alt="Niger">
+                        <span>Niger (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/cf/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050540_103645_cf.webp" class="shadow-sm" alt="Rép. centrafricaine">
+                        <span>Rép. centrafricaine (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/sn/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050246_032338_sn.webp" class="shadow-sm" alt="Sénégal">
+                        <span>Sénégal (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/td/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050531_103634_td.webp" class="shadow-sm" alt="Tchad">
+                        <span>Tchad (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/tg/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050419_040336_tg.webp" class="shadow-sm" alt="Togo">
+                        <span>Togo (FCFA)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/tn/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050241_032318_tn.webp" class="shadow-sm" alt="Tunisie">
+                        <span>Tunisie (DT)</span>
+                    </a>
+                </div>
+                
+                <div class="CountryGroup">Europe</div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/be/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050457_040934_be.webp" class="shadow-sm" alt="Belgique">
+                        <span>Belgique (€)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/fr/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050354_023818_dreapeu_fr.webp" class="shadow-sm" alt="France">
+                        <span>France (€)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/lu/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050521_103603_lu.webp" class="shadow-sm" alt="Luxembourg">
+                        <span>Luxembourg (€)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/mc/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050514_103552_mc.webp" class="shadow-sm" alt="Monaco">
+                        <span>Monaco (€)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/ch/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050503_040943_ch.webp" class="shadow-sm" alt="Suisse">
+                        <span>Suisse (CH)</span>
+                    </a>
+                </div>
+                
+                <div class="CountryGroup">Monde</div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/ca/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050526_103624_ca.webp" class="shadow-sm" alt="Canada">
+                        <span>Canada ($)</span>
+                    </a>
+                </div>
+                
+                <div class="linkCountry">
+                    <a href="https://www.isaworld.net/wd/contact.html" class="dropdown-item d-flex align-items-center">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050359_092508_world.webp" class="shadow-sm" alt="Monde">
+                        <span>Monde (€)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Mobile dropdown toggle
+        function toggleMobileDropdown(id) {
+            const dropdown = document.getElementById(id);
+            dropdown.classList.toggle('hidden');
+        }
+        
+        // Search overlay
+        document.querySelector('.search-box').addEventListener('click', function() {
+            document.getElementById('searchOverlay').style.display = 'block';
+        });
+        
+        document.getElementById('closeSearch').addEventListener('click', function() {
+            document.getElementById('searchOverlay').style.display = 'none';
+        });
+        
+        // Country modal
+        function openCountryModal() {
+            document.getElementById('countryModal').style.display = 'block';
+        }
+        
+        function closeCountryModal() {
+            document.getElementById('countryModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('countryModal')) {
+                closeCountryModal();
+            }
+            if (event.target == document.getElementById('searchOverlay')) {
+                document.getElementById('searchOverlay').style.display = 'none';
+            }
+        }
+        
+        // Go top button
+        window.onscroll = function() {
+            const goTop = document.getElementById('goTop');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                goTop.style.display = 'flex';
+            } else {
+                goTop.style.display = 'none';
+            }
+        };
+        
+        document.getElementById('goTop').addEventListener('click', function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message! Nous vous contacterons bientôt.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

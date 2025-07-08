@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {{-- Title --}}
+    <title>@yield('title', 'Titre par défaut | Nom du site')</title>
+
+    {{-- Meta SEO --}}
+    <meta name="description" content="@yield('description', 'Description par défaut du site ici.')">
+    <meta name="robots" content="@yield('robots', 'index, follow')">
+
+    {{-- Open Graph (Facebook, LinkedIn, etc.) --}}
+    <meta property="og:title" content="@yield('og_title', 'Titre OG par défaut')">
+    <meta property="og:description" content="@yield('og_description', 'Description OG par défaut')">
+    <meta property="og:image" content="@yield('og_image', asset('images/default-og.jpg'))">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+
+    {{-- Twitter Card --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('twitter_title', 'Titre Twitter par défaut')">
+    <meta name="twitter:description" content="@yield('twitter_description', 'Description Twitter par défaut')">
+    <meta name="twitter:image" content="@yield('twitter_image', asset('images/default-twitter.jpg'))">
+
+    {{-- Styles CSS --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<body>
+    @yield('content')
+
+    {{-- Scripts JS --}}
+    <script src="{{ asset('js/app.js') }}"></script>
+</body>
+</html>

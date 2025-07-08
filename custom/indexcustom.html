@@ -1,688 +1,1514 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACAN ACCEUIL</title>
-    <meta name="description"
-        content="Des formations professionnelles au Togo dans tous les domaines par le leader et international de la formation au Togo – CPF. Qualifié OPQF, Certifié IS...">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Centre de formation au Togo professionnelle et continue à distance - International Skills Academy</title>
+    <meta property="og:title" content="Centre de formation au Togo professionnelle et continue à distance - International Skills Academy">
+    <meta name="Description" content="Des formations professionnelles au Togo dans tous les domaines par le leader et international de la formation au Togo – CPF. Qualifié OPQF, Certifié IS...">
+    <meta property="og:description" content="Des formations professionnelles au Togo dans tous les domaines par le leader et international de la formation au Togo – CPF. Qualifié OPQF, Certifié IS...">
     <link rel="icon" type="image/png" href="https://www.isaworld.net/assets/img/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-.mobile-menu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-}
-
-.mobile-menu.open {
-  max-height: 1000px;
-  transition: max-height 0.5s ease-in;
-}
-
-.hero-slide {
-  background-size: cover;
-  background-position: center;
-  height: 80vh;
-}
-
-.country-modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.country-modal-content {
-  background-color: #fefefe;
-  margin: 5% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 800px;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.search-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-}
-
-.search-overlay.open {
-  display: flex;
-}
-
-.go-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: #3b82f6;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.3s;
-  z-index: 99;
-}
-
-.go-top.visible {
-  opacity: 1;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-slide-in {
-  animation: slideIn 0.5s ease-out forwards;
-}
-
-.category-commerce {
-  background-color: #e74d57;
-}
-
-.category-grh {
-  background-color: #1cb5a3;
-}
-
-.category-gestion {
-  background-color: #9764df;
-}
-
-.category-informatique {
-  background-color: #4869ed;
-}
-
-.category-logistique {
-  background-color: #cc7340;
-}
-
-.category-qualite {
-  background-color: #fea116;
-}
-
-.category-sante {
-  background-color: #1cd5e0;
-}
-</style>
-
- 
+        /* Custom CSS */
+        :root {
+            --main-color: #e74d57;
+            --optional-color: #1cb5a3;
+            --white-color: #ffffff;
+            --black-color: #000000;
+            --paragraph-color: #666666;
+            --font-size: 16px;
+            --transition: .5s;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--font-size);
+            color: var(--paragraph-color);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--black-color);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--black-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--main-color);
+            text-decoration: none;
+        }
+        
+        /* Header */
+        .header-area {
+            width: 100%;
+            z-index: 999;
+            position: relative;
+            background-color: var(--white-color);
+            box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .top-header {
+            padding: 10px 0;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eeeeee;
+        }
+        
+        .top-header-contact-info {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+        }
+        
+        .top-header-contact-info li {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px;
+            color: var(--paragraph-color);
+            font-size: 14px;
+        }
+        
+        .top-header-contact-info li i {
+            color: var(--main-color);
+            margin-right: 5px;
+            position: relative;
+            top: 2px;
+        }
+        
+        .top-header-contact-info li a {
+            color: var(--black-color);
+            font-weight: 500;
+        }
+        
+        .top-header-btn .default-btn {
+            padding: 8px 20px;
+            background-color: var(--main-color);
+            color: var(--white-color);
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .top-header-btn .default-btn:hover {
+            background-color: var(--optional-color);
+            color: var(--white-color);
+        }
+        
+        /* Navbar */
+        .navbar-area {
+            transition: var(--transition);
+        }
+        
+        .raque-responsive-nav {
+            display: none;
+        }
+        
+        .raque-nav {
+            padding: 15px 0;
+        }
+        
+        .navbar-light .navbar-brand {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        .navbar-light .navbar-nav .nav-link {
+            color: var(--black-color);
+            font-weight: 500;
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+        
+        .navbar-light .navbar-nav .nav-item:hover .nav-link {
+            color: var(--main-color);
+        }
+        
+        .navbar-light .navbar-nav .nav-item .dropdown-menu {
+            border: none;
+            padding: 0;
+            border-radius: 0;
+            background-color: var(--white-color);
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-light .navbar-nav .nav-item .dropdown-menu li a {
+            color: var(--black-color);
+            padding: 10px 20px;
+            border-bottom: 1px dashed #eeeeee;
+            font-size: 15px;
+        }
+        
+        .navbar-light .navbar-nav .nav-item .dropdown-menu li a:hover {
+            color: var(--white-color);
+            background-color: var(--main-color);
+        }
+        
+        .search-box i {
+            color: var(--black-color);
+            cursor: pointer;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+        
+        .search-box i:hover {
+            color: var(--main-color);
+        }
+        
+        /* Main Banner */
+        .main-banner {
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding-top: 150px;
+            padding-bottom: 150px;
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+        }
+        
+        .main-banner::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--black-color);
+            opacity: .70;
+            z-index: -1;
+        }
+        
+        .main-banner-content {
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .main-banner-content.text-center {
+            text-align: center;
+        }
+        
+        .main-banner-content .sub-title {
+            display: block;
+            color: var(--white-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        
+        .main-banner-content h1 {
+            color: var(--white-color);
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .main-banner-content p {
+            color: var(--white-color);
+            font-size: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+        
+        .btn-box .default-btn {
+            padding: 12px 30px;
+            background-color: var(--main-color);
+            color: var(--white-color);
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .btn-box .default-btn:hover {
+            background-color: var(--optional-color);
+            color: var(--white-color);
+        }
+        
+        /* Courses Area */
+        .courses-area {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+        
+        .section-title {
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title .sub-title {
+            display: block;
+            color: var(--main-color);
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .single-courses-box {
+            margin-bottom: 30px;
+            background-color: var(--white-color);
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .single-courses-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .courses-image {
+            overflow: hidden;
+        }
+        
+        .courses-image img {
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .single-courses-box:hover .courses-image img {
+            transform: scale(1.1);
+        }
+        
+        .courses-content {
+            padding: 25px;
+        }
+        
+        .courses-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .courses-content p {
+            margin-bottom: 20px;
+        }
+        
+        .courses-box-footer {
+            padding: 15px 25px;
+            border-top: 1px dashed #eeeeee;
+        }
+        
+        .courses-box-footer ul {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+        }
+        
+        .courses-box-footer ul li {
+            display: inline-block;
+            color: var(--paragraph-color);
+            font-size: 14px;
+            margin-right: 15px;
+        }
+        
+        .courses-box-footer ul li i {
+            color: var(--main-color);
+            margin-right: 5px;
+        }
+        
+        .courses-box-footer ul li.courses-price {
+            float: right;
+            color: var(--main-color);
+            font-size: 18px;
+            font-weight: 600;
+            margin-right: 0;
+        }
+        
+        /* Courses Categories */
+        .courses-categories-area {
+            position: relative;
+            z-index: 1;
+            padding-top: 70px;
+            padding-bottom: 70px;
+            background-color: #f9f9f9;
+        }
+        
+        .single-categories-courses-box {
+            text-align: center;
+            padding: 30px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            color: var(--white-color);
+        }
+        
+        .single-categories-courses-box .icon {
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 35px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 25px;
+        }
+        
+        .single-categories-courses-box h3 {
+            color: var(--white-color);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        /* Funfacts */
+        .funfacts-area {
+            position: relative;
+            z-index: 1;
+            padding-top: 70px;
+        }
+        
+        .funfacts-inner {
+            background-color: var(--main-color);
+            padding: 30px;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .single-funfact {
+            text-align: center;
+            position: relative;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        .single-funfact .icon {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 30px;
+            color: var(--white-color);
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+        
+        .single-funfact h3 {
+            color: var(--white-color);
+            font-size: 36px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .single-funfact p {
+            color: var(--white-color);
+            font-size: 16px;
+        }
+        
+        /* About Area */
+        .about-area {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        
+        .about-image {
+            position: relative;
+            margin-right: 30px;
+        }
+        
+        .about-image img {
+            border-radius: 5px;
+        }
+        
+        .about-image img:first-child {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-image img:last-child {
+            position: absolute;
+            left: -30px;
+            bottom: -30px;
+            z-index: -1;
+        }
+        
+        .about-content {
+            padding-left: 30px;
+        }
+        
+        .about-content .sub-title {
+            display: block;
+            color: var(--main-color);
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .about-content h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .about-content h6 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+        }
+        
+        .features-text {
+            position: relative;
+            padding-left: 70px;
+            margin-top: 30px;
+        }
+        
+        .features-text h5 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .features-text h5 i {
+            position: absolute;
+            left: -70px;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background-color: var(--main-color);
+            color: var(--white-color);
+            text-align: center;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+        
+        /* Partner Area */
+        .partner-area {
+            padding-top: 100px;
+            padding-bottom: 100px;
+            background-color: #f9f9f9;
+        }
+        
+        .partner-slides {
+            margin-top: 30px;
+        }
+        
+        .single-partner-item {
+            text-align: center;
+        }
+        
+        .single-partner-item a {
+            display: block;
+        }
+        
+        .single-partner-item img {
+            width: auto;
+            display: inline-block;
+            filter: grayscale(100%);
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+        
+        .single-partner-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        /* Feedback Form */
+        .students-feedback-form-area {
+            position: relative;
+            z-index: 1;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            background-image: url(https://www.isaworld.net/assets/img/feedback-bg.jpg);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .students-feedback-form-area::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--black-color);
+            opacity: .70;
+            z-index: -1;
+        }
+        
+        .students-feedback-form-content h2 {
+            color: var(--white-color);
+            font-size: 36px;
+            margin-bottom: 0;
+        }
+        
+        .students-feedback-form {
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: 5px;
+        }
+        
+        .students-feedback-form h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            height: 50px;
+            color: var(--black-color);
+            border: 1px solid #eeeeee;
+            background-color: #f9f9f9;
+            font-size: 15px;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 0;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--main-color);
+        }
+        
+        textarea.form-control {
+            height: auto;
+        }
+        
+        .label-title {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--main-color);
+        }
+        
+        /* Footer */
+        .footer-area {
+            background-color: #222222;
+            padding-top: 70px;
+            padding-bottom: 30px;
+        }
+        
+        .single-footer-widget {
+            margin-bottom: 30px;
+        }
+        
+        .single-footer-widget h3 {
+            color: var(--white-color);
+            font-size: 22px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .contact-us-link {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+        }
+        
+        .contact-us-link li {
+            margin-bottom: 15px;
+            color: var(--white-color);
+            font-size: 15px;
+        }
+        
+        .contact-us-link li i {
+            color: var(--main-color);
+            margin-right: 5px;
+        }
+        
+        .contact-us-link li a {
+            color: var(--white-color);
+        }
+        
+        .social-link {
+            padding-left: 0;
+            margin-bottom: 0;
+            margin-top: 20px;
+            list-style-type: none;
+        }
+        
+        .social-link li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .social-link li a {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white-color);
+            text-align: center;
+            border-radius: 50%;
+            font-size: 16px;
+        }
+        
+        .social-link li a:hover {
+            background-color: var(--main-color);
+            color: var(--white-color);
+        }
+        
+        .support-link {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+        }
+        
+        .support-link li {
+            margin-bottom: 12px;
+        }
+        
+        .support-link li a {
+            color: var(--white-color);
+            font-size: 15px;
+        }
+        
+        .support-link li a:hover {
+            color: var(--main-color);
+            letter-spacing: 0.5px;
+        }
+        
+        .useful-link {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+        }
+        
+        .useful-link li {
+            margin-bottom: 12px;
+        }
+        
+        .useful-link li a {
+            color: var(--white-color);
+            font-size: 15px;
+        }
+        
+        .useful-link li a:hover {
+            color: var(--main-color);
+            letter-spacing: 0.5px;
+        }
+        
+        .newsletter-box p {
+            color: var(--white-color);
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            position: relative;
+        }
+        
+        .newsletter-form label {
+            color: var(--white-color);
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .input-newsletter {
+            height: 50px;
+            color: var(--black-color);
+            border: 1px solid #eeeeee;
+            background-color: var(--white-color);
+            font-size: 15px;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 0;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 50px;
+            background-color: var(--main-color);
+            color: var(--white-color);
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            border-radius: 0;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--optional-color);
+        }
+        
+        .footer-bottom-area {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom-area p {
+            color: var(--white-color);
+            font-size: 15px;
+        }
+        
+        .footer-bottom-area p i {
+            color: var(--main-color);
+            margin-right: 5px;
+        }
+        
+        .footer-bottom-area p a {
+            color: var(--main-color);
+        }
+        
+        .pays-footer {
+            color: var(--white-color);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .pays-footer a {
+            color: var(--white-color);
+            margin-right: 5px;
+        }
+        
+        .pays-footer a:hover {
+            color: var(--main-color);
+        }
+        
+        .pays-footer img {
+            margin-right: 5px;
+        }
+        
+        /* Go Top */
+        .go-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            background-color: var(--main-color);
+            color: var(--white-color);
+            text-align: center;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .go-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .go-top:hover {
+            background-color: var(--optional-color);
+            color: var(--white-color);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 5px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media only screen and (max-width: 767px) {
+            .main-banner {
+                padding-top: 120px;
+                padding-bottom: 120px;
+                height: auto;
+            }
+            
+            .main-banner-content h1 {
+                font-size: 28px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .students-feedback-form-content h2 {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+            
+            .about-content {
+                padding-left: 0;
+                margin-top: 30px;
+            }
+            
+            .about-image {
+                margin-right: 0;
+            }
+            
+            .about-image img:last-child {
+                display: none;
+            }
+            
+            .single-funfact {
+                margin-bottom: 30px;
+            }
+            
+            .top-header-contact-info li {
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .main-banner-content h1 {
+                font-size: 40px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+            
+            .students-feedback-form-content h2 {
+                font-size: 32px;
+            }
+            
+            .about-content {
+                padding-left: 0;
+                margin-top: 30px;
+            }
+            
+            .about-image {
+                margin-right: 0;
+            }
+            
+            .about-image img:last-child {
+                display: none;
+            }
+        }
+    </style>
 </head>
+<body>
+    <!-- Header -->
+    <header class="header-area">
+        <div class="top-header">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap items-center">
+                    <div class="w-full lg:w-2/3">
+                        <ul class="top-header-contact-info flex flex-wrap">
+                            <li class="mr-5">
+                                <i class="fas fa-phone-alt mr-1"></i>
+                                <span>Par Téléphone</span>
+                                <a href="tel:+212668580485">+212 668 580 485</a>
+                            </li>
+                            <li class="mr-5">
+                                <i class="fab fa-whatsapp mr-1"></i>
+                                <span>Contact Par</span>
+                                <a target="_blank" href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22">WhatsApp</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope mr-1"></i>
+                                <span>Contact Par</span>
+                                <a href="/cdn-cgi/l/email-protection#89eae6e7fde8eafdc9e0fae8fee6fbe5eda7e7ecfd">Email</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-full lg:w-1/3 text-right mt-4 lg:mt-0">
+                        <div class="top-header-btn">
+                            <a target="_blank" href="https://www.isaworld.net/membres.php" class="default-btn bg-red-500 hover:bg-teal-500 text-white px-4 py-2 rounded inline-flex items-center">
+                                <i class="fas fa-sign-in-alt mr-2"></i>
+                                <span>Connexion</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navbar-area">
+            <div class="raque-responsive-nav lg:hidden">
+                <div class="container mx-auto px-4">
+                    <div class="raque-responsive-menu flex justify-between items-center py-3">
+                        <div class="logo">
+                            <a href="https://www.isaworld.net/tg">
+                                <img src="https://www.isaworld.net/assets/img/logo.svg" alt="ISA" width="196" height="62">
+                            </a>
+                        </div>
+                        <div class="others-option mob">
+                            <div class="dropdown language-switcher inline-block">
+                                <a href="#countries" data-modal="#countries">
+                                    <button class="dropdown-toggle border-none bg-transparent" type="button">
+                                        <img src="https://www.isaworld.net//imgs/pays/big/050419_040336_tg.webp" class="shadow" alt="Togo" width="29" height="19">
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="raque-nav hidden lg:block">
+                <div class="container mx-auto px-4">
+                    <nav class="flex items-center justify-between py-4">
+                        <a class="navbar-brand" href="https://www.isaworld.net/tg">
+                            <img src="https://www.isaworld.net/assets/img/logo.svg" alt="ISA" width="196" height="62">
+                        </a>
+                        
+                        <div class="flex items-center">
+                            <div class="hidden lg:flex">
+                                <ul class="navbar-nav flex">
+                                    <li class="nav-item"><a href="https://www.isaworld.net/tg" class="nav-link px-4">Accueil</a></li>
+                                    <li class="nav-item relative group">
+                                        <a href="https://www.isaworld.net/tg/formations" class="nav-link px-4 flex items-center">
+                                            Nos Formations <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                                        </a>
+                                        <ul class="dropdown-menu absolute hidden group-hover:block bg-white shadow-lg min-w-max z-50">
+                                            <li class="nav-item"><a href="https://www.isaworld.net/tg/1-commerce-et-marketing" class="nav-link block px-4 py-2 hover:bg-red-500 hover:text-white">Commerce et Marketing</a></li>
+                                            <li class="nav-item"><a href="https://www.isaworld.net/tg/7-grh-et-emploi" class="nav-link block px-4 py-2 hover:bg-red-500 hover:text-white">GRH et Emploi</a></li>
+                                            <li class="nav-item"><a href="https://www.isaworld.net/tg/6-gestion-et-comptabilite" class="nav-link block px-4 py-2 hover:bg-red-500 hover:text-white">Gestion et Comptabilité</a></li>
+                                            <li class="nav-item"><a href="https://www.isaworld.net/tg/3-informatique" class="nav-link block px-4 py-2 hover:bg-red-500 hover:text-white">Informatique</a></li>
+                                            <li class="nav-item"><a href="https://www.isaworld.net/tg/10-logistique" class="nav-link block px-4 py-2 hover:bg-red-500 hover:text-white">Logistique</a></li>
+                                            <li class="nav-item"><a href="https://www.isaworld.net/tg/2-qualite-et-management" class="nav-link block px-4 py-2 hover:bg-red-500 hover:text-white">Qualité et Management</a></li>
+                                            <li class="nav-item"><a href="https://www.isaworld.net/tg/8-sante" class="nav-link block px-4 py-2 hover:bg-red-500 hover:text-white">Santé</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item"><a href="https://www.isaworld.net/tg/webinaires.html" class="nav-link px-4">Webinaires</a></li>
+                                    <li class="nav-item"><a href="https://www.isaworld.net/tg/presentation.html" class="nav-link px-4">A propos</a></li>
+                                    <li class="nav-item"><a href="https://www.isaworld.net/tg/contact.html" class="nav-link px-4">Contact</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="others-option ml-4">
+                                <div class="search-box inline-block">
+                                    <i class="fas fa-search cursor-pointer"></i>
+                                </div>
+                                <div class="dropdown language-switcher inline-block ml-4">
+                                    <a href="#countries" data-modal="#countries">
+                                        <button class="dropdown-toggle border-none bg-transparent" type="button">
+                                            <img src="https://www.isaworld.net//imgs/pays/big/050419_040336_tg.webp" class="shadow" alt="Togo" width="29" height="19">
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<body class="font-sans text-gray-800"> <!-- Top Header -->
-    <div class="bg-blue-600 text-white py-2 hidden md:block">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap justify-between items-center">
-                <div class="flex space-x-6">
-                    <div class="flex items-center space-x-2"> <i class="fas fa-phone-alt"></i> <span>Par
-                            Téléphone</span> <a href="tel:+212668580485" class="font-semibold hover:underline">+212 668
-                            580 485</a> </div>
-                    <div class="flex items-center space-x-2"> <i class="fab fa-whatsapp"></i> <span>Contact Par</span>
-                        <a href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22" target="_blank"
-                            class="font-semibold hover:underline">WhatsApp</a> </div>
-                    <div class="flex items-center space-x-2"> <i class="fas fa-envelope"></i> <span>Contact Par</span>
-                        <a href="mailto:contact@isaworld.net" class="font-semibold hover:underline">Email</a> </div>
-                </div>
-                <div> <a href="https://www.isaworld.net/membres.php" target="_blank"
-                        class="bg-white text-blue-600 px-4 py-2 rounded-md font-medium hover:bg-gray-100 transition"> <i
-                            class="fas fa-sign-in-alt mr-1"></i> Connexion </a> </div>
-            </div>
-        </div>
-    </div> <!-- Main Navigation -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4"> <!-- Logo --> <a href="https://www.isaworld.net/tg"
-                    class="flex items-center"> <img src="https://www.isaworld.net/assets/img/logo.svg" alt="ISA"
-                        class="h-12"> </a> <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8"> <a href="https://www.isaworld.net/tg"
-                        class="text-blue-600 font-medium hover:text-blue-800">Accueil</a>
-                    <div class="dropdown relative"> <button
-                            class="flex items-center text-gray-700 hover:text-blue-600 font-medium"> Nos Formations <i
-                                class="fas fa-chevron-down ml-1 text-xs"></i> </button>
-                        <div class="dropdown-menu absolute hidden mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10"> <a
-                                href="https://www.isaworld.net/tg/1-commerce-et-marketing"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Commerce et Marketing</a> <a
-                                href="https://www.isaworld.net/tg/7-grh-et-emploi"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">GRH et Emploi</a> <a
-                                href="https://www.isaworld.net/tg/6-gestion-et-comptabilite"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Gestion et Comptabilité</a> <a
-                                href="https://www.isaworld.net/tg/3-informatique"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Informatique</a> <a
-                                href="https://www.isaworld.net/tg/10-logistique"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Logistique</a> <a
-                                href="https://www.isaworld.net/tg/2-qualite-et-management"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Qualité et Management</a> <a
-                                href="https://www.isaworld.net/tg/8-sante"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50">Santé</a> </div>
-                    </div> <a href="https://www.isaworld.net/tg/webinaires.html"
-                        class="text-gray-700 hover:text-blue-600 font-medium">Webinaires</a> <a
-                        href="https://www.isaworld.net/tg/presentation.html"
-                        class="text-gray-700 hover:text-blue-600 font-medium">A propos</a> <a
-                        href="https://www.isaworld.net/tg/contact.html"
-                        class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
-                    <div class="flex items-center space-x-4"> <button onclick="openCountryModal()"
-                            class="flex items-center"> <img
-                                src="https://www.isaworld.net/imgs/pays/big/050419_040336_tg.webp" alt="Togo"
-                                class="w-6 h-4 rounded shadow"> </button> <button onclick="openSearch()"
-                            class="text-gray-700 hover:text-blue-600"> <i class="fas fa-search"></i> </button> </div>
-                </nav> <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center space-x-4"> <button onclick="openSearch()"
-                        class="text-gray-700"> <i class="fas fa-search"></i> </button> <button
-                        onclick="openCountryModal()" class="flex items-center"> <img
-                            src="https://www.isaworld.net/imgs/pays/big/050419_040336_tg.webp" alt="Togo"
-                            class="w-6 h-4 rounded shadow"> </button> <button onclick="toggleMobileMenu()"
-                        class="text-gray-700"> <i class="fas fa-bars text-xl"></i> </button> </div>
-            </div> <!-- Mobile Navigation -->
-            <div id="mobileMenu" class="mobile-menu md:hidden bg-white">
-                <div class="px-2 pt-2 pb-4 space-y-1"> <a href="https://www.isaworld.net/tg"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Accueil</a>
-                    <div> <button onclick="toggleSubMenu('formationsSubMenu')"
-                            class="w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">
-                            Nos Formations <i class="fas fa-chevron-down text-xs"></i> </button>
-                        <div id="formationsSubMenu" class="hidden pl-4"> <a
-                                href="https://www.isaworld.net/tg/1-commerce-et-marketing"
-                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Commerce
-                                et Marketing</a> <a href="https://www.isaworld.net/tg/7-grh-et-emploi"
-                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">GRH
-                                et Emploi</a> <a href="https://www.isaworld.net/tg/6-gestion-et-comptabilite"
-                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Gestion
-                                et Comptabilité</a> <a href="https://www.isaworld.net/tg/3-informatique"
-                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Informatique</a>
-                            <a href="https://www.isaworld.net/tg/10-logistique"
-                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Logistique</a>
-                            <a href="https://www.isaworld.net/tg/2-qualite-et-management"
-                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Qualité
-                                et Management</a> <a href="https://www.isaworld.net/tg/8-sante"
-                                class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Santé</a>
+    <!-- Countries Modal -->
+    <div id="countries" class="modal">
+        <div class="modal-content">
+            <div class="billing-details">
+                <h3 class="title text-xl font-bold mb-2">Choisissez votre pays:</h3>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="CountryGroup font-bold mb-4">Afrique</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="linkCountry">
+                                <a href="https://www.isaworld.net/dz" class="dropdown-item flex items-center p-2 hover:bg-gray-100">
+                                    <img src="https://www.isaworld.net//imgs/pays/big/050235_101020_dz.webp" class="shadow-sm mr-2" alt="Algérie">
+                                    <span>Algérie (DA)</span>
+                                </a>
+                            </div>
+                            <!-- Add other countries here following the same pattern -->
                         </div>
-                    </div> <a href="https://www.isaworld.net/tg/webinaires.html"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Webinaires</a>
-                    <a href="https://www.isaworld.net/tg/presentation.html"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">A
-                        propos</a> <a href="https://www.isaworld.net/tg/contact.html"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50">Contact</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </header> <!-- Hero Slider -->
-    <section class="relative">
-        <div class="hero-slide"
-            style="background-image: url(https://www.isaworld.net/imgs/sliders/big/085203_ecommerce-slider.webp);">
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center">
-                <div class="container mx-auto px-4 text-white text-center"> <span
-                        class="inline-block px-3 py-1 bg-blue-600 rounded-full mb-4">E-commerce</span>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Formation en création et gestion d'un site
-                        E-commerce au Togo</h1>
-                    <p class="text-xl mb-8 max-w-3xl mx-auto">Dans cette formation à distance au Togo, nous vous
-                        présentons les principales étapes pour créer et gérer une boutique en ligne et commencer votre
-                        commerce électronique au Togo.</p> <a
-                        href="https://www.isaworld.net/tg/formation/14-e-commerce.html"
-                        class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition">
-                        <i class="fas fa-arrow-right mr-2"></i> Voir détail </a>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay fixed inset-0 bg-black bg-opacity-80 z-50 hidden">
+        <div class="flex items-center justify-center h-full">
+            <div class="search-overlay-close absolute top-8 right-8 text-white text-3xl cursor-pointer">
+                <span class="block w-8 h-1 bg-white transform rotate-45"></span>
+                <span class="block w-8 h-1 bg-white transform -rotate-45 -translate-y-1"></span>
+            </div>
+            <div class="search-overlay-form w-full max-w-2xl px-4">
+                <form action="https://www.isaworld.net/tg/result" method="get" class="relative">
+                    <input type="text" class="input-search w-full bg-transparent border-b-2 border-white text-white text-xl py-4 px-2 focus:outline-none" id="query" name="query" required placeholder="Vous cherchez une formation ?">
+                    <button type="submit" class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-xl"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Banner Slider -->
+    <section class="home-slides">
+        <div class="main-banner" style="background-image: url(https://www.isaworld.net//imgs/sliders/big/085203_ecommerce-slider.webp);">
+            <div class="flex items-center justify-center h-full">
+                <div class="container mx-auto px-4">
+                    <div class="main-banner-content text-center text-white max-w-3xl mx-auto">
+                        <span class="sub-title block text-lg mb-4">E-commerce</span>
+                        <h1 class="text-4xl md:text-5xl font-bold mb-6">Formation en création et gestion d'un site E-commerce au Togo</h1>
+                        <p class="mb-8">Dans cette formation à distance au Togo, nous vous présentons les principales étapes pour créer et gérer une boutique en ligne et commencer votre commerce électronique au Togo.</p>
+                        <div class="btn-box">
+                            <a href="https://www.isaworld.net/tg/formation/14-e-commerce.html" class="default-btn bg-red-500 hover:bg-teal-500 text-white px-6 py-3 rounded inline-flex items-center">
+                                <i class="fas fa-arrow-right mr-2"></i>
+                                <span>Voir détail</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section> 
-    <!-- Popular Courses -->
-    <section class="py-16 bg-gray-50">
+        <!-- Add other slides here following the same pattern -->
+    </section>
+
+    <!-- Courses Area -->
+    <section class="courses-area py-16">
         <div class="container mx-auto px-4">
-            <div class="flex flex-wrap justify-between items-center mb-12">
-                <div> <span class="text-blue-600 font-medium">Découvrez les formations</span>
+            <div class="section-title flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+                <div class="mb-4 md:mb-0">
+                    <span class="sub-title text-red-500 block mb-2">Découvrez les formations</span>
                     <h2 class="text-3xl font-bold">Nos formations populaires</h2>
-                </div> <a href="https://www.isaworld.net/tg/formations"
-                    class="bg-white text-blue-600 border border-blue-600 px-4 py-2 rounded-md font-medium hover:bg-blue-50 transition">
-                    <i class="fas fa-eye mr-1"></i> Nos formations </a>
+                </div>
+                <a href="https://www.isaworld.net/tg/formations" class="default-btn bg-red-500 hover:bg-teal-500 text-white px-6 py-3 rounded inline-flex items-center">
+                    <i class="fas fa-eye mr-2"></i>
+                    <span>Nos formations</span>
+                </a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> <!-- Course 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"> <a
-                        href="https://www.isaworld.net/tg/formation/39-les-fondamentaux-du-digital-et-des-reseaux-sociaux.html">
-                        <img src="https://www.isaworld.net/imgs/formations/big/033538_2-FMI123.webp"
-                            alt="Les fondamentaux du digital et des réseaux sociaux" class="w-full h-48 object-cover">
-                    </a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2"> <a
-                                href="https://www.isaworld.net/tg/formation/39-les-fondamentaux-du-digital-et-des-reseaux-sociaux.html"
-                                class="hover:text-blue-600">Les fondamentaux du digital et des réseaux sociaux</a> </h3>
-                        <p class="text-gray-600 mb-4">La communication est l'art qui consiste à transmettre un message à
-                            une cible de façon efficace et...</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <div class="flex items-center text-yellow-400"> <i class="fas fa-star"></i> <i
-                                    class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-                                    class="fas fa-star-half-alt"></i> </div>
-                        </div>
-                        <div class="flex justify-between items-center border-t pt-4">
-                            <div class="flex items-center text-gray-500"> <i class="far fa-clock mr-2"></i> <span>1 mois
-                                    (16H)</span> </div>
-                            <div class="text-blue-600 font-semibold"> 56,000 <span class="text-gray-500">Fcfa</span>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Item 1 -->
+                <div class="single-courses-box bg-white shadow-lg rounded overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                    <div class="courses-image overflow-hidden">
+                        <a href="https://www.isaworld.net/tg/formation/31-woocommerce.html" class="block">
+                            <img src="https://www.isaworld.net//imgs/formations/big/033446_2-FMI117.webp" alt="WooCommerce" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+                        </a>
+                    </div>
+                    <div class="courses-content p-6">
+                        <h3 class="text-xl font-bold mb-3"><a href="https://www.isaworld.net/tg/formation/31-woocommerce.html">WooCommerce</a></h3>
+                        <p class="mb-4">Vous voulez créer un site Internet et vendre vos produits en ligne ? Vous êtes au bon endroit ! Cette...</p>
+                        <a href="https://www.isaworld.net/tg/formation/31-woocommerce.html" class="default-btn bg-red-500 hover:bg-teal-500 text-white px-4 py-2 rounded inline-flex items-center text-sm">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            <span>Voir détail</span>
+                        </a>
+                        <div class="courses-rating mt-4">
+                            <div class="review-stars-rated text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
                             </div>
                         </div>
                     </div>
-                </div> <!-- Course 2 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"> <a
-                        href="https://www.isaworld.net/tg/formation/30-shopify-de-a-a-z.html"> <img
-                            src="https://www.isaworld.net/imgs/formations/big/033440_2-FMI116.webp"
-                            alt="Shopify de A à Z" class="w-full h-48 object-cover"> </a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2"> <a
-                                href="https://www.isaworld.net/tg/formation/30-shopify-de-a-a-z.html"
-                                class="hover:text-blue-600">Shopify de A à Z</a> </h3>
-                        <p class="text-gray-600 mb-4">Chaque année, la vente en ligne attire de plus en plus de nombreux
-                            individus. Pour vous aider à vous lancer...</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <div class="flex items-center text-yellow-400"> <i class="fas fa-star"></i> <i
-                                    class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-                                    class="fas fa-star-half-alt"></i> </div>
-                        </div>
-                        <div class="flex justify-between items-center border-t pt-4">
-                            <div class="flex items-center text-gray-500"> <i class="far fa-clock mr-2"></i> <span>1 mois
-                                    (16H)</span> </div>
-                            <div class="text-blue-600 font-semibold"> 56,000 <span class="text-gray-500">Fcfa</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- Course 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"> <a
-                        href="https://www.isaworld.net/tg/formation/40-la-securite-web-et-des-tic.html"> <img
-                            src="https://www.isaworld.net/imgs/formations/big/033545_2-FMI124.webp"
-                            alt="La sécurité Web et des TIC" class="w-full h-48 object-cover"> </a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2"> <a
-                                href="https://www.isaworld.net/tg/formation/40-la-securite-web-et-des-tic.html"
-                                class="hover:text-blue-600">La sécurité Web et des TIC</a> </h3>
-                        <p class="text-gray-600 mb-4">En vérifiant les logs de connexion à votre site web, vous pourrez
-                            constater que les tentatives de piratages...</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <div class="flex items-center text-yellow-400"> <i class="fas fa-star"></i> <i
-                                    class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-                                    class="fas fa-star-half-alt"></i> </div>
-                        </div>
-                        <div class="flex justify-between items-center border-t pt-4">
-                            <div class="flex items-center text-gray-500"> <i class="far fa-clock mr-2"></i> <span>1 mois
-                                    (16H)</span> </div>
-                            <div class="text-blue-600 font-semibold"> 56,000 <span class="text-gray-500">Fcfa</span>
-                            </div>
-                        </div>
+                    <div class="courses-box-footer border-t border-dashed border-gray-200 p-4">
+                        <ul class="flex justify-between">
+                            <li class="courses-lesson text-gray-600">
+                                <i class="far fa-clock mr-1"></i> 1 mois (16H)
+                            </li>
+                            <li class="courses-price text-red-500 font-bold">
+                                56000<br>
+                                <span class="text-gray-600 font-normal">Fcfa</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+                
+                <!-- Add other course items here following the same pattern -->
             </div>
         </div>
     </section>
-     <!-- Course Categories -->
-    <section class="py-16 bg-gradient-to-r from-blue-500 to-blue-700 text-white relative overflow-hidden">
+
+    <!-- Courses Categories -->
+    <section class="courses-categories-area bg-gray-100 py-16 relative">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12"> <span
-                    class="inline-block px-3 py-1 bg-white text-blue-600 rounded-full mb-2">Nos catégories</span>
+            <div class="section-title text-center mb-12">
+                <span class="sub-title text-red-500 block mb-2">Nos catégories</span>
                 <h2 class="text-3xl font-bold">Les catégories de nos formations</h2>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"> <!-- Category 1 --> <a
-                    href="https://www.isaworld.net/tg/1-commerce-et-marketing"
-                    class="category-commerce text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
-                    <div class="text-4xl mb-4"> <i class="fas fa-rocket"></i> </div>
-                    <h3 class="text-xl font-semibold">Commerce et Marketing</h3>
-                </a> <!-- Category 2 --> <a href="https://www.isaworld.net/tg/7-grh-et-emploi"
-                    class="category-grh text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
-                    <div class="text-4xl mb-4"> <i class="fas fa-users"></i> </div>
-                    <h3 class="text-xl font-semibold">GRH et Emploi</h3>
-                </a> <!-- Category 3 --> <a href="https://www.isaworld.net/tg/6-gestion-et-comptabilite"
-                    class="category-gestion text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
-                    <div class="text-4xl mb-4"> <i class="fas fa-calculator"></i> </div>
-                    <h3 class="text-xl font-semibold">Gestion et Comptabilité</h3>
-                </a> <!-- Category 4 --> <a href="https://www.isaworld.net/tg/3-informatique"
-                    class="category-informatique text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
-                    <div class="text-4xl mb-4"> <i class="fas fa-at"></i> </div>
-                    <h3 class="text-xl font-semibold">Informatique</h3>
-                </a> <!-- Category 5 --> <a href="https://www.isaworld.net/tg/10-logistique"
-                    class="category-logistique text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
-                    <div class="text-4xl mb-4"> <i class="fas fa-truck"></i> </div>
-                    <h3 class="text-xl font-semibold">Logistique</h3>
-                </a> <!-- Category 6 --> <a href="https://www.isaworld.net/tg/2-qualite-et-management"
-                    class="category-qualite text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
-                    <div class="text-4xl mb-4"> <i class="fas fa-shapes"></i> </div>
-                    <h3 class="text-xl font-semibold">Qualité et Management</h3>
-                </a> <!-- Category 7 --> <a href="https://www.isaworld.net/tg/8-sante"
-                    class="category-sante text-white rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1">
-                    <div class="text-4xl mb-4"> <i class="fas fa-first-aid"></i> </div>
-                    <h3 class="text-xl font-semibold">Santé</h3>
-                </a> </div>
-        </div>
-    </section>
-     <!-- Stats -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"> <!-- Stat 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-in">
-                    <div class="text-blue-600 text-4xl mb-4"> <i class="fas fa-users"></i> </div>
-                    <h3 class="text-4xl font-bold mb-2 odometer" data-count="43">0</h3>
-                    <p class="text-gray-600">Formateurs experts</p>
-                </div> <!-- Stat 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-in" style="animation-delay: 0.2s">
-                    <div class="text-blue-600 text-4xl mb-4"> <i class="fas fa-book-reader"></i> </div>
-                    <h3 class="text-4xl font-bold mb-2 odometer" data-count="312">0</h3>
-                    <p class="text-gray-600">Total Courses</p>
-                </div> <!-- Stat 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-in" style="animation-delay: 0.4s">
-                    <div class="text-blue-600 text-4xl mb-4"> <i class="fas fa-user-graduate"></i> </div>
-                    <h3 class="text-4xl font-bold mb-2 odometer" data-count="1245">0</h3>
-                    <p class="text-gray-600">Etudiants heureux</p>
-                </div> <!-- Stat 4 -->
-                <div class="bg-white p-6 rounded-lg shadow-md animate-slide-in" style="animation-delay: 0.6s">
-                    <div class="text-blue-600 text-4xl mb-4"> <i class="fas fa-laptop"></i> </div>
-                    <h3 class="text-4xl font-bold mb-2 odometer" data-count="152">0</h3>
-                    <p class="text-gray-600">Webinaires</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Category 1 -->
+                <div class="single-categories-courses-box bg-red-500 text-white p-8 rounded-lg text-center transition-transform duration-300 hover:-translate-y-2">
+                    <div class="icon w-20 h-20 bg-white bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-rocket text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Commerce et Marketing</h3>
+                    <a href="https://www.isaworld.net/tg/1-commerce-et-marketing" class="link-btn absolute inset-0"></a>
                 </div>
+                
+                <!-- Add other categories here following the same pattern -->
             </div>
         </div>
-    </section> 
-    <!-- About Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap items-center -mx-4">
-                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-                    <div class="relative"> <img src="https://www.isaworld.net/assets/img/about/1.webp" alt="About ISA"
-                            class="w-full rounded-lg shadow-lg"> <img
-                            src="https://www.isaworld.net/assets/img/about/2.webp" alt="About ISA"
-                            class="absolute -bottom-8 -right-8 w-1/2 rounded-lg shadow-lg border-4 border-white"> </div>
+    </section>
+
+    <!-- Funfacts -->
+    <section class="funfacts-area pt-16 relative">
+        <div class="funfacts-inner bg-red-500 rounded-lg p-8 relative">
+            <div class="row grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Funfact 1 -->
+                <div class="single-funfact text-center">
+                    <div class="icon w-16 h-16 bg-white bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-5 text-white text-2xl">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2 odometer" data-count="43">00</h3>
+                    <p class="text-white">Formateurs experts</p>
                 </div>
-                <div class="w-full md:w-1/2 px-4"> <span
-                        class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full mb-4">International Skills
-                        Academy au Togo</span>
-                    <h2 class="text-3xl font-bold mb-4">Apprenez de nouvelles compétences pour poursuivre votre carrière
-                    </h2>
-                    <h3 class="text-xl text-gray-600 mb-6">Nous pouvons offrir des formations dans plusieurs domaines de
-                        compétences pour les étudiants nationaux et internationaux.</h3>
-                    <p class="text-gray-600 mb-6">La formation professionnelle à distance au Togo est devenue
-                        indispensable tant pour les personnes en quête de travail que pour le personnel en poste. Notre
-                        organisme de formation est une structure ayant pour mission de dispenser ses formations à
-                        distance et d'apporter aux apprenants de nouvelles compétences et connaissances au Togo.</p>
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <div class="flex items-start">
-                            <div class="text-blue-600 text-xl mr-3 mt-1"> <i class="fas fa-globe"></i> </div>
-                            <div>
-                                <h4 class="font-semibold mb-2">Nous vous proposons bien plus que des savoirs</h4>
-                                <p class="text-gray-600">Engagé à vos côtés, nos experts partagent une connaissance
-                                    profonde de vos enjeux, de vos métiers et de vos besoins. Formation clé en main ou
-                                    sur mesure à distance, projets internationaux ou conseils opérationnels, nous sommes
-                                    là pour créer et déployer avec vous la solution la plus compétitive.</p>
-                            </div>
+                
+                <!-- Add other funfacts here following the same pattern -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Area -->
+    <section class="about-area py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pr-8 relative">
+                    <div class="about-image">
+                        <img src="https://www.isaworld.net/assets/img/about/1.webp" class="w-full rounded shadow" alt="image">
+                        <img src="https://www.isaworld.net/assets/img/about/2.webp" class="absolute -left-8 -bottom-8 w-1/2 rounded shadow hidden lg:block" alt="image">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 lg:pl-8">
+                    <div class="about-content">
+                        <span class="sub-title text-red-500 block mb-2">International Skills Academy au Togo</span>
+                        <h2 class="text-3xl font-bold mb-4">Apprenez de nouvelles compétences pour poursuivre votre carrière</h2>
+                        <h6 class="text-lg mb-4">Nous pouvons offrir des formations dans plusieurs domaines de compétences pour les étudiants nationaux et internationaux.</h6>
+                        <p class="mb-6">La formation professionnelle à distance au Togo est devenue indispensable tant pour les personnes en quête de travail que pour le personnel en poste. Notre organisme de formation est une structure ayant pour mission de dispenser ses formations à distance et d'apporter aux apprenants de nouvelles compétences et connaissances au Togo.</p>
+                        
+                        <div class="features-text relative pl-16 mt-8">
+                            <h5 class="text-lg font-bold mb-2">
+                                <i class="fas fa-globe absolute left-0 top-0 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center text-xl"></i>
+                                Nous vous proposons bien plus que des savoirs
+                            </h5>
+                            <p>Engagé à vos côtés, nos experts partagent une connaissance profonde de vos enjeux, de vos métiers et de vos besoins. Formation clé en main ou sur mesure à distance, projets internationaux ou conseils opérationnels, nous sommes là pour créer et déployer avec vous la solution la plus compétitive.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
+
     <!-- Partners -->
-    <section class="py-16 bg-gray-100">
+    <section class="partner-area bg-gray-100 py-16">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
+            <div class="section-title text-center mb-12">
                 <h2 class="text-3xl font-bold">Nos Partenaires</h2>
             </div>
-            <div class="flex flex-wrap justify-center items-center gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md"> <img
-                        src="https://www.isaworld.net/imgs/partenaires/big/010534_3.png" alt="McGill"
-                        class="h-16 object-contain"> </div>
-                <div class="bg-white p-6 rounded-lg shadow-md"> <img
-                        src="https://www.isaworld.net/imgs/partenaires/big/051957_qmp.png" alt="QMP Management"
-                        class="h-16 object-contain"> </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <!-- Partner 1 -->
+                <div class="single-partner-item text-center">
+                    <a href="#0" class="block">
+                        <img src="https://www.isaworld.net//imgs/partenaires/big/010534_3.png" alt="McGill" class="mx-auto h-16 object-contain opacity-70 hover:opacity-100 hover:filter-none filter grayscale transition-all duration-300">
+                    </a>
+                </div>
+                
+                <!-- Add other partners here following the same pattern -->
             </div>
         </div>
-    </section> 
-    <!-- Contact Form -->
-    <section class="py-16 bg-blue-600 text-white"
-        style="background-image: url('https://www.isaworld.net/assets/img/map.png'); background-size: cover; background-position: center;">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap -mx-4 items-center">
-                <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-4">En apprenant ensemble, nous réalisons de grandes ambitions.</h2>
-                    <p class="text-blue-100">Contactez-nous pour plus d'informations sur nos formations et programmes.
-                    </p>
+    </section>
+
+    <!-- Feedback Form -->
+    <section class="students-feedback-form-area py-16 bg-fixed bg-cover bg-center relative" style="background-image: url('https://www.isaworld.net/assets/img/feedback-bg.jpg');">
+        <div class="absolute inset-0 bg-black opacity-70 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 mb-8 lg:mb-0 lg:pr-8 text-white">
+                    <div class="students-feedback-form-content">
+                        <h2 class="text-3xl font-bold">En apprenant ensemble, nous réalisons de grandes ambitions.</h2>
+                    </div>
                 </div>
-                <div class="w-full md:w-1/2 px-4">
-                    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800">
-                        <h3 class="text-xl font-bold mb-6">Formulaire de contact rapide</h3>
+                <div class="w-full lg:w-1/2 lg:pl-8">
+                    <div class="students-feedback-form bg-white p-8 rounded">
+                        <h3 class="text-2xl font-bold mb-6">Formulaire de contact rapide</h3>
+                        
                         <form>
-                            <div class="mb-4"> <input type="text" placeholder="Votre Nom"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div class="flex flex-wrap -mx-2 mb-4">
-                                <div class="w-full md:w-1/2 px-2 mb-4 md:mb-0"> <input type="email"
-                                        placeholder="Votre Adresse Email*"
-                                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <div class="grid grid-cols-1 gap-6">
+                                <div class="form-group relative">
+                                    <input type="text" class="form-control w-full bg-gray-100 border-b border-gray-300 py-3 px-4 focus:outline-none focus:border-red-500" placeholder="Votre Nom*">
+                                    <span class="label-title absolute right-4 top-1/2 transform -translate-y-1/2 text-red-500"><i class="fas fa-user"></i></span>
                                 </div>
-                                <div class="w-full md:w-1/2 px-2"> <input type="text" placeholder="Votre téléphone*"
-                                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="form-group relative">
+                                        <input type="email" class="form-control w-full bg-gray-100 border-b border-gray-300 py-3 px-4 focus:outline-none focus:border-red-500" placeholder="Votre Adresse Email*">
+                                        <span class="label-title absolute right-4 top-1/2 transform -translate-y-1/2 text-red-500"><i class="fas fa-envelope"></i></span>
+                                    </div>
+                                    
+                                    <div class="form-group relative">
+                                        <input type="text" class="form-control w-full bg-gray-100 border-b border-gray-300 py-3 px-4 focus:outline-none focus:border-red-500" placeholder="Votre téléphone*">
+                                        <span class="label-title absolute right-4 top-1/2 transform -translate-y-1/2 text-red-500"><i class="fas fa-phone"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group relative">
+                                    <textarea cols="30" rows="5" class="form-control w-full bg-gray-100 border-b border-gray-300 py-3 px-4 focus:outline-none focus:border-red-500" placeholder="Votre message (Optionnel)"></textarea>
+                                    <span class="label-title absolute right-4 top-6 text-red-500"><i class="fas fa-edit"></i></span>
+                                </div>
+                                
+                                <div>
+                                    <button type="submit" class="default-btn bg-red-500 hover:bg-teal-500 text-white px-6 py-3 rounded inline-flex items-center w-full md:w-auto justify-center">
+                                        <i class="fas fa-paper-plane mr-2"></i>
+                                        <span>Envoyer</span>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="mb-4"> <textarea placeholder="Votre message (Optionnel)" rows="4"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                            </div> <button type="submit"
-                                class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition">
-                                <i class="fas fa-paper-plane mr-2"></i> Envoyer </button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section> 
-    
-    
-    
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <footer class="footer-area bg-gray-900 pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <div class="flex flex-wrap -mx-4 mb-8"> <!-- Contact Info -->
-                <div class="w-full md:w-1/3 px-4 mb-8 md:mb-0">
-                    <h3 class="text-xl font-semibold mb-4">Nous contacter</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start"> <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
-                            <span>Av. Palestine Lot. Ratma N6, Daoudiate. 40000 Marrakech - Maroc</span> </li>
-                        <li class="flex items-center"> <i class="fas fa-phone-alt mr-3 text-blue-400"></i> <a
-                                href="tel:+212668580485" class="hover:underline">+212 668 580 485</a> </li>
-                        <li class="flex items-center"> <i class="fas fa-phone-alt mr-3 text-blue-400"></i> <a
-                                href="tel:+212808558581" class="hover:underline">+212 808 558 581</a> </li>
-                        <li class="flex items-center"> <i class="fas fa-envelope mr-3 text-blue-400"></i> <a
-                                href="mailto:contact@isaworld.net" class="hover:underline">contact@isaworld.net</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Footer Widget 1 -->
+                <div class="single-footer-widget">
+                    <h3 class="text-white text-xl font-bold mb-6">Nous contacter</h3>
+                    <ul class="contact-us-link">
+                        <li class="mb-4 text-gray-300">
+                            <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                            Av. Palestine Lot. Ratma N6, Daoudiate. 40000 Marrakech - Maroc
+                        </li>
+                        <li class="mb-4">
+                            <i class="fas fa-phone-alt text-red-500 mr-2"></i>
+                            <a href="tel:+212668580485" class="text-gray-300 hover:text-white">+212 668 580 485</a>
+                        </li>
+                        <li class="mb-4">
+                            <i class="fas fa-phone-alt text-red-500 mr-2"></i>
+                            <a href="tel:+212808558581" class="text-gray-300 hover:text-white">+212 808 558 581</a>
+                        </li>
+                        <li class="mb-4">
+                            <i class="fas fa-envelope text-red-500 mr-2"></i>
+                            <a href="/cdn-cgi/l/email-protection" class="text-gray-300 hover:text-white"><span class="__cf_email__">[email&#160;protected]</span></a>
                         </li>
                     </ul>
-                    <div class="mt-6">
-                        <h4 class="text-lg font-medium mb-3">Suivez-nous</h4>
-                        <div class="flex space-x-4"> <a href="https://www.facebook.com/isaworld.net" target="_blank"
-                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition">
-                                <i class="fab fa-facebook-f"></i> </a> <a href="https://www.instagram.com/isaworldnet/"
-                                target="_blank"
-                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition">
-                                <i class="fab fa-instagram"></i> </a> <a
-                                href="https://www.linkedin.com/company/isaworld" target="_blank"
-                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition">
-                                <i class="fab fa-linkedin-in"></i> </a> <a
-                                href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22"
-                                target="_blank"
-                                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-500 transition">
-                                <i class="fab fa-whatsapp"></i> </a> </div>
-                    </div>
-                </div> <!-- Quick Links -->
-                <div class="w-full md:w-1/4 px-4 mb-8 md:mb-0">
-                    <h3 class="text-xl font-semibold mb-4">Menu</h3>
-                    <ul class="space-y-2">
-                        <li><a href="https://www.isaworld.net/tg/index.html"
-                                class="text-gray-400 hover:text-white transition">Accueil</a></li>
-                        <li><a href="https://www.isaworld.net/tg/formations"
-                                class="text-gray-400 hover:text-white transition">Nos Formations</a></li>
-                        <li><a href="https://www.isaworld.net/tg/webinaires.html"
-                                class="text-gray-400 hover:text-white transition">Webinaires</a></li>
-                        <li><a href="https://www.isaworld.net/tg/presentation.html"
-                                class="text-gray-400 hover:text-white transition">A propos</a></li>
-                        <li><a href="https://www.isaworld.net/tg/contact.html"
-                                class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    
+                    <ul class="social-link flex mt-6">
+                        <li class="mr-2"><a target="_blank" href="https://www.facebook.com/isaworld.net" class="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-red-500"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="mr-2"><a target="_blank" href="https://www.instagram.com/isaworldnet/" class="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-red-500"><i class="fab fa-instagram"></i></a></li>
+                        <li class="mr-2"><a target="_blank" href="https://www.linkedin.com/company/isaworld" class="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-red-500"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a target="_blank" href="https://api.whatsapp.com/send/?phone=00212668580485&text=%22Salut%22" class="w-10 h-10 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-red-500"><i class="fab fa-whatsapp"></i></a></li>
                     </ul>
-                </div> <!-- Useful Links -->
-                <div class="w-full md:w-1/4 px-4 mb-8 md:mb-0">
-                    <h3 class="text-xl font-semibold mb-4">Liens utiles</h3>
-                    <ul class="space-y-2">
-                        <li><a href="https://www.isaworld.net/tg/cg.html"
-                                class="text-gray-400 hover:text-white transition">Conditions Générales</a></li>
-                        <li><a href="https://www.isaworld.net/membres.php"
-                                class="text-gray-400 hover:text-white transition">Espace membres</a></li>
-                        <li><a href="https://www.isaworld.net/tg/mots"
-                                class="text-gray-400 hover:text-white transition">Mots clès</a></li>
-                    </ul>
-                </div> <!-- Newsletter -->
-                <div class="w-full md:w-1/4 px-4">
-                    <h3 class="text-xl font-semibold mb-4">Newsletter</h3>
-                    <p class="text-gray-400 mb-4">Pour recevoir les dernières nouvelles..</p>
-                    <form class="flex"> <input type="email" placeholder="Entrez votre email"
-                            class="px-4 py-2 rounded-l-md focus:outline-none text-gray-800 w-full"> <button
-                            type="submit"
-                            class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md">S'abonner</button> </form>
                 </div>
-            </div> <!-- Footer Bottom -->
-            <div class="border-t border-gray-800 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="mb-4 md:mb-0"> <a href="https://www.isaworld.net/tg" class="inline-block"> <img
-                                src="https://www.isaworld.net/assets/img/logo_white.svg" alt="ISA" class="h-12"> </a>
-                    </div>
-                    <div class="text-center md:text-right">
-                        <p class="text-gray-400 mb-2"> <i class="far fa-copyright"></i> 2022 <a href="#"
-                                class="hover:text-white">International Skills Academy</a> | Tous les droits sont
-                            réservés. </p> <img src="https://www.isaworld.net/assets/img/payement.webp"
-                            alt="Payment methods" class="h-8 mx-auto md:mx-0">
-                    </div>
-                </div> <!-- Countries -->
-                <div class="mt-8 text-sm text-gray-400">
-                    <div class="mb-4"> <span class="font-semibold">Afrique:</span>
-                        <div class="flex flex-wrap gap-2 mt-2"> <a href="https://www.isaworld.net/dz"
-                                class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050235_101020_dz.webp" alt="Algérie"
-                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Algérie </a> <span>|</span> <a
-                                href="https://www.isaworld.net/bf" class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050605_103744_bf.webp"
-                                    alt="Burkina Faso" class="w-5 h-3 mr-1 rounded shadow-sm"> Burkina Faso </a>
-                            <span>|</span> <a href="https://www.isaworld.net/bj"
-                                class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050652_040542_bj.webp" alt="Bénin"
-                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Bénin </a> <span>|</span> <a
-                                href="https://www.isaworld.net/cm" class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050336_032504_cm.webp" alt="Cameroun"
-                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Cameroun </a> <!-- More countries... -->
-                        </div>
-                    </div>
-                    <div class="mb-4"> <span class="font-semibold">Europe:</span>
-                        <div class="flex flex-wrap gap-2 mt-2"> <a href="https://www.isaworld.net/be"
-                                class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050457_040934_be.webp" alt="Belgique"
-                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Belgique </a> <span>|</span> <a
-                                href="https://www.isaworld.net/fr" class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050354_023818_dreapeu_fr.webp"
-                                    alt="France" class="w-5 h-3 mr-1 rounded shadow-sm"> France </a> <span>|</span> <a
-                                href="https://www.isaworld.net/lu" class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050521_103603_lu.webp" alt="Luxembourg"
-                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Luxembourg </a> <!-- More countries... -->
-                        </div>
-                    </div>
-                    <div> <span class="font-semibold">Monde:</span>
-                        <div class="flex flex-wrap gap-2 mt-2"> <a href="https://www.isaworld.net/ca"
-                                class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050526_103624_ca.webp" alt="Canada"
-                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Canada </a> <span>|</span> <a
-                                href="https://www.isaworld.net/wd" class="flex items-center hover:text-white"> <img
-                                    src="https://www.isaworld.net/imgs/pays/big/050359_092508_world.webp" alt="Monde"
-                                    class="w-5 h-3 mr-1 rounded shadow-sm"> Monde </a> </div>
+                
+                <!-- Footer Widget 2 -->
+                <div class="single-footer-widget">
+                    <h3 class="text-white text-xl font-bold mb-6">Menu</h3>
+                    <ul class="support-link">
+                        <li class="mb-3"><a href="https://www.isaworld.net/tg/index.html" class="text-gray-300 hover:text-red-500">Accueil</a></li>
+                        <li class="mb-3"><a href="https://www.isaworld.net/tg/formations" class="text-gray-300 hover:text-red-500">Nos Formations</a></li>
+                        <li class="mb-3"><a href="https://www.isaworld.net/tg/webinaires.html" class="text-gray-300 hover:text-red-500">Webinaires</a></li>
+                        <li class="mb-3"><a href="https://www.isaworld.net/tg/presentation.html" class="text-gray-300 hover:text-red-500">A propos</a></li>
+                        <li><a href="https://www.isaworld.net/tg/contact.html" class="text-gray-300 hover:text-red-500">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Footer Widget 3 -->
+                <div class="single-footer-widget">
+                    <h3 class="text-white text-xl font-bold mb-6">Liens utiles</h3>
+                    <ul class="useful-link">
+                        <li class="mb-3"><a href="https://www.isaworld.net/tg/cg.html" class="text-gray-300 hover:text-red-500">Conditions Générales</a></li>
+                        <li class="mb-3"><a href="https://www.isaworld.net/membres.php" class="text-gray-300 hover:text-red-500">Espace membres</a></li>
+                        <li><a href="https://www.isaworld.net/tg/mots" class="text-gray-300 hover:text-red-500">Mots clès</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Footer Widget 4 -->
+                <div class="single-footer-widget">
+                    <h3 class="text-white text-xl font-bold mb-6">Newsletter</h3>
+                    <div class="newsletter-box">
+                        <p class="text-gray-300 mb-4">Pour recevoir les dernières nouvelles..</p>
+                        <form class="newsletter-form">
+                            <label class="block text-gray-300 mb-2">Votre adresse email:</label>
+                            <input type="email" class="input-newsletter w-full bg-gray-800 text-white px-4 py-3 mb-3 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Entrez votre email" name="EMAIL" required autocomplete="off">
+                            <button type="submit" class="w-full bg-red-500 hover:bg-teal-500 text-white py-3 px-6 rounded">S'abonner</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer> <!-- Go to Top Button -->
-    <div class="go-top" id="goTop"> <i class="fas fa-arrow-up"></i> </div> 
-    
-    
-    <!-- Country Selection Modal -->
-    <div id="countryModal" class="country-modal">
-        <div class="country-modal-content">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold">Choisissez votre pays:</h3> <span onclick="closeCountryModal()"
-                    class="cursor-pointer text-2xl">&times;</span>
-            </div>
-            <div class="mb-6">
-                <h4 class="font-semibold mb-2">Afrique</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> <a href="https://www.isaworld.net/dz"
-                        class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
-                            src="https://www.isaworld.net/imgs/pays/big/050235_101020_dz.webp" alt="Algérie"
-                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Algérie (DA)</span> </a> <a
-                        href="https://www.isaworld.net/bf" class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
-                            src="https://www.isaworld.net/imgs/pays/big/050605_103744_bf.webp" alt="Burkina Faso"
-                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Burkina Faso (FCFA)</span> </a> <a
-                        href="https://www.isaworld.net/bj" class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
-                            src="https://www.isaworld.net/imgs/pays/big/050652_040542_bj.webp" alt="Bénin"
-                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Bénin (FCFA)</span> </a>
-                    <!-- More African countries... --> </div>
-            </div>
-            <div class="mb-6">
-                <h4 class="font-semibold mb-2">Europe</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> <a href="https://www.isaworld.net/be"
-                        class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
-                            src="https://www.isaworld.net/imgs/pays/big/050457_040934_be.webp" alt="Belgique"
-                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Belgique (€)</span> </a> <a
-                        href="https://www.isaworld.net/fr" class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
-                            src="https://www.isaworld.net/imgs/pays/big/050354_023818_dreapeu_fr.webp" alt="France"
-                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>France (€)</span> </a>
-                    <!-- More European countries... --> </div>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-2">Monde</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"> <a href="https://www.isaworld.net/ca"
-                        class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
-                            src="https://www.isaworld.net/imgs/pays/big/050526_103624_ca.webp" alt="Canada"
-                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Canada ($)</span> </a> <a
-                        href="https://www.isaworld.net/wd" class="flex items-center p-2 hover:bg-gray-100 rounded"> <img
-                            src="https://www.isaworld.net/imgs/pays/big/050359_092508_world.webp" alt="Monde"
-                            class="w-8 h-5 mr-3 rounded shadow-sm"> <span>Monde (€)</span> </a> </div>
+            
+            <div class="footer-bottom-area border-t border-gray-800 pt-8 mt-12">
+                <div class="logo mb-6">
+                    <a href="https://www.isaworld.net/tg" class="inline-block">
+                        <img src="https://www.isaworld.net/assets/img/logo_white.svg" width="196" height="62" alt="formation professionnelle et continue à distance">
+                    </a>
+                </div>
+                
+                <p class="pays-footer text-gray-400 text-sm mb-6">
+                    <span class="font-bold">Afrique:</span>
+                    <a href="https://www.isaworld.net/dz" class="hover:text-red-500">
+                        <img src="https://www.isaworld.net//imgs/pays/big/050235_101020_dz.webp" class="shadow-sm mr-1" alt="Algérie" width="20" height="13">
+                        <span>Algérie</span>
+                    </a> |
+                    <!-- Add other countries here following the same pattern -->
+                </p>
+                
+                <p class="text-gray-400 text-sm mb-4">
+                    <i class="fas fa-copyright text-red-500 mr-1"></i> 2022 <a href="#0" class="text-red-500 hover:underline">International Skills Academy</a> | Tous les droits sont réservés.
+                </p>
+                
+                <p class="mb-4">
+                    <img src="https://www.isaworld.net/assets/img/payement.webp" alt="payement" width="455" height="36">
+                </p>
             </div>
         </div>
-    </div> <!-- Search Overlay -->
-    <div id="searchOverlay" class="search-overlay">
-        <div class="w-full max-w-2xl px-4">
-            <div class="relative"> <button onclick="closeSearch()"
-                    class="absolute right-0 top-0 text-white text-3xl focus:outline-none"> &times; </button>
-                <form action="https://www.isaworld.net/tg/result" method="get" class="w-full"> <input type="text"
-                        name="query" placeholder="Vous cherchez une formation ?"
-                        class="w-full px-6 py-4 text-xl bg-transparent border-b-2 border-white text-white focus:outline-none">
-                    <button type="submit" class="absolute right-12 top-3 text-white"> <i
-                            class="fas fa-search text-xl"></i> </button> </form>
-            </div>
-        </div>
-    </div>
-    <script> // Mobile menu toggle function toggleMobileMenu() { const menu = document.getElementById('mobileMenu'); menu.classList.toggle('open'); } // Submenu toggle for mobile function toggleSubMenu(id) { const submenu = document.getElementById(id); submenu.classList.toggle('hidden'); } // Country modal function openCountryModal() { document.getElementById('countryModal').style.display = 'block'; } function closeCountryModal() { document.getElementById('countryModal').style.display = 'none'; } // Search overlay function openSearch() { document.getElementById('searchOverlay').classList.add('open'); } function closeSearch() { document.getElementById('searchOverlay').classList.remove('open'); } // Go to top button window.addEventListener('scroll', function() { const goTop = document.getElementById('goTop'); if (window.pageYOffset > 300) { goTop.classList.add('visible'); } else { goTop.classList.remove('visible'); } }); document.getElementById('goTop').addEventListener('click', function() { window.scrollTo({top: 0, behavior: 'smooth'}); }); // Odometer animation function animateOdometer() { const odometers = document.querySelectorAll('.odometer'); odometers.forEach(odometer => { const target = parseInt(odometer.getAttribute('data-count')); let current = 0; const increment = target / 50; const timer = setInterval(() => { current += increment; if (current >= target) { current = target; clearInterval(timer); } odometer.textContent = Math.floor(current); }, 20); }); } // Intersection Observer for animations const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { if (entry.target.classList.contains('odometer')) { animateOdometer(); observer.unobserve(entry.target); } } }); }, {threshold: 0.5}); document.querySelectorAll('.odometer').forEach(el => { observer.observe(el); }); // Close modals when clicking outside window.onclick = function(event) { const countryModal = document.getElementById('countryModal'); if (event.target == countryModal) { countryModal.style.display = 'none'; } const searchOverlay = document.getElementById('searchOverlay'); if (event.target == searchOverlay) { searchOverlay.classList.remove('open'); } } </script>
-</body>
+    </footer>
 
+    <!-- Go Top -->
+    <div class="go-top fixed bottom-8 right-8 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center text-xl cursor-pointer opacity-0 invisible transition-all duration-300 hover:bg-teal-500">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle would go here
+            
+            // Search overlay toggle
+            const searchBox = document.querySelector('.search-box');
+            const searchOverlay = document.querySelector('.search-overlay');
+            const searchClose = document.querySelector('.search-overlay-close');
+            
+            if(searchBox) {
+                searchBox.addEventListener('click', function() {
+                    searchOverlay.classList.remove('hidden');
+                });
+            }
+            
+            if(searchClose) {
+                searchClose.addEventListener('click', function() {
+                    searchOverlay.classList.add('hidden');
+                });
+            }
+            
+            // Modal functionality
+            const modalTriggers = document.querySelectorAll('[data-modal]');
+            const modalClose = document.querySelectorAll('.modal .close');
+            
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.querySelector(modalId);
+                    if(modal) {
+                        modal.style.display = 'block';
+                    }
+                });
+            });
+            
+            modalClose.forEach(close => {
+                close.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if(e.target.classList.contains('modal')) {
+                    e.target.style.display = 'none';
+                }
+            });
+            
+            // Go Top Button
+            const goTop = document.querySelector('.go-top');
+            if(goTop) {
+                window.addEventListener('scroll', function() {
+                    if(window.pageYOffset > 200) {
+                        goTop.classList.add('active');
+                        goTop.classList.remove('opacity-0', 'invisible');
+                    } else {
+                        goTop.classList.remove('active');
+                        goTop.classList.add('opacity-0', 'invisible');
+                    }
+                });
+                
+                goTop.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Odometer Counter
+            const odometerElements = document.querySelectorAll('.odometer');
+            if(odometerElements.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if(entry.isIntersecting) {
+                            const el = entry.target;
+                            const count = el.getAttribute('data-count');
+                            let current = 0;
+                            const increment = count / 20;
+                            
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if(current > count) {
+                                    el.textContent = count;
+                                    clearInterval(timer);
+                                } else {
+                                    el.textContent = Math.floor(current);
+                                }
+                            }, 50);
+                            
+                            observer.unobserve(el);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                odometerElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }
+            
+            // Slider functionality would go here
+        });
+    </script>
+</body>
 </html>

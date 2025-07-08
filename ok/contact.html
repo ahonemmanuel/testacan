@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous - Acan Formation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        :root {
+            --primary-color: #5436e6;
+            --primary-hover: #4630c7;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #495057;
+            background-color: #f8f9fa;
+        }
+        
+        .contact-info-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(84, 54, 230, 0.15);
+            border-color: rgba(84, 54, 230, 0.2);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(84, 54, 230, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: rgba(84, 54, 230, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(84, 54, 230, 0.25);
+        }
+        
+        .hours-item {
+            border-bottom: 1px dashed #e2e8f0;
+            padding: 12px 0;
+        }
+        
+        .hours-item:last-child {
+            border-bottom: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+        
+        .faq-item {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(84, 54, 230, 0.03);
+        }
+        
+        .faq-icon {
+            background-color: rgba(84, 54, 230, 0.1);
+            padding: 8px;
+            border-radius: 8px;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+        }
+        
+        footer {
+            background-color: #212529;
+        }
+        
+        .footer-link {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-4xl">Contactez-nous</h2>
+                <p class="text-muted mx-auto mt-3" style="max-width: 600px;">
+                    Nous sommes à votre disposition pour répondre à toutes vos questions et vous accompagner dans votre parcours de formation.
+                </p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <!-- Contact Info -->
+                <div class="col-lg-4">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="contact-info-card text-center">
+                                <div class="contact-icon">
+                                    <i class='bx bx-map'></i>
+                                </div>
+                                <h3 class="h4 mb-3">Adresse</h3>
+                                <p class="text-muted">123 Avenue de la Formation<br>Lomé, Togo</p>
+                                <div class="mt-4">
+                                    <a href="#" class="text-primary text-decoration-none fw-medium">
+                                        Voir sur la carte <i class='bx bx-chevron-right'></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="contact-info-card text-center">
+                                <div class="contact-icon">
+                                    <i class='bx bx-phone'></i>
+                                </div>
+                                <h3 class="h4 mb-3">Téléphone</h3>
+                                <p class="text-muted">+228 12 34 56 78</p>
+                                <p class="text-muted">+228 98 76 54 32</p>
+                                <div class="mt-4">
+                                    <a href="tel:+22812345678" class="btn btn-primary">
+                                        <i class='bx bx-phone-call me-2'></i> Appeler maintenant
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="contact-info-card text-center">
+                                <div class="contact-icon">
+                                    <i class='bx bx-envelope'></i>
+                                </div>
+                                <h3 class="h4 mb-3">Email</h3>
+                                <p class="text-muted">contact@acan.tg</p>
+                                <p class="text-muted">info@acan.tg</p>
+                                <div class="mt-4">
+                                    <a href="mailto:contact@acan.tg" class="btn btn-primary">
+                                        <i class='bx bx-envelope me-2'></i> Envoyer un email
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="col-lg-8">
+                    <div class="card shadow-sm h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-6 p-4">
+                                <h3 class="h2 mb-4">Envoyez-nous un message</h3>
+                                <form>
+                                    <div class="mb-4">
+                                        <label for="name" class="form-label">Nom complet</label>
+                                        <input type="text" class="form-control form-control-lg" id="name" placeholder="Votre nom">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control form-control-lg" id="email" placeholder="Votre email">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="subject" class="form-label">Sujet</label>
+                                        <input type="text" class="form-control form-control-lg" id="subject" placeholder="Sujet de votre message">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control form-control-lg" id="message" rows="4" placeholder="Votre message"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                                        <i class='bx bx-send me-2'></i> Envoyer le message
+                                    </button>
+                                </form>
+                            </div>
+                            
+                            <div class="col-md-6 bg-light p-4">
+                                <h3 class="h2 mb-4">Heures d'ouverture</h3>
+                                <div class="mb-4">
+                                    <div class="hours-item d-flex justify-content-between">
+                                        <span class="fw-medium">Lundi - Vendredi</span>
+                                        <span class="text-muted">8h00 - 18h00</span>
+                                    </div>
+                                    <div class="hours-item d-flex justify-content-between">
+                                        <span class="fw-medium">Samedi</span>
+                                        <span class="text-muted">9h00 - 13h00</span>
+                                    </div>
+                                    <div class="hours-item d-flex justify-content-between">
+                                        <span class="fw-medium">Dimanche</span>
+                                        <span class="text-muted">Fermé</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-5">
+                                    <h3 class="h2 mb-4">Suivez-nous</h3>
+                                    <div class="d-flex gap-3">
+                                        <a href="#" class="social-icon">
+                                            <i class='bx bxl-facebook'></i>
+                                        </a>
+                                        <a href="#" class="social-icon">
+                                            <i class='bx bxl-twitter'></i>
+                                        </a>
+                                        <a href="#" class="social-icon">
+                                            <i class='bx bxl-linkedin'></i>
+                                        </a>
+                                        <a href="#" class="social-icon">
+                                            <i class='bx bxl-instagram'></i>
+                                        </a>
+                                        <a href="#" class="social-icon">
+                                            <i class='bx bxl-youtube'></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="h2 mb-3">Newsletter</h3>
+                                    <p class="text-muted mb-3">
+                                        Abonnez-vous pour recevoir nos dernières actualités et offres de formation.
+                                    </p>
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="Votre email">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class='bx bx-send'></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+            <!-- Map Section -->
+            <div class="mb-5">
+                <h3 class="h2 text-center mb-4">Nous trouver</h3>
+                <div class="map-container">
+                    <!-- Embed Google Map -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d1.2217422147687575!3d6.2016622954930375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e3838c1e8e9f%3A0xf1a98a26a8c125cd!2sLom%C3%A9%2C%20Togo!5e0!3m2!1sfr!2sfr!4v1623256787890!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+                    
+            <!-- FAQ Section -->
+            <div class="card shadow-sm p-4 p-md-5 mb-5">
+                <h3 class="h2 text-center mb-5">Questions fréquentes</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="faq-item">
+                            <div class="d-flex">
+                                <div class="faq-icon">
+                                    <i class='bx bx-question-mark'></i>
+                                </div>
+                                <div>
+                                    <h4 class="h5 mb-2">Comment s'inscrire à une formation ?</h4>
+                                    <p class="text-muted mb-0">
+                                        Vous pouvez vous inscrire en ligne via notre plateforme ou directement à notre centre de formation. Nos conseillers sont disponibles pour vous guider.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="faq-item">
+                            <div class="d-flex">
+                                <div class="faq-icon">
+                                    <i class='bx bx-credit-card'></i>
+                                </div>
+                                <div>
+                                    <h4 class="h5 mb-2">Quels sont les modes de paiement acceptés ?</h4>
+                                    <p class="text-muted mb-0">
+                                        Nous acceptons les paiements en espèces, par virement bancaire, mobile money et par carte bancaire. Des facilités de paiement sont possibles.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="faq-item">
+                            <div class="d-flex">
+                                <div class="faq-icon">
+                                    <i class='bx bx-certification'></i>
+                                </div>
+                                <div>
+                                    <h4 class="h5 mb-2">Les formations sont-elles certifiantes ?</h4>
+                                    <p class="text-muted mb-0">
+                                        Oui, toutes nos formations délivrent une certification reconnue par l'État et les professionnels du secteur.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="faq-item">
+                            <div class="d-flex">
+                                <div class="faq-icon">
+                                    <i class='bx bx-time-five'></i>
+                                </div>
+                                <div>
+                                    <h4 class="h5 mb-2">Quelle est la durée des formations ?</h4>
+                                    <p class="text-muted mb-0">
+                                        La durée varie selon la formation, allant de quelques semaines à plusieurs mois. Consultez nos programmes pour plus de détails.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <a href="#" class="text-primary text-decoration-none fw-medium">
+                        Voir toutes les questions fréquentes <i class='bx bx-chevron-right'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container py-4">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="h5 text-white mb-4">Acan Formation</h4>
+                    <p class="text-muted">
+                        Centre de formation professionnelle d'excellence au Togo, spécialisé dans les métiers du numérique, de la gestion et des langues.
+                    </p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="h5 text-white mb-4">Liens rapides</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Accueil</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Formations</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Certifications</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">À propos</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="h5 text-white mb-4">Formations</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Informatique</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Gestion</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Langues</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Développement personnel</a></li>
+                        <li><a href="#" class="footer-link">Formations sur mesure</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="h5 text-white mb-4">Contact</h4>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-3 d-flex">
+                            <i class='bx bx-map me-2 mt-1'></i>
+                            <span>123 Avenue de la Formation, Lomé</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class='bx bx-phone me-2'></i>
+                            <span>+228 12 34 56 78</span>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class='bx bx-envelope me-2'></i>
+                            <span>contact@acan.tg</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-top border-dark pt-4">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <p class="text-muted mb-3 mb-md-0">© 2023 Acan Formation. Tous droits réservés.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="footer-link">
+                            <i class='bx bxl-facebook fs-5'></i>
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class='bx bxl-twitter fs-5'></i>
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class='bx bxl-linkedin fs-5'></i>
+                        </a>
+                        <a href="#" class="footer-link">
+                            <i class='bx bxl-instagram fs-5'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation for form inputs
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.previousElementSibling.classList.add('text-primary');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.previousElementSibling.classList.remove('text-primary');
+                }
+            });
+        });
+        
+        // FAQ item toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('border-primary');
+                this.classList.toggle('bg-light');
+            });
+        });
+    </script>
+</body>
+</html>

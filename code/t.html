@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>ISA World - Formation Professionnelle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- CDN Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  
+  <!-- Boxicons CSS -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Google Fonts - Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #5436e6;
+      --primary-hover: #4630c7;
+      --secondary-color: #ffc107;
+      --secondary-hover: #e0a800;
+    }
+    
+    /* Reset des marges et padding */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Top contact bar */
+    .top-bar {
+      background-color: #f8f9fa;
+      padding: 5px 20px;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-wrap: wrap;
+      color: #000;
+      z-index: 1000;
+    }
+    
+    .top-bar .contacts i {
+      color: var(--primary-color);
+      margin-right: 5px;
+    }
+    
+    .top-bar .contacts span {
+      margin-right: 15px;
+    }
+    
+    .top-bar .contacts a {
+      color: #000;
+      text-decoration: none;
+    }
+    
+    .top-bar .contacts a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Navbar Styles */
+    .navbar-area {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background-color: transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-area.sticky {
+      position: fixed;
+      top: 0;
+      background-color: #fff !important;
+      box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+    }
+    
+    .main-navbar {
+      padding: 15px 0;
+    }
+    
+    .navbar-brand img {
+      max-height: 70px;
+    }
+    
+    .navbar-light .navbar-nav .nav-link {
+      font-weight: 500;
+      padding: 10px 15px;
+    }
+    .navbar-light .navbar-nav .nav-link.active {
+      color: #4630c7 ;
+      font-weight: 600;
+    }
+    
+    .navbar-light.sticky .navbar-nav .nav-link.active {
+      color: #4630c7 ;
+      font-weight: 600;
+
+    }
+    
+    .nav-link.active {
+      color: #4630c7 ;
+      font-weight: 600;
+    }
+    
+    .sticky .nav-link.active {
+      color: var(--primary-color) !important;
+    }
+    
+    .default-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: var(--primary-color);
+      color: #fff;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      text-decoration: none;
+    }
+    
+    .default-btn:hover {
+      background-color: var(--primary-hover);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+    
+    .btn-warning {
+      background-color: var(--secondary-color) !important;
+      border-color: var(--secondary-color) !important;
+    }
+    
+    .btn-warning:hover {
+      background-color: var(--secondary-hover) !important;
+      border-color: var(--secondary-hover) !important;
+    }
+    
+    /* Style pour le menu déroulant */
+    .dropdown-menu {
+      min-width: 250px;
+      font-size: 14px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .dropdown-item {
+      padding: 10px 20px;
+      transition: all 0.2s;
+    }
+    
+    .dropdown-item:hover {
+      background-color: #f8f9fa;
+      color: var(--primary-color);
+      padding-left: 25px;
+    }
+    
+    .dropdown-divider {
+      margin: 5px 0;
+    }
+    
+    /* Style pour le menu mobile */
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem;
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: none;
+
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+
+    }
+    
+    .sticky .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    
+    /* Menu déroulant mobile */
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .navbar-light .navbar-nav .nav-link {
+        color: #333 !important;
+        padding: 10px 0;
+      }
+      
+      .navbar-light .navbar-nav .nav-link.active {
+        color: var(--primary-color) !important;
+      }
+      
+      .ms-3 {
+        margin-left: 0 !important;
+        margin-top: 15px;
+      }
+    }
+    
+    /* Slider Styles */
+    .main-slider {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .main-slider .owl-stage-outer,
+    .main-slider .owl-stage,
+    .main-slider .owl-item {
+      height: 100%;
+    }
+    
+    .main-slider-item {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+    }
+    
+    .main-slider-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .main-slider-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    
+    .main-slider-content {
+      color: #fff;
+      padding-top: 180px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .main-slider-content h1 {
+      font-size: 60px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .main-slider-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+    
+    .slider-btn .default-btn {
+      background-color: transparent;
+      border: 2px solid #fff;
+    }
+    
+    .slider-btn .default-btn:hover {
+      background-color: #fff;
+      color: var(--primary-color);
+    }
+    
+    /* Navigation buttons */
+    .owl-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    
+    .owl-prev, .owl-next {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255,255,255,0.3) !important;
+      border-radius: 50% !important;
+      color: #fff !important;
+      font-size: 24px !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      margin: 0 20px !important;
+      pointer-events: all;
+      transition: all 0.3s ease;
+    }
+    
+    .owl-prev:hover, .owl-next:hover {
+      background-color: rgba(84, 54, 230, 0.8) !important;
+    }
+    
+    /* Dots navigation */
+    .owl-dots {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 0 !important;
+    }
+    
+    .owl-theme .owl-dots .owl-dot span {
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.5);
+      border: 2px solid transparent;
+      margin: 0 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .owl-theme .owl-dots .owl-dot.active span, 
+    .owl-theme .owl-dots .owl-dot:hover span {
+      background: var(--primary-color);
+      border-color: #fff;
+      transform: scale(1.2);
+    }
+    
+    /* Footer */
+    .footer {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 60px 0 30px;
+    }
+    
+    .footer h5 {
+      font-size: 18px;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer h5:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--primary-color);
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #bbb;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+      padding-left: 5px;
+    }
+    
+    .footer-contact li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .footer-contact i {
+      color: var(--primary-color);
+      margin-right: 15px;
+      margin-top: 5px;
+    }
+    
+    .copyright {
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      margin-top: 40px;
+      text-align: center;
+      color: #aaa;
+      font-size: 14px;
+    }
+    
+    .social-links {
+      display: flex;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #333;
+      color: #fff;
+      margin-right: 10px;
+      transition: 0.3s;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary-color);
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+<div class="navbar-area">
+  <div class="container">
+
+    <!-- Top Header (Bootstrap version) -->
+<div class=" text-white py-2" font-size="1rem">
+    <div class="container">
+        <div class="row justify-content-center text-center text-md-start">
+            <div class="col-12 col-md-auto mb-2 mb-md-0 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-geo-alt-fill me-2" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+                </svg>
+                <span>123 Rue Principale, Ville</span>
+            </div>
+            <div class="col-12 col-md-auto mb-2 mb-md-0 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill me-2" viewBox="0 0 16 16">
+                    <path d="M3.654 1.328a.678.678 0 0 1 .58-.326h2.646c.305 0 .58.176.707.448l.6 1.2a.678.678 0 0 1-.145.776l-.941.942a11.29 11.29 0 0 0 4.292 4.292l.942-.94a.678.678 0 0 1 .775-.146l1.2.6a.678.678 0 0 1 .449.707v2.646a.678.678 0 0 1-.326.58c-.764.492-2.053.906-3.828-.869C5.431 7.4 2.821 3.924 3.654 1.328z"/>
+                </svg>
+                <span>+1 234 567 890</span>
+            </div>
+            <div class="col-12 col-md-auto d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill me-2" viewBox="0 0 16 16">
+                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555z"/>
+                    <path d="M0 4.697v7.104l5.803-3.803L0 4.697zM6.761 8.83l-6.761 4.44A2 2 0 0 0 2 14h12a2 2 0 0 0 1.999-0.73l-6.76-4.44L8 9.586l-1.239-.756zM16 4.697l-5.803 3.601L16 11.801V4.697z"/>
+                </svg>
+                <span>contact@example.com</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="../custom/logo.png" alt="Logo ISA">
+          </a>
+          
+          <button class="navbar-toggler" style="background-color: #333; color: #fff;"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Accueil</a>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Nos Formations</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Commerce et Marketing</a></li>
+                  <li><a class="dropdown-item" href="#">GRH et Emploi</a></li>
+                  <li><a class="dropdown-item" href="#">Gestion et Comptabilité</a></li>
+                  <li><a class="dropdown-item" href="#">Informatique</a></li>
+                  <li><a class="dropdown-item" href="#">Logistique</a></li>
+                  <li><a class="dropdown-item" href="#">Qualité et Management</a></li>
+                  <li><a class="dropdown-item" href="#">Santé</a></li>
+                </ul>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#">Webinaires</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">À propos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+            
+            <div class="d-flex">
+              <a href="#" class="btn btn-warning">
+                <i class="fas fa-sign-in-alt me-1"></i> Connexion
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+  </div>
+</div>
+
+<!-- Carousel/Slider -->
+<div class="owl-carousel owl-theme main-slider">
+  <div class="main-slider-item">
+    <div class="main-slider-image">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Assistante de direction au Togo">
+    </div>
+    <div class="container">
+      <div class="main-slider-content">
+        <h1>Assistante de direction au Togo</h1>
+        <p>Une formation adaptée au marché togolais et à distance.</p>
+        <div class="slider-btn">
+          <a href="#" class="default-btn">
+            <i class='bx bx-book-reader'></i> Découvrir la formation
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main-slider-item">
+    <div class="main-slider-image">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Certifications internationales">
+    </div>
+    <div class="container">
+      <div class="main-slider-content">
+        <h1>Formations Professionnelles</h1>
+        <p>Des formations dans tous les domaines par le leader de la formation à distance</p>
+        <div class="slider-btn">
+          <a href="#" class="default-btn">
+            <i class='bx bx-book-reader'></i> Nos formations
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main-slider-item">
+    <div class="main-slider-image">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Formation en ligne">
+    </div>
+    <div class="container">
+      <div class="main-slider-content">
+        <h1>Formation 100% en ligne</h1>
+        <p>Apprenez à votre rythme, où que vous soyez, avec notre plateforme d'e-learning</p>
+        <div class="slider-btn">
+          <a href="#" class="default-btn">
+            <i class='bx bx-laptop'></i> Découvrir la plateforme
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <img src="https://www.isaworld.net/tg/logo.png" alt="Logo ISA" class="mb-3" style="height: 50px;">
+        <p>International Skills Academy propose des formations professionnelles de qualité adaptées aux besoins du marché africain.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+        <h5>Liens Rapides</h5>
+        <ul class="footer-links">
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">À propos</a></li>
+          <li><a href="#">Formations</a></li>
+          <li><a href="#">Webinaires</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5>Nos Formations</h5>
+        <ul class="footer-links">
+          <li><a href="#">Commerce et Marketing</a></li>
+          <li><a href="#">GRH et Emploi</a></li>
+          <li><a href="#">Gestion et Comptabilité</a></li>
+          <li><a href="#">Informatique</a></li>
+          <li><a href="#">Logistique</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-3 col-md-6">
+        <h5>Contactez-nous</h5>
+        <ul class="footer-contact">
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>123 Avenue de la Formation, Lomé, Togo</span>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <span>+212 668 580 485</span>
+          </li>
+          <li>
+            <i class="fab fa-whatsapp"></i>
+            <span>+212 668 580 485</span>
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <span>contact@isaworld.net</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2023 ISA World. Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+  // Initialize Owl Carousel
+  $(document).ready(function(){
+    $(".main-slider").owlCarousel({
+      items: 1,
+      loop: true,
+      nav: true,
+      dots: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayHoverPause: true,
+      animateOut: 'fadeOut',
+      smartSpeed: 1000,
+      navText: [
+        '<i class="bx bx-chevron-left"></i>',
+        '<i class="bx bx-chevron-right"></i>'
+      ]
+    });
+
+    
+    // Sticky navbar on scroll
+    $(window).scroll(function(){
+      if($(this).scrollTop() > 100) {
+        $('.navbar-area').addClass('sticky');
+        $('.navbar-light .navbar-nav .nav-link ').css('color', '#333');
+
+      } else {
+        $('.navbar-area').removeClass('sticky');
+        $('.active ').css('color', '#4630c7');
+
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

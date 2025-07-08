@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISA World - Formations Professionnelles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        .courses-box {
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .courses-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-box {
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .odometer {
+            font-size: 40px;
+            font-weight: 700;
+            color: #0d6efd;
+        }
+        
+        .about-image {
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .about-image img {
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+        
+        .about-image img:first-child {
+            top: 0;
+            left: 0;
+            width: 70%;
+            z-index: 1;
+        }
+        
+        .about-image img:last-child {
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            z-index: 2;
+        }
+        
+        .feedback-form {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+        }
+        
+        .bg-gradient-blue {
+            background: linear-gradient(to right, #e6f2ff, #d1e5ff);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #0d6efd;
+        }
+        
+        @media (max-width: 768px) {
+            .about-image img {
+                position: relative;
+                width: 100% !important;
+                margin-bottom: 20px;
+            }
+            
+            .odometer {
+                font-size: 30px;
+            }
+            
+            .about-image {
+                min-height: auto;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Courses Section -->
+    <section class="py-5 py-md-5 bg-white">
+        <div class="container">
+            <div class="row mb-4 mb-md-5 align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <span class="text-primary fw-semibold">Découvrez les formations</span>
+                    <h2 class="h1 fw-bold mt-2">Nos formations populaires</h2>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://www.isaworld.net/tg/formations" class="btn btn-primary btn-lg px-4 py-3 rounded-pill shadow">
+                        <i class='bx bx-show-alt me-2'></i>
+                        <span>Nos formations</span>
+                        <i class='bx bx-show-alt ms-2'></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Course 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 courses-box">
+                        <a href="https://www.isaworld.net/tg/formation/31-woocommerce.html">
+                            <img src="https://www.isaworld.net//imgs/formations/big/033446_2-FMI117.webp" class="card-img-top" alt="WooCommerce" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="h5 card-title fw-bold">
+                                <a href="https://www.isaworld.net/tg/formation/31-woocommerce.html" class="text-decoration-none text-dark hover-primary">WooCommerce</a>
+                            </h3>
+                            <p class="card-text text-muted mb-3">Vous voulez créer un site Internet et vendre vos produits en ligne ? Vous êtes au bon endroit ! Cette...</p>
+                            <a href="https://www.isaworld.net/tg/formation/31-woocommerce.html" class="btn btn-primary btn-sm rounded-pill px-3">
+                                <i class='bx bx-paper-plane me-1'></i>
+                                <span>Voir détail</span>
+                                <i class='bx bx-paper-plane ms-1'></i>
+                            </a>
+                            <div class="mt-3">
+                                <div class="text-warning">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star-half'></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center text-muted">
+                                    <i class='bx bx-time me-2'></i>
+                                    <span>1 mois (16H)</span>
+                                </div>
+                                <div class="text-primary fw-bold">
+                                    56,000 <span class="text-muted fw-normal">Fcfa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 courses-box">
+                        <a href="https://www.isaworld.net/tg/formation/28-la-norme-iso-iec-17025-v-2017.html">
+                            <img src="https://www.isaworld.net//imgs/formations/big/033425_2-FMQ118.webp" class="card-img-top" alt="La norme ISO / IEC 17025 v 2017" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="h5 card-title fw-bold">
+                                <a href="https://www.isaworld.net/tg/formation/28-la-norme-iso-iec-17025-v-2017.html" class="text-decoration-none text-dark hover-primary">La norme ISO / IEC 17025 v 2017</a>
+                            </h3>
+                            <p class="card-text text-muted mb-3">La mise en place d'un système de management conformément aux exigences de la norme ISO/IEC 17025 version...</p>
+                            <a href="https://www.isaworld.net/tg/formation/28-la-norme-iso-iec-17025-v-2017.html" class="btn btn-primary btn-sm rounded-pill px-3">
+                                <i class='bx bx-paper-plane me-1'></i>
+                                <span>Voir détail</span>
+                                <i class='bx bx-paper-plane ms-1'></i>
+                            </a>
+                            <div class="mt-3">
+                                <div class="text-warning">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star-half'></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center text-muted">
+                                    <i class='bx bx-time me-2'></i>
+                                    <span>8 jours (24H)</span>
+                                </div>
+                                <div class="text-primary fw-bold">
+                                    86,000 <span class="text-muted fw-normal">Fcfa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 courses-box">
+                        <a href="https://www.isaworld.net/tg/formation/35-responsable-qsse.html">
+                            <img src="https://www.isaworld.net//imgs/formations/big/033510_2-FMQ119.webp" class="card-img-top" alt="Responsable QSSE" style="height: 200px; object-fit: cover;">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="h5 card-title fw-bold">
+                                <a href="https://www.isaworld.net/tg/formation/35-responsable-qsse.html" class="text-decoration-none text-dark hover-primary">Responsable QSSE</a>
+                            </h3>
+                            <p class="card-text text-muted mb-3">Pour décrocher un poste de responsable QSSE au Togo quelque soit le secteur d'activité dans lequel vous...</p>
+                            <a href="https://www.isaworld.net/tg/formation/35-responsable-qsse.html" class="btn btn-primary btn-sm rounded-pill px-3">
+                                <i class='bx bx-paper-plane me-1'></i>
+                                <span>Voir détail</span>
+                                <i class='bx bx-paper-plane ms-1'></i>
+                            </a>
+                            <div class="mt-3">
+                                <div class="text-warning">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star-half'></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-top">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center text-muted">
+                                    <i class='bx bx-time me-2'></i>
+                                    <span>1 mois (32H)</span>
+                                </div>
+                                <div class="text-primary fw-bold">
+                                    112,000 <span class="text-muted fw-normal">Fcfa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-5 py-md-5 bg-gradient-blue position-relative overflow-hidden">
+        <div class="container">
+            <div class="text-center mb-4 mb-md-5">
+                <span class="text-primary fw-semibold">Nos catégories</span>
+                <h2 class="h1 fw-bold mt-2">Les catégories de nos formations</h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Category 1 -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bg-danger text-white rounded-3 p-4 p-md-5 text-center category-box h-100">
+                        <div class="display-4 mb-4">
+                            <i class='bx bx-rocket'></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-4">Commerce et Marketing</h3>
+                        <a href="https://www.isaworld.net/tg/1-commerce-et-marketing" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bg-success text-white rounded-3 p-4 p-md-5 text-center category-box h-100">
+                        <div class="display-4 mb-4">
+                            <i class='bx bx-group'></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-4">GRH et Emploi</h3>
+                        <a href="https://www.isaworld.net/tg/7-grh-et-emploi" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bg-purple text-white rounded-3 p-4 p-md-5 text-center category-box h-100">
+                        <div class="display-4 mb-4">
+                            <i class='bx bx-calculator'></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-4">Gestion et Comptabilité</h3>
+                        <a href="https://www.isaworld.net/tg/6-gestion-et-comptabilite" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bg-primary text-white rounded-3 p-4 p-md-5 text-center category-box h-100">
+                        <div class="display-4 mb-4">
+                            <i class='bx bx-at'></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-4">Informatique</h3>
+                        <a href="https://www.isaworld.net/tg/3-informatique" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bg-warning text-white rounded-3 p-4 p-md-5 text-center category-box h-100">
+                        <div class="display-4 mb-4">
+                            <i class='bx bxs-truck'></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-4">Logistique</h3>
+                        <a href="https://www.isaworld.net/tg/10-logistique" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bg-info text-white rounded-3 p-4 p-md-5 text-center category-box h-100">
+                        <div class="display-4 mb-4">
+                            <i class='bx bx-shape-triangle'></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-4">Qualité et Management</h3>
+                        <a href="https://www.isaworld.net/tg/2-qualite-et-management" class="stretched-link"></a>
+                    </div>
+                </div>
+
+                <!-- Category 7 -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="bg-secondary text-white rounded-3 p-4 p-md-5 text-center category-box h-100">
+                        <div class="display-4 mb-4">
+                            <i class='bx bx-first-aid'></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-4">Santé</h3>
+                        <a href="https://www.isaworld.net/tg/8-sante" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 py-md-5 bg-white">
+        <div class="container">
+            <div class="bg-light rounded-3 p-4 p-md-5 position-relative overflow-hidden">
+                <div class="row g-4">
+                    <!-- Stat 1 -->
+                    <div class="col-6 col-md-3 text-center">
+                        <div class="text-primary display-6 mb-4">
+                            <i class='bx bxs-group'></i>
+                        </div>
+                        <h3 class="odometer" data-count="43">00</h3>
+                        <p class="text-muted fw-medium">Formateurs experts</p>
+                    </div>
+
+                    <!-- Stat 2 -->
+                    <div class="col-6 col-md-3 text-center">
+                        <div class="text-primary display-6 mb-4">
+                            <i class='bx bx-book-reader'></i>
+                        </div>
+                        <h3 class="odometer" data-count="312">00</h3>
+                        <p class="text-muted fw-medium">Total Courses</p>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="col-6 col-md-3 text-center">
+                        <div class="text-primary display-6 mb-4">
+                            <i class='bx bx-user-pin'></i>
+                        </div>
+                        <h3 class="odometer" data-count="1245">00</h3>
+                        <p class="text-muted fw-medium">Etudiants heureux</p>
+                    </div>
+
+                    <!-- Stat 4 -->
+                    <div class="col-6 col-md-3 text-center">
+                        <div class="text-primary display-6 mb-4">
+                            <i class='bx bxl-deviantart'></i>
+                        </div>
+                        <h3 class="odometer" data-count="152">00</h3>
+                        <p class="text-muted fw-medium">Webinaires</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5 py-md-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="https://www.isaworld.net/assets/img/about/1.webp" alt="About ISA" class="img-fluid">
+                        <img src="https://www.isaworld.net/assets/img/about/2.webp" alt="About ISA" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="text-primary fw-semibold">International Skills Academy au Togo</span>
+                    <h2 class="h1 fw-bold mt-2 mb-4">Apprenez de nouvelles compétences pour poursuivre votre carrière</h2>
+                    <h6 class="h5 text-muted fw-medium mb-4">Nous pouvons offrir des formations dans plusieurs domaines de compétences pour les étudiants nationaux et internationaux.</h6>
+                    <p class="text-muted mb-4">La formation professionnelle à distance au Togo est devenue indispensable tant pour les personnes en quête de travail que pour le personnel en poste. Notre organisme de formation est une structure ayant pour mission de dispenser ses formations à distance et d'apporter aux apprenants de nouvelles compétences et connaissances au Togo.</p>
+                    
+                    <div class="bg-white p-4 rounded-3 shadow-sm">
+                        <h5 class="d-flex align-items-center h5 fw-bold text-dark mb-3">
+                            <i class='bx bx-planet text-primary me-3 fs-4'></i>
+                            Nous vous proposons bien plus que des savoirs
+                        </h5>
+                        <p class="text-muted">Engagé à vos côtés, nos experts partagent une connaissance profonde de vos enjeux, de vos métiers et de vos besoins. Formation clé en main ou sur mesure à distance, projets internationaux ou conseils opérationnels, nous sommes là pour créer et déployer avec vous la solution la plus compétitive.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="py-5 py-md-5 bg-primary">
+        <div class="container">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h1 fw-bold text-white">Nos Partenaires</h2>
+            </div>
+
+            <div class="row justify-content-center g-4">
+                <!-- Partner 1 -->
+                <div class="col-auto">
+                    <div class="bg-white p-4 rounded-3 shadow">
+                        <a href="#0">
+                            <img src="https://www.isaworld.net//imgs/partenaires/big/010534_3.png" alt="McGill" style="height: 60px; width: auto; max-width: 200px;">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Partner 2 -->
+                <div class="col-auto">
+                    <div class="bg-white p-4 rounded-3 shadow">
+                        <a href="https://qmp-management.net">
+                            <img src="https://www.isaworld.net//imgs/partenaires/big/051957_qmp.png" alt="QMP Management" style="height: 60px; width: auto; max-width: 200px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-5 py-md-5 bg-dark bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6 text-white">
+                    <h2 class="h1 fw-bold mb-4">En apprenant ensemble, nous réalisons de grandes ambitions.</h2>
+                    <p class="h5 opacity-90">Contactez-nous pour plus d'informations sur nos formations et programmes.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="feedback-form p-4 p-md-5 rounded-3 shadow">
+                        <h3 class="h2 fw-bold text-dark mb-4">Formulaire de contact rapide</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control form-control-lg" placeholder="Votre Nom*">
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control form-control-lg" placeholder="Votre Adresse Email*">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Votre téléphone*">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <textarea rows="4" class="form-control form-control-lg" placeholder="Votre message (Optionnel)"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill shadow">
+                                <i class='bx bx-paper-plane me-2'></i>
+                                <span>Envoyer</span>
+                                <i class='bx bx-paper-plane ms-2'></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Odometer counter animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const odometers = document.querySelectorAll('.odometer');
+            
+            const animateOdometer = (odometer) => {
+                const target = parseInt(odometer.getAttribute('data-count'));
+                const duration = 2000; // Animation duration in ms
+                const start = 0;
+                const increment = target / (duration / 16); // 60fps
+                let current = start;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        current = target;
+                    }
+                    odometer.textContent = Math.floor(current);
+                }, 16);
+            };
+            
+            // Intersection Observer to trigger animation when element is in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateOdometer(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            odometers.forEach(odometer => {
+                observer.observe(odometer);
+            });
+        });
+    </script>
+</body>
+</html>
